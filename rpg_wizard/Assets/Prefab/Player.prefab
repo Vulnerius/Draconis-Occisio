@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136637450394447002}
   m_LocalRotation: {x: 0.19602911, y: -0.03059832, z: 0.0061199395, w: 0.98010147}
-  m_LocalPosition: {x: 0.25, y: 2.35, z: -4.75}
+  m_LocalPosition: {x: 0.5, y: 2.35, z: -4.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -259,7 +259,7 @@ MonoBehaviour:
   Damping: {x: 0.1, y: 0.5, z: 0.3}
   ShoulderOffset: {x: 0.5, y: 0.1, z: 0}
   VerticalArmLength: 1.75
-  CameraSide: 0.75
+  CameraSide: 1
   CameraDistance: 4.75
   CameraCollisionFilter:
     serializedVersion: 2
@@ -361,6 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136637451850293599}
   - component: {fileID: 136637451850293598}
+  - component: {fileID: 5715017897501820816}
   - component: {fileID: 136637451850293585}
   m_Layer: 0
   m_Name: Player
@@ -403,8 +404,20 @@ MonoBehaviour:
   playerRigidBody: {fileID: 136637451850293585}
   walkSpeed: 3
   turnTime: 0.3
-  sprintSpeed: 0
   jumpingForce: 5
+--- !u!114 &5715017897501820816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136637451850293596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8217226ece4029a8a85f23fceba8e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireBall: {fileID: 258560850771557038, guid: b544f80fd00ce06f99394a553909a867, type: 3}
 --- !u!54 &136637451850293585
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -419,7 +432,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &136637452138496547
 GameObject:

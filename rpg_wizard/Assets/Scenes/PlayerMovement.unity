@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159832498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 4.35, z: -4.75}
+  m_LocalPosition: {x: 0.5, y: 4.35, z: -4.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -343,6 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 136637451850293585, guid: 95b61ca3c9802aa4eb97699167412a35, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 136637451850293596, guid: 95b61ca3c9802aa4eb97699167412a35, type: 3}
       propertyPath: m_Name
       value: Player
@@ -395,6 +399,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5715017897501820816, guid: 95b61ca3c9802aa4eb97699167412a35, type: 3}
+      propertyPath: fireBall
+      value: 
+      objectReference: {fileID: 258560850771557038, guid: b544f80fd00ce06f99394a553909a867, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95b61ca3c9802aa4eb97699167412a35, type: 3}
 --- !u!1001 &2852538066373941379
