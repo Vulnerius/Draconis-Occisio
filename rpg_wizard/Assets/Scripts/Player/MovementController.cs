@@ -7,7 +7,7 @@ namespace Player {
     public class MovementController : MonoBehaviour {
         [SerializeField] private GameObject player;
         [SerializeField] private Transform camera;
-        [SerializeField] private Rigidbody playerRigidBody;
+        [SerializeField] private CharacterController characterController;
 
         [Tooltip("The force applied to the rigidbody when walking")] [SerializeField]
         public float walkSpeed;
@@ -57,7 +57,7 @@ namespace Player {
         }
 
         private void Jump(float jumpForce) {
-            playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            player.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
             canJump = false;
         }
 
@@ -71,7 +71,7 @@ namespace Player {
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            playerRigidBody.AddForce(moveDirection * _movement.move.magnitude * speed, ForceMode.Acceleration);
+            characterController.SimpleMove(moveDirection * _movement.move.magnitude * speed);
         }
 
         private void OnDisable() {
