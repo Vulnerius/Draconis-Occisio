@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour {
     [SerializeField] private GameObject fireBall;
+    [SerializeField] private GameObject watershield;
     private PlayerControls Controls;
 
     private void Awake() {
@@ -19,7 +20,10 @@ public class Attacks : MonoBehaviour {
         controls.Attacks.WaterShield.performed += _ => InstantiateWaterShield();
     }
 
-    private void InstantiateWaterShield() { }
+    private void InstantiateWaterShield() {
+        var fireB = Instantiate(watershield, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        Destroy(fireB, 3f);
+    }
 
     private void InstantiateFireBall() {
         //TODO:
