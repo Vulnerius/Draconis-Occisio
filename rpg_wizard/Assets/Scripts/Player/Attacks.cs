@@ -6,6 +6,7 @@ using UnityEngine;
 public class Attacks : MonoBehaviour {
     [SerializeField] private GameObject fireBall;
     [SerializeField] private GameObject watershield;
+    [SerializeField] private Animator Animator;
     private PlayerControls Controls;
 
     private void Awake() {
@@ -21,6 +22,7 @@ public class Attacks : MonoBehaviour {
     }
 
     private void InstantiateWaterShield() {
+        Animator.Play("Attack01");
         var fireB = Instantiate(watershield, transform.position + new Vector3(0,1,0), Quaternion.identity);
         Destroy(fireB, 3f);
     }
@@ -28,7 +30,7 @@ public class Attacks : MonoBehaviour {
     private void InstantiateFireBall() {
         //TODO:
         var fireB = Instantiate(fireBall, transform.position + new Vector3(0,0,1.2f), Quaternion.LookRotation(transform.forward));
-        fireB.GetComponent<Rigidbody>().AddForce(5 * transform.forward, ForceMode.Impulse);
+        fireB.GetComponent<Rigidbody>().AddForce(15 * transform.forward, ForceMode.Impulse);
         Destroy(fireB, 3f);
     }
 

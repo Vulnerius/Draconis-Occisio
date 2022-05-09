@@ -1,16 +1,17 @@
 using System;
-using System.Runtime.CompilerServices;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Player {
     public class MovementController : MonoBehaviour {
         [SerializeField] private GameObject player;
+        [SerializeField] private GameObject wizardPrefab;
         [SerializeField] private Transform camera;
         [SerializeField] private CharacterController characterController;
 
         [Tooltip("The force applied to the rigidbody when walking")] [SerializeField]
         public float walkSpeed;
+        private float initWalkSpeed;
 
         [Tooltip("The time it takes to turn into a new walking direction. Should be set lower than 0.2")]
         [SerializeField]
@@ -19,20 +20,35 @@ namespace Player {
         [Tooltip("The force applied vertically to the rigidbody when jumping")] [SerializeField]
         public float jumpingForce;
 
+        private Animator playerAnimator;
         private PlayerControls m_Controls;
         private PlayerMovement _movement;
         private bool canJump;
 
         private void Awake() {
+            initWalkSpeed = walkSpeed;
             _movement = new PlayerMovement();
             m_Controls = new PlayerControls();
             InitMovementActions(m_Controls);
             m_Controls.Enable();
+            playerAnimator = wizardPrefab.GetComponent<Animator>();
         }
 
         private void Update() {
             if (_movement.moveEnabled)
                 Walk(walkSpeed);
+
+            WalkOrIdle();
+        }
+
+        private void WalkOrIdle() {
+            if (!_movement.moveEnabled)
+                StartCoroutine(playIdle());
+        }
+
+        private IEnumerator playIdle() {
+            yield return new WaitForSeconds(0.75f);
+            playerAnimator.Play("Idle03");
         }
 
         private void InitMovementActions(PlayerControls controls) {
@@ -45,7 +61,7 @@ namespace Player {
 
             controls.Movement.Jump.performed += _ => OnJump(jumpingForce);
 
-            controls.Movement.Sprint.performed += _ => walkSpeed *= 2;
+            controls.Movement.Sprint.performed += _ => { walkSpeed *= 2; playerAnimator.Play("BattleRunForward");};
             controls.Movement.Sprint.canceled += _ => walkSpeed /= 2;
         }
 
@@ -57,6 +73,7 @@ namespace Player {
         }
 
         private void Jump(float jumpForce) {
+            playerAnimator.Play("JumpUp");
             player.GetComponent<Rigidbody>().AddForce(Vector3.up * jumpForce,ForceMode.Impulse);
             canJump = false;
         }
@@ -64,6 +81,8 @@ namespace Player {
 
         private void Walk(float speed) {
             if (_movement.move.magnitude <= .1f) return;
+            if(Math.Abs(initWalkSpeed - walkSpeed) < .1f)
+                playerAnimator.Play("WalkForward");
             float targetAngle = Mathf.Atan2(_movement.move.x, _movement.move.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle,
                 ref _movement.TurnVelocity, turnTime);
