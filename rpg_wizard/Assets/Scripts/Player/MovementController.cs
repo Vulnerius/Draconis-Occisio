@@ -21,12 +21,13 @@ namespace Player {
 
         private Animator playerAnimator;
         private PlayerControls m_Controls;
-        private PlayerMovement _movement;
+        private PlayerStates m_States;
+        public PlayerStates States => m_States;
         private bool canJump;
 
         private void Awake() {
             initWalkSpeed = walkSpeed;
-            _movement = new PlayerMovement();
+            m_States = new PlayerStates();
             m_Controls = new PlayerControls();
             InitMovementActions(m_Controls);
             m_Controls.Enable();
@@ -34,25 +35,25 @@ namespace Player {
         }
 
         private void Update() {
-            if (_movement.jumped)
+            if (m_States.jumped && !m_States.ability)
                 StartCoroutine(DoJump());
-            if (_movement.moveEnabled)
+            if (m_States.moveEnabled && !m_States.ability)
                 Walk(walkSpeed);
         }
 
         private void InitMovementActions(PlayerControls controls) {
-            controls.Movement.Move.started += ctx => _movement.moveEnabled = true;
+            controls.Movement.Move.started += ctx => m_States.moveEnabled = true;
 
-            controls.Movement.Move.performed += ctx => { _movement.move = ctx.ReadValue<Vector2>(); };
+            controls.Movement.Move.performed += ctx => { m_States.move = ctx.ReadValue<Vector2>(); };
             controls.Movement.Move.canceled += _ => {
-                _movement.move = Vector2.zero;
-                _movement.moveEnabled = false;
+                m_States.move = Vector2.zero;
+                m_States.moveEnabled = false;
             };
 
             controls.Movement.Jump.performed += _ => {
-                _movement.jumped = true;
+                m_States.jumped = true;
             };
-            controls.Movement.Jump.canceled += _ => _movement.jumped = false;
+            controls.Movement.Jump.canceled += _ => m_States.jumped = false;
 
             controls.Movement.Sprint.performed += _ => {
                 walkSpeed *= 2;
@@ -68,37 +69,39 @@ namespace Player {
         }
 
         private IEnumerator DoJump() {
-            _movement.moveEnabled = false;
+            m_States.moveEnabled = false;
             OnJump(jumpingForce);
             canJump = false;
             yield return new WaitForSeconds(.5f);
-            _movement.moveEnabled = true;
+            m_States.moveEnabled = true;
         }
 
         private void Walk(float speed) {
-            if (_movement.move.magnitude <= .1f) return;
-            if(Math.Abs(initWalkSpeed - walkSpeed) < .1f)
+            if (m_States.move.magnitude <= .1f) return;
+            if(Math.Abs(initWalkSpeed - walkSpeed) < .1f && !m_States.ability)
                 playerAnimator.Play("WalkForward");
             canJump = true;
-            float targetAngle = Mathf.Atan2(_movement.move.x, _movement.move.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(m_States.move.x, m_States.move.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle,
-                ref _movement.TurnVelocity, turnTime);
+                ref m_States.TurnVelocity, turnTime);
             gameObject.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
-            characterController.SimpleMove(moveDirection * _movement.move.magnitude * speed);
+            characterController.SimpleMove(moveDirection * m_States.move.magnitude * speed);
         }
 
         private void OnDisable() {
             m_Controls.Disable();
         }
+        
     }
 
-    public class PlayerMovement {
+    public class PlayerStates {
         public Vector2 move;
         public float TurnVelocity;
         public bool moveEnabled;
         public bool jumped;
+        public bool ability;
     }
 }
