@@ -41,12 +41,13 @@ namespace Player {
             if (_movement.moveEnabled)
                 Walk(walkSpeed);
 
-            WalkOrIdle();
+            //WalkOrIdle();
         }
         
         private IEnumerator DoJump() {
             _movement.moveEnabled = false;
             OnJump(jumpingForce);
+            canJump = false;
             yield return new WaitForSeconds(.5f);
             _movement.moveEnabled = true;
         }
@@ -83,7 +84,8 @@ namespace Player {
         }
 
         private void OnJump(float jumpF) {
-            playerAnimator.Play("JumpUp");
+            if (!canJump) return;
+            playerAnimator.Play("JumpStart");
             characterController.Move(Vector3.up * jumpF * Time.fixedDeltaTime);
         }
 
@@ -91,6 +93,7 @@ namespace Player {
             if (_movement.move.magnitude <= .1f) return;
             if(Math.Abs(initWalkSpeed - walkSpeed) < .1f)
                 playerAnimator.Play("WalkForward");
+            canJump = true;
             float targetAngle = Mathf.Atan2(_movement.move.x, _movement.move.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle,
                 ref _movement.TurnVelocity, turnTime);
