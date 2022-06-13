@@ -10,12 +10,11 @@ GameLoop
 Enemy 
     Animations 
     Attacks
-    Life Bar
-    Dying
+    Dying --> UI
+    NavMesh
 
 Player 
-    Camera fix
-    Life Bar
+    Camera fix (>)
     Mana Bar --> implementing in Attacks as well
      
     
