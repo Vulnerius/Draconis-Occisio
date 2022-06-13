@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,16 +12,33 @@ namespace Health {
         private bool _isDead;
 
         public int CurrentHealth => _currentHealth;
-        [Header("UI")] [SerializeField] private Slider healthBar;
-
+        [Header("UI")]
+        [SerializeField] private Slider healthBar;
+        [SerializeField] private TextMeshProUGUI healthValueText;
+        private Canvas healthBarCanvas;
         // Start is called before the first frame update
         void Start() {
             _currentHealth = MAXHEALTH;
+            healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
             OnTakenDamage();
         }
 
+        private void Update() {
+            StartCoroutine(CheckHealthChanged(_currentHealth));
+        }
+
+        private IEnumerator CheckHealthChanged(int currentHealth) {
+            yield return new WaitForSeconds(2f);
+            if (_currentHealth == currentHealth && !gameObject.CompareTag("Player"))
+                healthBarCanvas.enabled = false;
+        }
+
         private void OnTakenDamage() {
+            if(!healthBarCanvas.enabled)
+                healthBarCanvas.enabled = true;
             healthBar.value = _currentHealth;
+            if (healthValueText != null)
+                healthValueText.text = _currentHealth.ToString();
         }
 
         public void GetDamagedInstantly(int value) {

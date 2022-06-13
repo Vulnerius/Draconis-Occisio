@@ -52,7 +52,7 @@ namespace Player {
             Animator.Play("Attack01");
             yield return new WaitForSeconds(.4f);
             var selfTransform = transform;
-            Instantiate(fireBall, selfTransform.position + new Vector3(0,1f,2.2f), Quaternion.LookRotation(selfTransform.forward));
+            Instantiate(fireBall, selfTransform.position + 2 * selfTransform.forward + Vector3.up, Quaternion.LookRotation(selfTransform.forward));
             yield return new WaitForSeconds(.4f);
             m_States.ability = false;
         }

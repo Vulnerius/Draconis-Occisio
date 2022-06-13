@@ -16,8 +16,14 @@ namespace Projectiles {
         }
 
         private void OnTriggerEnter(Collider collider) {
+            if(collider.gameObject.GetComponent<Health.Health>() == null) return;
+
             collider.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
             Debug.Log(collider.gameObject.GetComponent<Health.Health>().CurrentHealth);
+
+            var enemy = collider.gameObject.GetComponent<Enemy.Enemy>();
+            if(enemy == null) return;
+            enemy.GettingHit();
         }
             
     }
