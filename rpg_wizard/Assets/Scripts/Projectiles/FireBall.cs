@@ -12,7 +12,7 @@ namespace Projectiles {
             attacker = GameObject.FindWithTag("Player");
             
             Destroy(gameObject,lifeTime);
-            gameObject.GetComponent<Rigidbody>().AddForce(moveSpeed * attacker.transform.forward, ForceMode.Impulse);
+            gameObject.GetComponent<Rigidbody>().AddForce(moveSpeed * Camera.main!.transform.forward, ForceMode.Impulse);
         }
 
         private void OnTriggerEnter(Collider collider) {
