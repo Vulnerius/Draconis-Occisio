@@ -1,7 +1,13 @@
+using System;
 using UnityEngine;
 
 namespace Enemy {
-    public class Enemy : MonoBehaviour{
-        
+    public class Enemy : MonoBehaviour {
+        [SerializeField] private Health health;
+
+        private void Update() {
+            if(health.CurrentHealth == 0)
+                Destroy(gameObject);
+        }
     }
 }

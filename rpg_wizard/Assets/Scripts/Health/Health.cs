@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
     [Header("Options")] [SerializeField] private int MAXHEALTH;
@@ -9,11 +10,16 @@ public class Health : MonoBehaviour {
     private bool _isDead;
 
     public int CurrentHealth => _currentHealth;
-    [Header("UI")] [SerializeField] private TextMeshProUGUI healthBar;
+    [Header("UI")] [SerializeField] private Slider healthBar;
 
     // Start is called before the first frame update
     void Start() {
         _currentHealth = MAXHEALTH;
+        OnTakenDamage();
+    }
+
+    private void OnTakenDamage() {
+        healthBar.value = _currentHealth;
     }
 
     public void GetDamagedInstantly(int value) {
@@ -21,6 +27,7 @@ public class Health : MonoBehaviour {
         _currentHealth -= value;
         ClampHealth();
         _isDead = CheckIfDead();
+        OnTakenDamage();
     }
 
     private void ClampHealth() {
