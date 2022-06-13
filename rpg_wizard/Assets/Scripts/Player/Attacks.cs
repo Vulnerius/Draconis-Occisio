@@ -53,9 +53,8 @@ public class Attacks : MonoBehaviour {
         //TODO:
         Animator.Play("Attack01");
         yield return new WaitForSeconds(.4f);
-        var fireB = Instantiate(fireBall, transform.position + new Vector3(0,0,2f), Quaternion.LookRotation(transform.forward));
-        fireB.GetComponent<Rigidbody>().AddForce(15 * transform.forward, ForceMode.Impulse);
-        Destroy(fireB, 3f);
+        var selfTransform = transform;
+        Instantiate(fireBall, selfTransform.position + new Vector3(0,1f,2.2f), Quaternion.LookRotation(selfTransform.forward));
         yield return new WaitForSeconds(.4f);
         m_States.ability = false;
     }
