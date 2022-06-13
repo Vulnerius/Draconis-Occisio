@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Enemy {
     public class Enemy : MonoBehaviour {
-        [SerializeField] private Health health;
+        [SerializeField] private Health.Health health;
 
         private void Update() {
             if(health.CurrentHealth == 0)

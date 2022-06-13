@@ -16,8 +16,8 @@ namespace Projectiles {
         }
 
         private void OnTriggerEnter(Collider collider) {
-            collider.gameObject.GetComponent<Health>().GetDamagedInstantly(damage);
-            Debug.Log(collider.gameObject.GetComponent<Health>().CurrentHealth);
+            collider.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
+            Debug.Log(collider.gameObject.GetComponent<Health.Health>().CurrentHealth);
         }
             
     }
