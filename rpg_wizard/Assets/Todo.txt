@@ -1,0 +1,22 @@
+
+
+GameLoop
+    StartScreen UI
+    PauseScreen UI
+    EndScreen UI
+    
+    Waves of Enemy to be defeated
+
+Enemy 
+    Animations 
+    Attacks
+    Life Bar
+    Dying
+
+Player 
+    Camera fix
+    Life Bar
+    Mana Bar --> implementing in Attacks as well
+     
+    
+Arena
