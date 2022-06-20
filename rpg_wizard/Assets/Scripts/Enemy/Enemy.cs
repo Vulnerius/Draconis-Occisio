@@ -30,7 +30,7 @@ namespace Enemy {
         private void OnTriggerEnter(Collider other) {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
-            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(100);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(75);
         }
 
         private void OnDestroy() {
