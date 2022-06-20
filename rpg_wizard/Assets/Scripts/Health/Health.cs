@@ -20,6 +20,8 @@ namespace Health {
         void Start() {
             _currentHealth = MAXHEALTH;
             healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
+            healthBar.maxValue = MAXHEALTH;
+            healthBar.value = _currentHealth;
             OnTakenDamage();
         }
 

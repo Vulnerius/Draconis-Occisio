@@ -7,6 +7,7 @@ namespace Enemy {
         [SerializeField] private Health.Health health;
 
         private Animator animator;
+        internal bool DragonAlive = true;
 
         private void Awake() {
             animator = gameObject.GetComponentInChildren<Animator>();
@@ -18,6 +19,7 @@ namespace Enemy {
         }
 
         private IEnumerator Die() {
+            DragonAlive = false;
             animator.Play("Die");
             yield return new WaitForSeconds(1.2f);
             Destroy(gameObject);
@@ -31,6 +33,10 @@ namespace Enemy {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
             other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(100);
+        }
+
+        private void OnDestroy() {
+            StopAllCoroutines();
         }
     }
 }

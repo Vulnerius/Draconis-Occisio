@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Projectiles {
-    public class FireBall : MonoBehaviour {
+    public class FireBallPlayer : MonoBehaviour {
         [SerializeField] private int damage;
         [SerializeField] private float lifeTime;
         [SerializeField] private float moveSpeed;
@@ -15,13 +15,12 @@ namespace Projectiles {
             gameObject.GetComponent<Rigidbody>().AddForce(moveSpeed * Camera.main!.transform.forward, ForceMode.Impulse);
         }
 
-        private void OnTriggerEnter(Collider collider) {
-            if(collider.gameObject.GetComponent<Health.Health>() == null) return;
+        private void OnTriggerEnter(Collider other) {
+            if(other.gameObject.GetComponent<Health.Health>() == null) return;
 
-            collider.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
-            Debug.Log(collider.gameObject.GetComponent<Health.Health>().CurrentHealth);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
 
-            var enemy = collider.gameObject.GetComponent<Enemy.Enemy>();
+            var enemy = other.gameObject.GetComponent<Enemy.Enemy>();
             if(enemy == null) return;
             enemy.GettingHit();
         }
