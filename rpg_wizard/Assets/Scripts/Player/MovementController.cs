@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace Player {
     public class MovementController : MonoBehaviour {
         [SerializeField] private GameObject wizardPrefab;
-        [SerializeField] private Transform camera;
+        [SerializeField] private Transform cameraPosition;
         [SerializeField] private CharacterController characterController;
 
         [Tooltip("The force applied to the rigidbody when walking")] [SerializeField]
@@ -81,7 +81,7 @@ namespace Player {
             if(Math.Abs(initWalkSpeed - walkSpeed) < .1f && !m_States.ability)
                 playerAnimator.Play("WalkForward");
             canJump = true;
-            float targetAngle = Mathf.Atan2(m_States.move.x, m_States.move.y) * Mathf.Rad2Deg + camera.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(m_States.move.x, m_States.move.y) * Mathf.Rad2Deg + cameraPosition.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle,
                 ref m_States.TurnVelocity, turnTime);
             gameObject.transform.rotation = Quaternion.Euler(0f, angle, 0f);

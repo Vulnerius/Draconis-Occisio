@@ -4,10 +4,15 @@ using UnityEngine;
 namespace Player {
     public class Attacks : MonoBehaviour {
         [SerializeField] private GameObject fireBall;
-        [SerializeField] private GameObject watershield; 
+        [SerializeField] private float fireBallCoolDown;
+        [SerializeField] private GameObject watershield;
+        [SerializeField] private float shieldCoolDown;
         private Animator Animator;
         private PlayerControls Controls;
         private PlayerStates m_States;
+
+        public bool hasAttackCoolDown;
+        private bool hasDefenseCoolDown;
 
         private void Awake() {
             Controls = new PlayerControls();
@@ -38,10 +43,11 @@ namespace Player {
             //controls.Attacks.WaterShield.canceled += _ => m_States.ability = false;
         }
 
+        //todo: general
         private IEnumerator InstantiateWaterShield() {
             Animator.Play("DefendHit");
             yield return new WaitForSeconds(.4f);
-            var fireB = Instantiate(watershield, transform.position + new Vector3(0,1,0), Quaternion.identity);
+            var fireB = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
             Destroy(fireB, 3f);
             yield return new WaitForSeconds(.2f);
             m_States.ability = false;
@@ -52,9 +58,18 @@ namespace Player {
             Animator.Play("Attack01");
             yield return new WaitForSeconds(.4f);
             var selfTransform = transform;
-            Instantiate(fireBall, selfTransform.position + 2 * selfTransform.forward + Vector3.up, Quaternion.LookRotation(selfTransform.forward));
+            hasAttackCoolDown = true;
+            Instantiate(fireBall, selfTransform.position + 2 * selfTransform.forward + 2 * Vector3.up, Quaternion.LookRotation(selfTransform.forward));
             yield return new WaitForSeconds(.4f);
             m_States.ability = false;
+            StartCoroutine(CoolDownFireBall());
+        }
+
+        private IEnumerator CoolDownFireBall() {
+            yield return new WaitForSeconds(fireBallCoolDown);
+            Debug.Log(Time.deltaTime - fireBallCoolDown);
+            //todo: UI
+            hasAttackCoolDown = false;
         }
 
         private void OnDisable() {
