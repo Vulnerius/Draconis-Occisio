@@ -25,7 +25,7 @@ namespace Player {
 
         private IEnumerator GetStates() {
             if (gameObject.GetComponent<MovementController>().States == null)
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(.1f);
             m_States = gameObject.GetComponent<MovementController>().States;
         }
 
@@ -49,18 +49,17 @@ namespace Player {
             yield return new WaitForSeconds(.4f);
             var fireB = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
             Destroy(fireB, 3f);
-            yield return new WaitForSeconds(.2f);
             m_States.ability = false;
         }
 
         private IEnumerator InstantiateFireBall() {
             //TODO: mana & coolDown
+            if(hasAttackCoolDown) yield break;
+            hasAttackCoolDown = true;
             Animator.Play("Attack01");
             yield return new WaitForSeconds(.4f);
             var selfTransform = transform;
-            hasAttackCoolDown = true;
             Instantiate(fireBall, selfTransform.position + 2 * selfTransform.forward + 2 * Vector3.up, Quaternion.LookRotation(selfTransform.forward));
-            yield return new WaitForSeconds(.4f);
             m_States.ability = false;
             StartCoroutine(CoolDownFireBall());
         }
