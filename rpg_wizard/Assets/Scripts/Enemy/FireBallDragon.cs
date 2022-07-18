@@ -1,3 +1,4 @@
+using System.Collections;
 using Player;
 using UnityEngine;
 
@@ -18,15 +19,22 @@ namespace Enemy {
 
         private void OnTriggerEnter(Collider other) {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
-            if(other.gameObject.layer == LayerMask.NameToLayer("Shield")) Destroy(gameObject);
+            if (other.gameObject.layer == LayerMask.NameToLayer("Shield")) StartCoroutine(DestroyThis());
             
             if (other.gameObject.GetComponentInParent<Health.Health>() == null) return;
 
             other.gameObject.GetComponentInParent<Health.Health>().GetDamagedInstantly(damage);
 
             var playerController = other.gameObject.GetComponentInParent<Controller>();
-            if(playerController == null) return;
+            if(!playerController) return;
             playerController.GotHit();
+
+            StartCoroutine(DestroyThis());
+        }
+
+        private IEnumerator DestroyThis() {
+            yield return new WaitForSeconds(.3f);
+            Destroy(gameObject);
         }
     }
 }
