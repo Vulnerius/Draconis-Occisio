@@ -16,10 +16,10 @@ namespace Player {
         [SerializeField] private Animator playerAnimator;
 
         [Header("Settings")]
-        [SerializeField] private int dieAnimationDuration;
-        [SerializeField] private int attackAnimationDuration;
-        [SerializeField] private int defendAnimationDuration;
-        [SerializeField] private int jumpAnimationDuration;
+        [SerializeField] private float dieAnimationDuration;
+        [SerializeField] private float attackAnimationDuration;
+        [SerializeField] private float defendAnimationDuration;
+        [SerializeField] private float jumpAnimationDuration;
         private int _currentState;
         private float _lockedTill;
 

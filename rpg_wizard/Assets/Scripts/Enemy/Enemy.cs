@@ -6,25 +6,20 @@ namespace Enemy {
     public class Enemy : MonoBehaviour {
         [SerializeField] private Health.Health health;
 
-        private Animator animator;
+        private EnemyStates state;
+        public EnemyStates State => state;
 
         private void Awake() {
-            animator = gameObject.GetComponentInChildren<Animator>();
+            state = new();
         }
 
         private void Update() {
             if (health.CurrentHealth <= 0)
-                StartCoroutine(Die());
-        }
-
-        private IEnumerator Die() {
-            animator.Play("Die");
-            yield return new WaitForSeconds(1.2f);
-            Destroy(gameObject);
+                state.isDead = true;
         }
 
         public void GettingHit() {
-            animator.Play("Get Hit");
+            state.isHit = true;
         }
         
         private void OnTriggerEnter(Collider other) {
@@ -36,5 +31,9 @@ namespace Enemy {
         private void OnDestroy() {
             StopAllCoroutines();
         }
+    }
+
+    public class EnemyStates {
+        public bool isAttackingMelee, isAttackingRanged, isWalking, isDead, isHit;
     }
 }
