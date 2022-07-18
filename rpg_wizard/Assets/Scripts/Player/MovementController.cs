@@ -70,14 +70,15 @@ namespace Player {
             controls.Movement.Sprint.canceled += _ => { walkSpeed /= 2;   PlayerAnimationState.isRunning = false;};
         }
 
-        private void OnJump(float jumpF) {
+        private void OnJump(Vector3 jumpVector) {
             if (!canJump) return;
-            characterController.Move(Vector3.up * jumpF);
+            jumpVector.y -= 10.0f * Time.deltaTime;
+            characterController.Move(jumpVector);
         }
 
         private IEnumerator DoJump() {
             m_States.moveEnabled = false;
-            OnJump(jumpingForce);
+            OnJump(new Vector3(0,jumpingForce,0));
             canJump = false;
             yield return new WaitForSeconds(.5f);
             PlayerAnimationState.isJumping = false;
