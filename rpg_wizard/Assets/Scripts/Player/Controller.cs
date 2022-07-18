@@ -13,15 +13,9 @@ namespace Player {
 
         private void Update() {
             if (helf.CurrentHealth <= 0)
-                StartCoroutine(Die());
+                PlayerAnimationState.isDead = true;
         }
-
-        private IEnumerator Die() {
-            animator.Play("Die");
-            yield return new WaitForSeconds(3f);
-            //TODO: go to defeat screen
-        }
-
+        
         public void GotHit() {
             animator.Play("GetHit");
         }

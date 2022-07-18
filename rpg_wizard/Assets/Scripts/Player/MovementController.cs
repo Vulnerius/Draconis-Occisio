@@ -18,8 +18,7 @@ namespace Player {
 
         [Tooltip("The force applied vertically to the rigidbody when jumping")] 
         [SerializeField] public float jumpingForce;
-
-        private Animator playerAnimator;
+        
         private PlayerControls m_Controls;
         private PlayerStates m_States;
         public PlayerStates States => m_States;
@@ -31,7 +30,6 @@ namespace Player {
             m_Controls = new PlayerControls();
             InitMovementActions(m_Controls);
             m_Controls.Enable();
-            playerAnimator = wizardPrefab.GetComponent<Animator>();
         }
 
         private void Update() {
@@ -42,29 +40,38 @@ namespace Player {
         }
 
         private void InitMovementActions(PlayerControls controls) {
-            controls.Movement.Move.started += ctx => m_States.moveEnabled = true;
+            controls.Movement.Move.started += ctx => {
+                m_States.moveEnabled = true; 
+                PlayerAnimationState.isWalking = true;
+            };
 
-            controls.Movement.Move.performed += ctx => { m_States.move = ctx.ReadValue<Vector2>(); };
+            controls.Movement.Move.performed += ctx => {
+                m_States.move = ctx.ReadValue<Vector2>();
+                PlayerAnimationState.isWalking = true;
+            };
             controls.Movement.Move.canceled += _ => {
                 m_States.move = Vector2.zero;
                 m_States.moveEnabled = false;
+                PlayerAnimationState.isWalking = false;
             };
 
             controls.Movement.Jump.performed += _ => {
                 m_States.jumped = true;
+                PlayerAnimationState.isJumping = true;
             };
-            controls.Movement.Jump.canceled += _ => m_States.jumped = false;
+            controls.Movement.Jump.canceled += _ => {
+                m_States.jumped = false;
+            };
 
             controls.Movement.Sprint.performed += _ => {
-                walkSpeed *= 2;
-                playerAnimator.Play("BattleRunForward");
+                walkSpeed *= 2; 
+                PlayerAnimationState.isRunning = true;
             };
-            controls.Movement.Sprint.canceled += _ => walkSpeed /= 2;
+            controls.Movement.Sprint.canceled += _ => { walkSpeed /= 2;   PlayerAnimationState.isRunning = false;};
         }
 
         private void OnJump(float jumpF) {
             if (!canJump) return;
-            playerAnimator.Play("JumpStart");
             characterController.Move(Vector3.up * jumpF);
         }
 
@@ -73,13 +80,13 @@ namespace Player {
             OnJump(jumpingForce);
             canJump = false;
             yield return new WaitForSeconds(.5f);
+            PlayerAnimationState.isJumping = false;
             m_States.moveEnabled = true;
         }
 
         private void Walk(float speed) {
             if (m_States.move.magnitude <= .1f) return;
-            if(Math.Abs(initWalkSpeed - walkSpeed) < .1f && !m_States.ability)
-                playerAnimator.Play("WalkForward");
+            
             canJump = true;
             float targetAngle = Mathf.Atan2(m_States.move.x, m_States.move.y) * Mathf.Rad2Deg + cameraPosition.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle,
@@ -97,11 +104,4 @@ namespace Player {
         
     }
 
-    public class PlayerStates {
-        public Vector2 move;
-        public float TurnVelocity;
-        public bool moveEnabled;
-        public bool jumped;
-        public bool ability;
-    }
 }
