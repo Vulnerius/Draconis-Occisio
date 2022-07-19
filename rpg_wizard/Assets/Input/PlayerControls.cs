@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Levitate"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e9a16ee-22e6-49d9-902b-120b86e3e552"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19959e71-78f8-4b7d-93bf-184091688513"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Levitate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -191,6 +211,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Sprint = m_Movement.FindAction("Sprint", throwIfNotFound: true);
+        m_Movement_Levitate = m_Movement.FindAction("Levitate", throwIfNotFound: true);
         // Attacks
         m_Attacks = asset.FindActionMap("Attacks", throwIfNotFound: true);
         m_Attacks_FireBall = m_Attacks.FindAction("FireBall", throwIfNotFound: true);
@@ -257,6 +278,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_Move;
     private readonly InputAction m_Movement_Jump;
     private readonly InputAction m_Movement_Sprint;
+    private readonly InputAction m_Movement_Levitate;
     public struct MovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -264,6 +286,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Movement_Move;
         public InputAction @Jump => m_Wrapper.m_Movement_Jump;
         public InputAction @Sprint => m_Wrapper.m_Movement_Sprint;
+        public InputAction @Levitate => m_Wrapper.m_Movement_Levitate;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sprint.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnSprint;
+                @Levitate.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnLevitate;
+                @Levitate.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnLevitate;
+                @Levitate.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnLevitate;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -295,6 +321,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @Levitate.started += instance.OnLevitate;
+                @Levitate.performed += instance.OnLevitate;
+                @Levitate.canceled += instance.OnLevitate;
             }
         }
     }
@@ -345,6 +374,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnLevitate(InputAction.CallbackContext context);
     }
     public interface IAttacksActions
     {

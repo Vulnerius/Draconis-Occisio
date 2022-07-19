@@ -11,7 +11,6 @@ namespace Player {
 
         [Tooltip("The force applied to the rigidbody when walking")] [SerializeField]
         public float walkSpeed;
-        private float initWalkSpeed;
 
         [Tooltip("The time it takes to turn into a new walking direction. Should be set lower than 0.2")]
         [SerializeField] public float turnTime;
@@ -25,7 +24,6 @@ namespace Player {
         private bool canJump;
 
         private void Awake() {
-            initWalkSpeed = walkSpeed;
             m_States = new PlayerStates();
             m_Controls = new PlayerControls();
             InitMovementActions(m_Controls);
@@ -35,8 +33,16 @@ namespace Player {
         private void Update() {
             if (m_States.jumped && !m_States.ability)
                 StartCoroutine(DoJump());
+            if (PlayerAnimationState.isLevitating)
+                Fly(walkSpeed);
             if (m_States.moveEnabled && !m_States.ability)
                 Walk(walkSpeed);
+            
+        }
+
+        private void Fly(float f) {
+            characterController.Move(Vector3.up * Time.deltaTime);
+            Walk(f);
         }
 
         private void InitMovementActions(PlayerControls controls) {
@@ -68,12 +74,19 @@ namespace Player {
                 PlayerAnimationState.isRunning = true;
             };
             controls.Movement.Sprint.canceled += _ => { walkSpeed /= 2;   PlayerAnimationState.isRunning = false;};
+
+            controls.Movement.Levitate.performed += _ => PlayerAnimationState.isLevitating = true;
+            controls.Movement.Levitate.canceled += _ => PlayerAnimationState.isLevitating = false;
         }
 
         private void OnJump(Vector3 jumpVector) {
             if (!canJump) return;
             jumpVector.y -= 10.0f * Time.deltaTime;
-            characterController.Move(jumpVector);
+            if(PlayerAnimationState.isWalking)
+                characterController.Move(jumpVector + Walk(walkSpeed));
+            else {
+                characterController.Move(jumpVector);
+            }
         }
 
         private IEnumerator DoJump() {
@@ -85,8 +98,8 @@ namespace Player {
             m_States.moveEnabled = true;
         }
 
-        private void Walk(float speed) {
-            if (m_States.move.magnitude <= .1f) return;
+        private Vector3 Walk(float speed) {
+            if (m_States.move.magnitude <= .1f) return Vector3.zero;
             
             canJump = true;
             float targetAngle = Mathf.Atan2(m_States.move.x, m_States.move.y) * Mathf.Rad2Deg + cameraPosition.eulerAngles.y;
@@ -97,6 +110,7 @@ namespace Player {
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
 
             characterController.SimpleMove(moveDirection * m_States.move.magnitude * speed);
+            return moveDirection;
         }
 
         private void OnDisable() {

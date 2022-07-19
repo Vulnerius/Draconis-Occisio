@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 namespace Enemy {
@@ -42,7 +43,6 @@ namespace Enemy {
 
         private void FOVCheck() {
             CalcDetectTime();
-            enemyState = _enemyRef.GetComponent<Enemy>().State;
             collArray = new Collider[5];
 
             count = Physics.OverlapSphereNonAlloc(_enemyRef.transform.position, SeeRadius, collArray,
@@ -59,7 +59,7 @@ namespace Enemy {
             Vector3 directionToTarget = (playerPosition - selfPosition).normalized;
             float distance = Vector3.Distance(playerPosition, selfPosition);
 
-            CanSeePlayer = CheckAngle(selfTransform.forward, directionToTarget);
+            CanSeePlayer = CheckAngle(selfTransform.forward, directionToTarget) && distance <= SeeRadius;
             if (!CanSeePlayer) CanSeePlayer = CheckForBumpDistance(distance);
             
             enemyState.foundPlayer = CanSeePlayer;

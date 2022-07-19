@@ -1,18 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+
+using DefaultNamespace;
+using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class GameManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+public class GameManager : MonoBehaviour {
+    [SerializeField] private CineMachineSwitcher switcher;
+    
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        if (Keyboard.current.fKey.wasPressedThisFrame)
+            switcher.SwitchLock();
     }
 }

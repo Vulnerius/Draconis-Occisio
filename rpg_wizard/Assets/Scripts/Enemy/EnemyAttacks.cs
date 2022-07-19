@@ -1,4 +1,5 @@
 using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,7 +18,7 @@ namespace Enemy {
         private float timer;
     
         void Start() {
-            player = GameObject.FindWithTag("Player");
+            player = ReferenceTable.Player;
         }
 
         private void Awake() {
@@ -69,14 +70,17 @@ namespace Enemy {
         }
 
         private IEnumerator ShootFireBall() {
-            timer = 0;
             if (state.isAttackingMelee) yield break;
+            timer = 0;
             state.isWalking = false;
             state.isAttackingRanged = true;
             agent.isStopped = true;
-            yield return new WaitForSeconds(.8f);
+            
+            yield return new WaitForSeconds(.2f);
             gameObject.transform.LookAt(player.transform.position);
-            Vector3 instantiatePoint = transform.position + 7*transform.forward + 2 * Vector3.up;
+            Vector3 instantiatePoint = transform.position + 7 * transform.forward + 2 * Vector3.up;
+            yield return new WaitForSeconds(.4f);
+            
             Instantiate(fireBall, instantiatePoint, Quaternion.identity);
         
             yield return new WaitForSeconds(1.2f);

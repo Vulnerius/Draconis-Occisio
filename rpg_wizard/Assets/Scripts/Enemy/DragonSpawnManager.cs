@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Enemy {
@@ -12,10 +13,11 @@ namespace Enemy {
             SpawnDragon();
         }
 
-        public void SpawnDragon() {
-            Instantiate(dragonList[currentIdx], transform.position, Quaternion.identity);
+        private void SpawnDragon() {
+            GameObject.FindWithTag("GameManager").GetComponent<ReferenceTable>().SetCurrentEnemy(
+                Instantiate(dragonList[currentIdx], transform.position, Quaternion.identity).gameObject
+            );
             currentIdx++;
-
             CheckCurrentIdx();
         }
 

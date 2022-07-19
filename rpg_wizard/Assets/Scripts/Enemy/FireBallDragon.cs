@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using DefaultNamespace;
 using Player;
 using UnityEngine;
 
@@ -12,16 +14,21 @@ namespace Enemy {
         private Transform m_Transform;
     
         private void Awake() {
-            m_Transform = GameObject.FindWithTag("Enemy").transform;
-            GetComponent<Rigidbody>().AddForce(moveSpeed * m_Transform.forward, ForceMode.Impulse);
+            gameObject.tag = "Enemy";
+            m_Transform = ReferenceTable.LookAtPlayer;
             Destroy(gameObject, lifeTime);
         }
 
+        private void Update() {
+            var moveDirection = moveSpeed * (m_Transform.position * Time.deltaTime);
+            transform.Translate(moveDirection);
+        }
+
         private void OnTriggerEnter(Collider other) {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
             if (other.gameObject.layer == LayerMask.NameToLayer("Shield")) StartCoroutine(DestroyThis());
-            
+
             if (other.gameObject.GetComponentInParent<Health.Health>() == null) return;
+            if (other.gameObject.CompareTag(gameObject.tag)) return;
 
             other.gameObject.GetComponentInParent<Health.Health>().GetDamagedInstantly(damage);
 
@@ -33,8 +40,8 @@ namespace Enemy {
         }
 
         private IEnumerator DestroyThis() {
-            yield return new WaitForSeconds(.3f);
             Destroy(gameObject);
+            yield return new WaitForSeconds(.3f);
         }
     }
 }

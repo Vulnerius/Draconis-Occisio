@@ -10,8 +10,9 @@ namespace Player {
         private static readonly int Attack = Animator.StringToHash("Attack01"); 
         private static readonly int Defend = Animator.StringToHash("DefendStart"); 
         private static readonly int Jump = Animator.StringToHash("JumpStart");
+        private static readonly int Fly = Animator.StringToHash("JumpAir");
         private static readonly int Die = Animator.StringToHash("Die");
-        
+
         [Header("References")]
         [SerializeField] private Animator playerAnimator;
 
@@ -46,6 +47,9 @@ namespace Player {
             if(PlayerAnimationState.isJumping)
                 return LockState(Jump, jumpAnimationDuration);
             
+            if(PlayerAnimationState.isLevitating)
+                return Fly;
+            
             if(PlayerAnimationState.isRunning)
                 return Run;
 
@@ -57,10 +61,11 @@ namespace Player {
             }
             
         }
+        
     }
     
     public static class PlayerAnimationState {
-        public static bool isWalking, isJumping, isRunning, isAttacking, isDefending, isDead;
+        public static bool isWalking, isJumping, isRunning, isAttacking, isDefending, isDead, isLevitating;
     }
     
     public class PlayerStates {

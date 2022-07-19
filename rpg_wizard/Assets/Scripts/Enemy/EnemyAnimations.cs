@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 namespace Enemy {
+    //TODO: !!! MELEE !!!
     public class EnemyAnimations : MonoBehaviour {
         private static readonly int Idle = Animator.StringToHash("Idle");
         private static readonly int Walk = Animator.StringToHash("Walk");
@@ -42,15 +43,15 @@ namespace Enemy {
             if (selfState.isDead)
                 return LockState(Die, dieAnimationDuration);
 
+            if (selfState.isHit)
+                return LockState(GetHit, getHitAnimationDuration);
+            
             if (selfState.isAttackingMelee)
                 return LockState(MeleeAttack, meleeAttackAnimationDuration);
 
             if (selfState.isAttackingRanged)
                 return LockState(RangedAttack, rangedAttackAnimationDuration);
             
-            if (selfState.isHit)
-                return LockState(GetHit, getHitAnimationDuration);
-
             return selfState.isWalking ? Walk : Idle;
 
             int LockState(int s, float t) {
