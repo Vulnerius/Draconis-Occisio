@@ -1,29 +1,55 @@
 using System;
-using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
 namespace Enemy {
     public class DragonSpawnManager : MonoBehaviour {
-        [SerializeField] private List<Enemy> dragonList;
-
-        private int currentIdx;
-
-        private void Awake() {
-            SpawnDragon();
+        [SerializeField] private GameObject usurper;
+        [SerializeField] private GameObject soulEater;
+        [SerializeField] private GameObject nightmare;
+        [SerializeField] private GameObject terrorBringer;
+        
+        public void SpawnDragon(int dragonNumber) {
+            if(dragonNumber > 4) dragonNumber = 1;
+            ReferenceTable.GameManager.currentEnemyIdx = dragonNumber;
+            switch (dragonNumber) {
+                case 1:
+                    SpawnSoulEater();
+                    break;
+                case 2:
+                    SpawnNightmare();
+                    break;
+                case 3:
+                    SpawnTerrorBringer();
+                    break;
+                case 4:
+                    SpawnUsurper();
+                    break;
+            }
         }
 
-        private void SpawnDragon() {
-            GameObject.FindWithTag("GameManager").GetComponent<ReferenceTable>().SetCurrentEnemy(
-                Instantiate(dragonList[currentIdx], transform.position, Quaternion.identity).gameObject
+        private void SpawnUsurper() {
+            ReferenceTable.SetCurrentEnemy(
+                Instantiate(usurper, transform.position, Quaternion.identity)
             );
-            currentIdx++;
-            CheckCurrentIdx();
         }
 
-        private void CheckCurrentIdx() {
-            if (currentIdx >= dragonList.Count)
-                currentIdx = 0;
+        private void SpawnTerrorBringer() {
+            ReferenceTable.SetCurrentEnemy(
+                Instantiate(terrorBringer, transform.position, Quaternion.identity)
+            );
+        }
+
+        private void SpawnNightmare() {
+            ReferenceTable.SetCurrentEnemy(
+                Instantiate(nightmare, transform.position, Quaternion.identity)
+            );
+        }
+
+        private void SpawnSoulEater() {
+            ReferenceTable.SetCurrentEnemy(
+                Instantiate(soulEater, transform.position, Quaternion.identity)
+            );
         }
     }
 }

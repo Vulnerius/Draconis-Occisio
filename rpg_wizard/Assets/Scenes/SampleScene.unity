@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switcher: {fileID: 1240192376}
+  currentEnemyIdx: 2
 --- !u!4 &92286569
 Transform:
   m_ObjectHideFlags: 0
@@ -162,7 +163,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 92286567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5071106, y: -3.5567265, z: -11.2793255}
+  m_LocalPosition: {x: 0, y: 12, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -182,7 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1619418855}
-  DragonSpawner: {fileID: 0}
+  gameManager: {fileID: 92286568}
+  dragonSpawner: {fileID: 714310382}
 --- !u!1 &714310381
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &714310382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,8 +214,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5628254cb144f0ab40fbe157b006d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragonList:
-  - {fileID: 2203743701892940412, guid: 73592a822e99cb7feb9168feeaa9c05f, type: 3}
+  usurper: {fileID: 5970480734819768793, guid: 73592a822e99cb7feb9168feeaa9c05f, type: 3}
+  soulEater: {fileID: 5970480734819768793, guid: a2253a340be83faa7812a25d88510045, type: 3}
+  nightmare: {fileID: 5970480734819768793, guid: 810bbd75e2d1df54ca06b1291b8d0dbc, type: 3}
+  terrorBringer: {fileID: 5970480734819768793, guid: 5424220d68d1bd06f826f1e5d1c43cdf, type: 3}
 --- !u!4 &714310383
 Transform:
   m_ObjectHideFlags: 0
@@ -252,6 +256,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80791796671755616, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -240
+      objectReference: {fileID: 0}
     - target: {fileID: 306968378673824578, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_BindingMode
       value: 1
@@ -360,6 +368,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 4663902620641619520, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 240
+      objectReference: {fileID: 0}
     - target: {fileID: 4889555035797933280, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -460,6 +472,22 @@ PrefabInstance:
       propertyPath: m_Lens.m_SensorSize.x
       value: 1.7767441
       objectReference: {fileID: 0}
+    - target: {fileID: 7294487846476840505, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294487846476840505, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_Color.b
+      value: 0.09852261
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294487846476840505, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_Color.g
+      value: 0.34718916
+      objectReference: {fileID: 0}
+    - target: {fileID: 7294487846476840505, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
     - target: {fileID: 7610943997768392966, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -500,6 +528,14 @@ PrefabInstance:
       propertyPath: m_Lens.m_SensorSize.x
       value: 1.7767441
       objectReference: {fileID: 0}
+    - target: {fileID: 8219045937597010887, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219045937597010887, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -84
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
 --- !u!1001 &6154988028788283784
@@ -509,6 +545,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202229666207839520, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8721138940683343117, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
       propertyPath: m_Name
       value: Gladiator Low Poly Arena

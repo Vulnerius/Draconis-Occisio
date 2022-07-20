@@ -5,20 +5,13 @@ namespace Projectiles {
     public class FireBallPlayer : MonoBehaviour {
         [SerializeField] private int damage;
         [SerializeField] private float moveSpeed;
-        private Vector3 _forWard;
-
-        private void Awake() {
-            _forWard = Camera.main!.transform.forward;
-            _forWard.y *= 0;
-        }
-
+        
         private void Update() {
-            var moveDir = moveSpeed * (_forWard * Time.deltaTime);
+            var moveDir = moveSpeed * (Camera.main!.transform.forward * Time.deltaTime);
             transform.parent.Translate(moveDir);
         }
 
         private void OnTriggerEnter(Collider other) {
-            Debug.LogWarning(other.name);
             if (other.gameObject.GetComponent<Health.Health>() == null) return;
 
             other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);

@@ -16,7 +16,7 @@ namespace Health {
         [SerializeField] private Slider healthBar;
         [SerializeField] private TextMeshProUGUI healthValueText;
         private Canvas healthBarCanvas;
-        // Start is called before the first frame update
+        
         void Start() {
             _currentHealth = MAXHEALTH;
             healthBarCanvas = healthBar.GetComponentInParent<Canvas>();

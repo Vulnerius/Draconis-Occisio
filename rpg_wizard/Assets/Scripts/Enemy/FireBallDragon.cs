@@ -7,20 +7,17 @@ using UnityEngine;
 namespace Enemy {
     public class FireBallDragon : MonoBehaviour {
         [SerializeField] private int damage;
-
         [SerializeField] private float lifeTime;
-
         [SerializeField] private float moveSpeed;
-        private Transform m_Transform;
+        
     
         private void Awake() {
             gameObject.tag = "Enemy";
-            m_Transform = ReferenceTable.LookAtPlayer;
             Destroy(gameObject, lifeTime);
         }
 
         private void Update() {
-            var moveDirection = moveSpeed * (m_Transform.position * Time.deltaTime);
+            var moveDirection = moveSpeed * ReferenceTable.LookAtPlayer.position * Time.deltaTime;
             transform.Translate(moveDirection);
         }
 

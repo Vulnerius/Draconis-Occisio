@@ -476,9 +476,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3588775471401678377}
   fov:
-    <SeeRadius>k__BackingField: 15
+    <SeeRadius>k__BackingField: 20
     <Angle>k__BackingField: 105
-    <BumpRadius>k__BackingField: 5
+    <BumpRadius>k__BackingField: 8
     _enemyRef: {fileID: 5970480734819768793}
     _targetMask:
       serializedVersion: 2
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 5970480734819768793}
-  animator: {fileID: 0}
+  animator: {fileID: 6505682565399639529}
   dieAnimationDuration: 3
   meleeAttackAnimationDuration: 0.8
   rangedAttackAnimationDuration: 1.2
@@ -756,6 +756,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 1ecd0485500c8fd119213eaf9b250e90, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3e7850e56f7e2d4a8cb9e150f10c835, type: 3}
+--- !u!95 &6505682565399639529 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9533082, guid: a3e7850e56f7e2d4a8cb9e150f10c835, type: 3}
+  m_PrefabInstance: {fileID: 6505682565407015795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6505682565407423661 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 409566, guid: a3e7850e56f7e2d4a8cb9e150f10c835, type: 3}

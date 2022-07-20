@@ -406,9 +406,9 @@ GameObject:
   - component: {fileID: 1308186136850203285}
   - component: {fileID: 2203743701892940412}
   - component: {fileID: 4768860674349209808}
-  - component: {fileID: 6814771998519158618}
   - component: {fileID: 4882152549839176129}
   - component: {fileID: 7239819594373067564}
+  - component: {fileID: 7382278316650523644}
   m_Layer: 0
   m_Name: TerrorBringerGreen
   m_TagString: Enemy
@@ -461,7 +461,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 4.5, z: 7.5}
-  m_Center: {x: 0, y: 2.2, z: 0}
+  m_Center: {x: 0, y: 8, z: 0}
 --- !u!114 &2203743701892940412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,9 +476,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3588775471401678377}
   fov:
-    <SeeRadius>k__BackingField: 15
+    <SeeRadius>k__BackingField: 25
     <Angle>k__BackingField: 105
-    <BumpRadius>k__BackingField: 5
+    <BumpRadius>k__BackingField: 8
     _enemyRef: {fileID: 5970480734819768793}
     _targetMask:
       serializedVersion: 2
@@ -506,24 +506,6 @@ MonoBehaviour:
   fireBall: {fileID: 1561227166165623228, guid: dcd9d09c7ccd19c8ebc2050f9f2d6152, type: 3}
   agent: {fileID: 4882152549839176129}
   shootFrequency: 8
---- !u!114 &6814771998519158618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5970480734819768793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891c3a2986954eb680d8df5cc5ee2576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 5970480734819768793}
-  animator: {fileID: 0}
-  dieAnimationDuration: 3
-  meleeAttackAnimationDuration: 0.8
-  rangedAttackAnimationDuration: 1.2
-  getHitAnimationDuration: 1.3
 --- !u!195 &4882152549839176129
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -543,7 +525,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 8
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &7239819594373067564
@@ -562,6 +544,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7382278316650523644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5970480734819768793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ac01a1d9dc445de8e1550737ac2bdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 5970480734819768793}
+  animator: {fileID: 1249933532070784909}
+  dieAnimationDuration: 3
+  meleeAttackAnimationDuration: 0.8
+  rangedAttackAnimationDuration: 1.3
+  getHitAnimationDuration: 1.2
 --- !u!1 &6848616445217988888
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,5 +759,10 @@ PrefabInstance:
 --- !u!4 &1249933532063278509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 463670, guid: 4e7d7ecd1eafb1746a1fcb020505943c, type: 3}
+  m_PrefabInstance: {fileID: 1249933532063348379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1249933532070784909 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9541910, guid: 4e7d7ecd1eafb1746a1fcb020505943c, type: 3}
   m_PrefabInstance: {fileID: 1249933532063348379}
   m_PrefabAsset: {fileID: 0}

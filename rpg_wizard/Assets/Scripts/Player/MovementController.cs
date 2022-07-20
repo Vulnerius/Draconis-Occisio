@@ -21,7 +21,6 @@ namespace Player {
         private PlayerControls m_Controls;
         private PlayerStates m_States;
         public PlayerStates States => m_States;
-        private bool canJump;
 
         private void Awake() {
             m_States = new PlayerStates();
@@ -72,7 +71,6 @@ namespace Player {
         private Vector3 Walk(float speed) {
             if (m_States.move.magnitude <= .1f) return Vector3.zero;
             
-            canJump = true;
             float targetAngle = Mathf.Atan2(m_States.move.x, m_States.move.y) * Mathf.Rad2Deg + cameraPosition.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(gameObject.transform.eulerAngles.y, targetAngle,
                 ref m_States.TurnVelocity, turnTime);

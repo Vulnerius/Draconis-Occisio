@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Player {
     public class CineMachineSwitcher : MonoBehaviour {
         [SerializeField] private CinemachineFreeLook playerTarget;
-        [SerializeField] private CinemachineFreeLook enemyTarget;
+        [SerializeField] public CinemachineFreeLook enemyTarget;
 
         private void Awake() {
             if(!ReferenceTable.CurrentEnemy) StartCoroutine(waitLittle());

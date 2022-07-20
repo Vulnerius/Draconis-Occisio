@@ -1,12 +1,10 @@
-using System;
 using UnityEngine;
 
 namespace Enemy {
-    //TODO: !!! MELEE !!!
-    public class EnemyAnimations : MonoBehaviour {
+    public class EnemyRangedAnimations : MonoBehaviour{
         private static readonly int Idle = Animator.StringToHash("Idle");
-        private static readonly int Walk = Animator.StringToHash("Walk");
-        private static readonly int RangedAttack = Animator.StringToHash("Scream");
+        private static readonly int Walk = Animator.StringToHash("Take Off");
+        private static readonly int RangedAttack = Animator.StringToHash("Fly Flame Attack");
         private static readonly int Die = Animator.StringToHash("Die");
         private static readonly int MeleeAttack = Animator.StringToHash("Basic Attack");
         private static readonly int GetHit = Animator.StringToHash("Get Hit");

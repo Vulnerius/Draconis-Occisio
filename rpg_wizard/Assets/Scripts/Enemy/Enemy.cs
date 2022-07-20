@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,17 @@ namespace Enemy {
         }
 
         private void Update() {
-            if (health.CurrentHealth <= 0)
-                state.isDead = true;
-            StartCoroutine(fov.FOVRoutine());
+            if (health.CurrentHealth <= 0) {
+                StartCoroutine(SetThisDead());
+            }
+            if(!state.isDead)
+                StartCoroutine(fov.FOVRoutine());
+        }
+
+        private IEnumerator SetThisDead() {
+            state.isDead = true;
+            yield return new WaitForSeconds(2f);
+            gameObject.SetActive(false);
         }
 
         public void GettingHit() {
@@ -35,6 +44,10 @@ namespace Enemy {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
             other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(75);
+        }
+
+        private void OnDisable() {
+            OnDestroy();
         }
 
         private void OnDestroy() {

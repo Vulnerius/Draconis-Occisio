@@ -478,7 +478,7 @@ MonoBehaviour:
   fov:
     <SeeRadius>k__BackingField: 15
     <Angle>k__BackingField: 105
-    <BumpRadius>k__BackingField: 5
+    <BumpRadius>k__BackingField: 8
     _enemyRef: {fileID: 5970480734819768793}
     _targetMask:
       serializedVersion: 2
