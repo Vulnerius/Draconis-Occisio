@@ -12,7 +12,7 @@ namespace Player {
         [Tooltip("The force applied to the rigidbody when walking")] [SerializeField]
         public float walkSpeed;
 
-        [Tooltip("The time it takes to turn into a new walking direction. Should be set lower than 0.2")]
+        [Tooltip("The time it takes to turn into a new walking direction.")]
         [SerializeField] public float turnTime;
 
         [Tooltip("The force applied vertically to the rigidbody when jumping")] 
@@ -31,8 +31,6 @@ namespace Player {
         }
 
         private void Update() {
-            if (m_States.jumped && !m_States.ability)
-                StartCoroutine(DoJump());
             if (PlayerAnimationState.isLevitating)
                 Fly(walkSpeed);
             if (m_States.moveEnabled && !m_States.ability)
@@ -41,8 +39,8 @@ namespace Player {
         }
 
         private void Fly(float f) {
-            characterController.Move(Vector3.up * Time.deltaTime);
-            Walk(f);
+            var flyDirection = Time.deltaTime * Walk(f);
+            characterController.Move(new Vector3(flyDirection.x, .1f, flyDirection.z));
         }
 
         private void InitMovementActions(PlayerControls controls) {
@@ -61,14 +59,6 @@ namespace Player {
                 PlayerAnimationState.isWalking = false;
             };
 
-            controls.Movement.Jump.performed += _ => {
-                m_States.jumped = true;
-                PlayerAnimationState.isJumping = true;
-            };
-            controls.Movement.Jump.canceled += _ => {
-                m_States.jumped = false;
-            };
-
             controls.Movement.Sprint.performed += _ => {
                 walkSpeed *= 2; 
                 PlayerAnimationState.isRunning = true;
@@ -78,26 +68,7 @@ namespace Player {
             controls.Movement.Levitate.performed += _ => PlayerAnimationState.isLevitating = true;
             controls.Movement.Levitate.canceled += _ => PlayerAnimationState.isLevitating = false;
         }
-
-        private void OnJump(Vector3 jumpVector) {
-            if (!canJump) return;
-            jumpVector.y -= 10.0f * Time.deltaTime;
-            if(PlayerAnimationState.isWalking)
-                characterController.Move(jumpVector + Walk(walkSpeed));
-            else {
-                characterController.Move(jumpVector);
-            }
-        }
-
-        private IEnumerator DoJump() {
-            m_States.moveEnabled = false;
-            OnJump(new Vector3(0,jumpingForce,0));
-            canJump = false;
-            yield return new WaitForSeconds(.5f);
-            PlayerAnimationState.isJumping = false;
-            m_States.moveEnabled = true;
-        }
-
+        
         private Vector3 Walk(float speed) {
             if (m_States.move.magnitude <= .1f) return Vector3.zero;
             

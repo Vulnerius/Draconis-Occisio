@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "7c543c4c-1316-4b22-aa1a-62b69d9b9211",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Sprint",
                     "type": "Button",
                     "id": "43ed70a0-667c-4e52-8b7f-3173f39a0771",
@@ -100,17 +91,6 @@
                 },
                 {
                     "name": "",
-                    "id": "c2b47c3b-bdb9-471a-ac2b-1146265cd84d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ead77bef-6a1b-48be-a423-612f8ac1d8cf",
                     "path": "<Keyboard>/leftShift",
                     "interactions": "",
@@ -123,7 +103,7 @@
                 {
                     "name": "",
                     "id": "19959e71-78f8-4b7d-93bf-184091688513",
-                    "path": "<Keyboard>/v",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
