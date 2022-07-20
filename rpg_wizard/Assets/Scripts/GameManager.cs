@@ -1,5 +1,3 @@
-
-using DefaultNamespace;
 using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
