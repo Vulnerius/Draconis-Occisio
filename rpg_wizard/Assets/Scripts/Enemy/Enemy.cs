@@ -36,7 +36,7 @@ namespace Enemy {
 
         private IEnumerator GetHit() {
             state.isHit = true;
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(.8f);
             state.isHit = false;
         }
 
@@ -54,7 +54,7 @@ namespace Enemy {
             StopAllCoroutines();
         }
     }
-
+    
     public class EnemyStates {
         public bool isAttackingMelee, isAttackingRanged, isWalking, isDead, isHit, foundPlayer;
     }

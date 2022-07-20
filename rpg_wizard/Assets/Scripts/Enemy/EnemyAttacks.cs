@@ -19,8 +19,9 @@ namespace Enemy {
         void Start() {
             player = ReferenceTable.Player;
         }
-
+        
         private void Awake() {
+            agent.isStopped = true;
             self = GetComponent<global::Enemy.Enemy>();
             state = self.State;
             state.isWalking = true;
@@ -44,6 +45,9 @@ namespace Enemy {
                 state.isAttackingMelee = true;
                 state.isWalking = false;
                 StartCoroutine(AttackMelee());
+            }
+            else {
+                state.isWalking = true;
             }
         }
 
@@ -94,6 +98,7 @@ namespace Enemy {
             gameObject.transform.LookAt(player.transform.position);
             yield return new WaitForSeconds(.8f);
             state.isAttackingMelee = false;
+            state.isWalking = true;
         }
     }
 }

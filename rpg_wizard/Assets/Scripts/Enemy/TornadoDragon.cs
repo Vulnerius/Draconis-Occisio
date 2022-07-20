@@ -4,33 +4,32 @@ using Player;
 using UnityEngine;
 
 namespace Enemy {
-    public class FireBallDragon : MonoBehaviour {
+    public class TornadoDragon : MonoBehaviour{
         [SerializeField] private int damage;
         [SerializeField] private float lifeTime;
         [SerializeField] private float moveSpeed;
         
-    
         private void Awake() {
             var gameObject1 = gameObject;
             gameObject1.tag = "Enemy";
-            Destroy(gameObject1, lifeTime);
+            Destroy(transform.parent.gameObject, lifeTime);
         }
 
         private void Update() {
             var moveDir = ReferenceTable.Player.transform.position - transform.position; 
             var moveDirection = moveSpeed * moveDir.normalized * Time.deltaTime;
-            transform.Translate(moveDirection, Space.Self);
+            transform.parent.Translate(moveDirection, Space.Self);
         }
 
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.layer == LayerMask.NameToLayer("Shield")) StartCoroutine(DestroyThis());
 
-            if (other.gameObject.GetComponentInParent<Health.Health>() == null) return;
+            if (other.gameObject.GetComponent<Health.Health>() == null) return;
             if (other.gameObject.CompareTag(gameObject.tag)) return;
 
-            other.gameObject.GetComponentInParent<Health.Health>().GetDamagedInstantly(damage);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
 
-            var playerController = other.gameObject.GetComponentInParent<Controller>();
+            var playerController = other.gameObject.GetComponent<Controller>();
             if(!playerController) return;
             playerController.GotHit();
 
@@ -38,7 +37,7 @@ namespace Enemy {
         }
 
         private IEnumerator DestroyThis() {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
             yield return new WaitForSeconds(.3f);
         }
     }

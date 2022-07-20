@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1561227166165623227}
   - component: {fileID: 1561227166165623226}
   - component: {fileID: 1561227166165623229}
-  - component: {fileID: 9008155076310717467}
   m_Layer: 0
   m_Name: SingleTornadoDragon
   m_TagString: Untagged
@@ -65,7 +64,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0.4, y: 0.2, z: 0.55}
+      - m_Value: {x: 0.4, y: 0.2, z: 0.45}
         m_Name: Scale
         m_Overridden: 1
       - m_Value: {x: 0, y: 0, z: 0}
@@ -106,8 +105,8 @@ VisualEffect:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.2
-            value: 1
+            time: 0.04293196
+            value: 0.997819
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -168,8 +167,8 @@ VisualEffect:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.2
-            value: 1
+            time: 0.04293196
+            value: 0.997819
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -230,8 +229,8 @@ VisualEffect:
             inWeight: 0
             outWeight: 0
           - serializedVersion: 3
-            time: 0.2
-            value: 1
+            time: 0.04293196
+            value: 0.997819
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -360,21 +359,6 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &9008155076310717467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1561227166165623228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe26bd8daf4d5fe0ebca9332f237de71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 25
-  lifeTime: 5
-  moveSpeed: 4
 --- !u!1 &8787219085750562924
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +369,8 @@ GameObject:
   m_Component:
   - component: {fileID: 350010221046026523}
   - component: {fileID: 3438684033962325143}
+  - component: {fileID: 7551662325993732753}
+  - component: {fileID: 6957189426909184085}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -421,3 +407,34 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8708077450106395685, guid: 38073de46ebb8f3678aa5a3d9c0e281c, type: 3}
+--- !u!114 &7551662325993732753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787219085750562924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1484b6690d840a9b0989fc8e1ddee88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 45
+  lifeTime: 4.8
+  moveSpeed: 7
+--- !u!54 &6957189426909184085
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787219085750562924}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switcher: {fileID: 1240192376}
-  currentEnemyIdx: 2
+  currentEnemyIdx: 3
 --- !u!4 &92286569
 Transform:
   m_ObjectHideFlags: 0
