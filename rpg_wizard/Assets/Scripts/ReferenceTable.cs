@@ -1,4 +1,3 @@
-using System.Collections;
 using Enemy;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace DefaultNamespace {
         public static GameManager GameManager;
         public static GameObject Player;
         public static GameObject CurrentEnemy;
-        
+
         public static Transform LookAtEnemy;
 
         private void Start() {
@@ -24,7 +23,7 @@ namespace DefaultNamespace {
         public static void SetCurrentEnemy(GameObject enemy) {
             CurrentEnemy = enemy;
             LookAtEnemy = enemy.transform;
-            //GameManager.switcher.enemyTarget.LookAt = LookAtEnemy;
+            GameManager.switcher.enemyTarget.LookAt = LookAtEnemy;
         }
 
         private void FixedUpdate() {

@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 350010221046026523}
   - component: {fileID: 3438684033962325143}
   - component: {fileID: 7551662325993732753}
-  - component: {fileID: 6957189426909184085}
+  - component: {fileID: 3298391207217498926}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -422,7 +422,7 @@ MonoBehaviour:
   damage: 45
   lifeTime: 4.8
   moveSpeed: 7
---- !u!54 &6957189426909184085
+--- !u!54 &3298391207217498926
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -24,12 +24,12 @@ namespace Enemy {
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.layer == LayerMask.NameToLayer("Shield")) StartCoroutine(DestroyThis());
 
-            if (other.gameObject.GetComponent<Health.Health>() == null) return;
+            if (other.gameObject.GetComponentInParent<Health.Health>() == null) return;
             if (other.gameObject.CompareTag(gameObject.tag)) return;
 
-            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
+            other.gameObject.GetComponentInParent<Health.Health>().GetDamagedInstantly(damage);
 
-            var playerController = other.gameObject.GetComponent<Controller>();
+            var playerController = other.gameObject.GetComponentInParent<Controller>();
             if(!playerController) return;
             playerController.GotHit();
 

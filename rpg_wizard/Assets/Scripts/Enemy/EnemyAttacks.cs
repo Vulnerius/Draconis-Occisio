@@ -21,8 +21,7 @@ namespace Enemy {
         }
         
         private void Awake() {
-            agent.isStopped = true;
-            self = GetComponent<global::Enemy.Enemy>();
+            self = GetComponent<Enemy>();
             state = self.State;
             state.isWalking = true;
             SetNextDestination();
