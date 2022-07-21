@@ -1,10 +1,9 @@
+using CustomUtils;
 using Enemy;
 using UnityEngine;
 
 namespace DefaultNamespace {
     public class ReferenceTable : MonoBehaviour {
-        [SerializeField] private GameObject player;
-        [SerializeField] private GameManager gameManager;
         [field: SerializeField] private  DragonSpawnManager dragonSpawner;
 
         public static DragonSpawnManager DragonSpawner;
@@ -14,10 +13,8 @@ namespace DefaultNamespace {
 
         public static Transform LookAtEnemy;
 
-        private void Start() {
-            GameManager = gameManager;
+        private void Awake() {
             DragonSpawner = dragonSpawner;
-            Player = player;
         }
 
         public static void SetCurrentEnemy(GameObject enemy) {
@@ -29,6 +26,8 @@ namespace DefaultNamespace {
         private void FixedUpdate() {
             if(CurrentEnemy)
                 LookAtEnemy = CurrentEnemy.transform;
+            Player = GameObject.FindWithTag("Player");
+            GameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         }
     }
 }

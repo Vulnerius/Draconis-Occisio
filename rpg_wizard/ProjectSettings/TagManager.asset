@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - GameManager
+  - DragonSpawner
   layers:
   - Default
   - TransparentFX

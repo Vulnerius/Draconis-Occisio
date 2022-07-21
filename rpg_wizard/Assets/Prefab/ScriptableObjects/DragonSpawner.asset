@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5628254cb144f0ab40fbe157b006d23, type: 3}
+  m_Name: DragonSpawner
+  m_EditorClassIdentifier: 
+  usurper: {fileID: 5970480734819768793, guid: 73592a822e99cb7feb9168feeaa9c05f, type: 3}
+  soulEater: {fileID: 5970480734819768793, guid: a2253a340be83faa7812a25d88510045, type: 3}
+  nightmare: {fileID: 5970480734819768793, guid: 810bbd75e2d1df54ca06b1291b8d0dbc, type: 3}
+  terrorBringer: {fileID: 5970480734819768793, guid: 5424220d68d1bd06f826f1e5d1c43cdf, type: 3}

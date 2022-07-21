@@ -3,7 +3,9 @@ using DefaultNamespace;
 using UnityEngine;
 
 namespace Enemy {
-    public class DragonSpawnManager : MonoBehaviour {
+    [Serializable]
+    [CreateAssetMenu(fileName = "DragonSpawner", menuName = "Assets/Prefab/ScriptableObjects/DragonSpawner")]
+    public class DragonSpawnManager : ScriptableObject {
         [SerializeField] private GameObject usurper;
         [SerializeField] private GameObject soulEater;
         [SerializeField] private GameObject nightmare;
@@ -30,25 +32,25 @@ namespace Enemy {
 
         private void SpawnUsurper() {
             ReferenceTable.SetCurrentEnemy(
-                Instantiate(usurper, transform.position, Quaternion.identity)
+                Instantiate(usurper, usurper.transform.position, Quaternion.identity)
             );
         }
 
         private void SpawnTerrorBringer() {
             ReferenceTable.SetCurrentEnemy(
-                Instantiate(terrorBringer, transform.position, Quaternion.identity)
+                Instantiate(terrorBringer, terrorBringer.transform.position, Quaternion.identity)
             );
         }
 
         private void SpawnNightmare() {
             ReferenceTable.SetCurrentEnemy(
-                Instantiate(nightmare, transform.position, Quaternion.identity)
+                Instantiate(nightmare, nightmare.transform.position, Quaternion.identity)
             );
         }
 
         private void SpawnSoulEater() {
             ReferenceTable.SetCurrentEnemy(
-                Instantiate(soulEater, transform.position, Quaternion.identity)
+                Instantiate(soulEater, soulEater.transform.position, Quaternion.identity)
             );
         }
     }

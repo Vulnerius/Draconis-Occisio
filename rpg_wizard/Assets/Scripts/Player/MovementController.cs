@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Player {
     public class MovementController : MonoBehaviour {
@@ -14,9 +11,6 @@ namespace Player {
 
         [Tooltip("The time it takes to turn into a new walking direction.")]
         [SerializeField] public float turnTime;
-
-        [Tooltip("The force applied vertically to the rigidbody when jumping")] 
-        [SerializeField] public float jumpingForce;
         
         private PlayerControls m_Controls;
         private PlayerStates m_States;

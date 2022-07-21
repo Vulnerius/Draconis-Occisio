@@ -9,6 +9,7 @@ namespace Player {
         [SerializeField] public CinemachineFreeLook enemyTarget;
 
         private void Awake() {
+            ReferenceTable.GameManager.switcher = this;
             if(!ReferenceTable.CurrentEnemy) StartCoroutine(waitLittle());
             enemyTarget.LookAt = ReferenceTable.LookAtEnemy;
         }

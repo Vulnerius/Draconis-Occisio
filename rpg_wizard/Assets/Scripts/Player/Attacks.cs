@@ -87,7 +87,7 @@ namespace Player {
                 yield return new WaitForSeconds(.1f);
             }
         }
-//
+
         private IEnumerator InstantiateFireBall() {
             if (hasAttackCoolDown) yield break;
             PlayerAnimationState.isAttacking = true;
