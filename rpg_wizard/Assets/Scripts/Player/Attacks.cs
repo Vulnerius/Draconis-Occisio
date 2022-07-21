@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player {
     public class Attacks : MonoBehaviour {
@@ -12,7 +13,8 @@ namespace Player {
 
         [Header("Shield")] [SerializeField] private GameObject watershield;
         [SerializeField] private GameObject watershieldUI;
-        [SerializeField] private TextMeshProUGUI watershielCDText;
+        [SerializeField] private TextMeshProUGUI watershieldCDText;
+        [SerializeField] private Slider watershieldRemainingTime;
         [SerializeField] private float shieldCoolDown;
 
         private PlayerControls Controls;
@@ -55,6 +57,19 @@ namespace Player {
             Destroy(fireB, 3f);
             watershieldUI.SetActive(true);
             StartCoroutine(CoolDownShield());
+            StartCoroutine(RemainTimeShield());
+        }
+
+        private IEnumerator RemainTimeShield() {
+            var shieldMaxValue = 2.8f;
+            watershieldRemainingTime.gameObject.SetActive(true);
+            watershieldRemainingTime.maxValue = shieldMaxValue;
+            while (shieldMaxValue > 0) {
+                watershieldRemainingTime.value = 3 - shieldMaxValue;
+                shieldMaxValue -= .1f;
+                yield return new WaitForSeconds(.1f);
+            }
+            watershieldRemainingTime.gameObject.SetActive(false);
         }
 
         private IEnumerator CoolDownShield() {
@@ -67,12 +82,12 @@ namespace Player {
         private IEnumerator UpdateShieldCdText() {
             var tickCd = shieldCoolDown;
             while (tickCd > 0) {
-                watershielCDText.text = $"{tickCd:0.00}";
+                watershieldCDText.text = $"{tickCd:0.00}";
                 tickCd -= .1f;
                 yield return new WaitForSeconds(.1f);
             }
         }
-
+//
         private IEnumerator InstantiateFireBall() {
             if (hasAttackCoolDown) yield break;
             PlayerAnimationState.isAttacking = true;

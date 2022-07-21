@@ -185,6 +185,17 @@ MonoBehaviour:
   player: {fileID: 2008658418}
   gameManager: {fileID: 92286568}
   dragonSpawner: {fileID: 714310382}
+--- !u!114 &232176698 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7106395695427289463, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+  m_PrefabInstance: {fileID: 987608568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &714310381
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,6 +251,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 17035976858131017, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_Direction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 949883763531076702, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -266,15 +281,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3567810989994874748, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.04635107
+      value: -0.04635106
       objectReference: {fileID: 0}
     - target: {fileID: 3567810989994874748, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.004187791
+      value: 0.00418779
       objectReference: {fileID: 0}
     - target: {fileID: 3567810989994874748, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.08988537
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325481837360485818, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4889555035797933280, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_RootOrder
@@ -342,7 +361,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4889555036749970359, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000019134603
+      value: 0.00000019134598
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796273800269664321, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5796273800269664321, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7294487846476840505, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
       propertyPath: m_Color.a
@@ -372,6 +399,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.020512706
       objectReference: {fileID: 0}
+    - target: {fileID: 8414371996287339954, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
+      propertyPath: watershieldCDText
+      value: 
+      objectReference: {fileID: 232176698}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
 --- !u!1 &1312030771

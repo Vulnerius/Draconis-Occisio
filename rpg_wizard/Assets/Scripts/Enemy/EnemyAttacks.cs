@@ -29,7 +29,9 @@ namespace Enemy {
 
         private void Update() {
             timer += Time.deltaTime;
-
+            
+            agent.isStopped = state.foundPlayer;
+            
             CheckDestination();
             CheckForAttack();
         }
