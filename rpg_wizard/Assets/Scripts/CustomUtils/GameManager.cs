@@ -89,7 +89,7 @@ namespace CustomUtils {
                 yield return new WaitForSeconds(.4f);
             }
 
-            Debug.LogWarning("Dragon instantiated");
+            //Debug.LogWarning("Dragon instantiated");
             ReferenceTable.DragonSpawner.SpawnDragon(++currentEnemyIdx);
             yield return new WaitForFixedUpdate();
         }
