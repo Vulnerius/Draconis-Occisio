@@ -53,7 +53,7 @@ jobs:
       - uses: manleydev/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: linux
+          CHANNEL: ${{ matrix.targetPlatform }}
           ITCH_GAME: rpg-wizard
           ITCH_USER: vulnerius
           PACKAGE: build/${{ matrix.targetPlatform }} 
