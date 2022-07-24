@@ -56,12 +56,5 @@ jobs:
           CHANNEL: linux
           ITCH_GAME: rpg-wizard
           ITCH_USER: vulnerius
-          PACKAGE: build/StandaloneLinux64
+          PACKAGE: build/${{ matrix.targetPlatform }} 
 
-      - uses: manleydev/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: windows
-          ITCH_GAME: rpg-wizard
-          ITCH_USER: vulnerius
-          PACKAGE: build/StandaloneWindows64
