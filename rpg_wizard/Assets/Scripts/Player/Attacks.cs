@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CustomUtils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +45,7 @@ namespace Player {
 
         private IEnumerator InstantiateWaterShield() {
             if (hasDefenseCoolDown) yield break;
+            ReferenceTable.GameManager.setText("shield spawn");
             m_States.ability = true;
             PlayerAnimationState.isDefending = true;
             hasDefenseCoolDown = true;
@@ -89,6 +91,7 @@ namespace Player {
 
         private IEnumerator InstantiateFireBall() {
             if (hasAttackCoolDown) yield break;
+            ReferenceTable.GameManager.setText("tornado spawn");
             PlayerAnimationState.isAttacking = true;
             m_States.ability = true;
             hasAttackCoolDown = true;
