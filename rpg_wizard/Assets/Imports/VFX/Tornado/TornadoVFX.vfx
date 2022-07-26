@@ -16,10 +16,10 @@ MonoBehaviour:
   - title: Tornado Core
     position:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 100
-      height: 100
+      x: 138
+      y: -249
+      width: 1252
+      height: 1800
     contents:
     - model: {fileID: 8926484042661614555}
       id: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
     x: 138
     y: -2288
     width: 3950
-    height: 3928
+    height: 3930
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,7 +578,7 @@ VisualEffectResource:
   m_Infos:
     m_RendererSettings:
       motionVectorGenerationMode: 0
-      shadowCastingMode: 1
+      shadowCastingMode: 0
       receiveShadows: 0
       reflectionProbeUsage: 0
       lightProbeUsage: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614580}
   - {fileID: 8926484042661614613}
-  m_UIPosition: {x: 941.3827, y: 114.57214}
+  m_UIPosition: {x: 941, y: 115}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:

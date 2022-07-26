@@ -51,11 +51,11 @@ jobs:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}      
       
-      - uses: manleydev/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-          CHANNEL: ${{ matrix.targetPlatform }}
-          ITCH_GAME: rpg-wizard
-          ITCH_USER: vulnerius
-          PACKAGE: build/${{ matrix.targetPlatform }} 
+#      - uses: manleydev/butler-publish-itchio-action@master
+#        env:
+#          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+#          CHANNEL: ${{ matrix.targetPlatform }}
+#          ITCH_GAME: rpg-wizard
+#          ITCH_USER: vulnerius
+#          PACKAGE: build/${{ matrix.targetPlatform }} 
 
