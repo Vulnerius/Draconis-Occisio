@@ -4,6 +4,7 @@ using CustomUtils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 namespace Player {
     public class Attacks : MonoBehaviour {
@@ -101,9 +102,10 @@ namespace Player {
             PlayerAnimationState.isAttacking = false;
 
             var selfTransform = transform;
-            Destroy(
-                Instantiate(fireBall, selfTransform.position + selfTransform.forward + Vector3.up,
-                    Quaternion.identity), 3f);
+            var playerTornado = Instantiate(fireBall, selfTransform.position + selfTransform.forward + Vector3.up,
+                    Quaternion.identity);
+            playerTornado.GetComponent<VisualEffect>().Play();
+            Destroy(playerTornado,3f);
             fireBallUI.SetActive(true);
             StartCoroutine(CoolDownFireBall());
         }

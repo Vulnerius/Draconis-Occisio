@@ -7523,7 +7523,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614828}
   - {fileID: 8926484042661614829}
   m_OutputSlots: []
-  m_Label: TornadoCore
+  m_Label: TornadoRing
   m_Data: {fileID: 8926484042661614864}
   m_InputFlowSlot:
   - link:
@@ -10642,7 +10642,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614951}
   - {fileID: 8926484042661614952}
   m_OutputSlots: []
-  m_Label: TornadoCore
+  m_Label: TornadoRing
   m_Data: {fileID: 8926484042661614999}
   m_InputFlowSlot:
   - link:
