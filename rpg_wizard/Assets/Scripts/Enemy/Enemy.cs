@@ -45,6 +45,12 @@ namespace Enemy {
             
             other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(75);
         }
+        
+        private void OnTriggerStay(Collider other) {
+            if(other.gameObject.GetComponent<Health.Health>() == null) return;
+            
+            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(25,2.3f);
+        }
 
         private void OnDisable() {
             OnDestroy();

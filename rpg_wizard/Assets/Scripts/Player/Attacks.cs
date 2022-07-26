@@ -42,7 +42,6 @@ namespace Player {
             controls.Attacks.WaterShield.performed += _ => StartCoroutine(InstantiateWaterShield());
         }
 
-        //todo: general
         private IEnumerator InstantiateWaterShield() {
             if (hasDefenseCoolDown) yield break;
             m_States.ability = true;

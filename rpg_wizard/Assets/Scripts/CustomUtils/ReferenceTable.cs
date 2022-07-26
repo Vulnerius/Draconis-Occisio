@@ -1,8 +1,7 @@
-using CustomUtils;
 using Enemy;
 using UnityEngine;
 
-namespace DefaultNamespace {
+namespace CustomUtils {
     public class ReferenceTable : MonoBehaviour {
         [field: SerializeField] private  DragonSpawnManager dragonSpawner;
 

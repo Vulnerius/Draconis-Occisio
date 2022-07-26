@@ -1,4 +1,5 @@
 using System.Collections;
+using CustomUtils;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,6 +19,7 @@ namespace Enemy {
 
         void Start() {
             player = ReferenceTable.Player;
+            timer = shootFrequency;
         }
         
         private void Awake() {
@@ -32,11 +34,15 @@ namespace Enemy {
             
             agent.isStopped = state.foundPlayer;
 
-            if(state.isDead) return;
+            if (DeathCheck()) return;
             CheckDestination();
             CheckForAttack();
         }
-        
+
+        private bool DeathCheck() {
+            return agent.isStopped = state.isDead;
+        }
+
         private void CheckForAttack() {
             CheckForShoot();
             CheckForMelee();
@@ -44,12 +50,14 @@ namespace Enemy {
 
         private void CheckForMelee() {
             if (Vector3.Distance(transform.position, player.transform.position) < self.fov.BumpRadius) {
+                agent.isStopped = true;
                 state.isAttackingMelee = true;
                 state.isWalking = false;
                 StartCoroutine(AttackMelee());
             }
             else {
                 state.isWalking = true;
+                agent.isStopped = false;
             }
         }
 

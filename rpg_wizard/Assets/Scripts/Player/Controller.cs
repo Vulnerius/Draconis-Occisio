@@ -1,4 +1,5 @@
 using System.Collections;
+using CustomUtils;
 using UnityEngine;
 
 namespace Player {
@@ -12,12 +13,14 @@ namespace Player {
         }
 
         private void Update() {
-            if (helf.CurrentHealth <= 0)
-                PlayerAnimationState.isDead = true;
+            if (helf.CurrentHealth > 0) return;
+            PlayerAnimationState.isDead = true;
+            ReferenceTable.GameManager.SetState(GameManager.GameState.Defeat);
         }
         
         public void GotHit() {
-            animator.Play("GetHit");
+            if(!PlayerAnimationState.isDead)
+                animator.Play("GetHit");
         }
     }
 }
