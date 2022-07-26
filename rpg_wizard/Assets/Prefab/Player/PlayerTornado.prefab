@@ -78,7 +78,7 @@ VisualEffect:
       - m_Value: {x: 9.785253, y: 1.7837701, z: 0.713508, w: 1}
         m_Name: TornadoLayer1Color
         m_Overridden: 1
-      - m_Value: {x: 0.7529412, y: 0.13725491, z: 0.05490196, w: 1}
+      - m_Value: {x: 1.6862745, y: 0.40784314, z: 0.23529412, w: 1}
         m_Name: TornadoCoreColor
         m_Overridden: 1
       - m_Value: {x: 17.037113, y: 3.105724, z: 1.2422895, w: 1}
@@ -355,7 +355,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116183721324486014}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0

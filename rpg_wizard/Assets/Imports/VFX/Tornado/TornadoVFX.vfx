@@ -306,7 +306,7 @@ MonoBehaviour:
     x: 138
     y: -2288
     width: 3950
-    height: 3948
+    height: 3928
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,7 +578,7 @@ VisualEffectResource:
   m_Infos:
     m_RendererSettings:
       motionVectorGenerationMode: 0
-      shadowCastingMode: 0
+      shadowCastingMode: 1
       receiveShadows: 0
       reflectionProbeUsage: 0
       lightProbeUsage: 0
@@ -1136,8 +1136,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614601
@@ -4672,8 +4676,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614715
@@ -7545,8 +7553,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614810
@@ -10660,8 +10672,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614933
@@ -13473,8 +13489,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661615128
