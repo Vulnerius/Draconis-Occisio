@@ -31,11 +31,12 @@ namespace Enemy {
             timer += Time.deltaTime;
             
             agent.isStopped = state.foundPlayer;
-            
+
+            if(state.isDead) return;
             CheckDestination();
             CheckForAttack();
         }
-
+        
         private void CheckForAttack() {
             CheckForShoot();
             CheckForMelee();
