@@ -90,12 +90,9 @@ namespace CustomUtils {
         }
 
         private IEnumerator WaitForInput() {
-            bool pressedButton = false;
-            while (!pressedButton) {
-                if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
-                    pressedButton = true;
-                yield return new WaitForFixedUpdate();
-            }
+            yield return new WaitUntil(() =>
+                Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame);
+            
             playerDefeated.SetActive(false);
             SetState(GameState.Start);
         }
