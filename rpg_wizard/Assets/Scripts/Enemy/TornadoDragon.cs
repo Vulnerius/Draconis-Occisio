@@ -1,4 +1,5 @@
 using System.Collections;
+using CustomUtils;
 using DefaultNamespace;
 using Player;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Enemy {
         private void Awake() {
             var gameObject1 = gameObject;
             gameObject1.tag = "Enemy";
+            ReferenceTable.GameManager.setText($"enemy attacked {transform.parent.gameObject.name}");
             Destroy(transform.parent.gameObject, lifeTime);
         }
 

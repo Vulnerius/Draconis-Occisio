@@ -16,10 +16,10 @@ MonoBehaviour:
   - title: Tornado Core
     position:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 100
-      height: 100
+      x: 138
+      y: -249
+      width: 1252
+      height: 1800
     contents:
     - model: {fileID: 8926484042661614555}
       id: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
     x: 138
     y: -2288
     width: 3950
-    height: 3948
+    height: 3894
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Children:
   - {fileID: 8926484042661614580}
   - {fileID: 8926484042661614613}
-  m_UIPosition: {x: 941.3827, y: 114.57214}
+  m_UIPosition: {x: 941, y: 115}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1136,8 +1136,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614601
@@ -4672,8 +4676,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614715
@@ -7515,7 +7523,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614828}
   - {fileID: 8926484042661614829}
   m_OutputSlots: []
-  m_Label: TornadoCore
+  m_Label: TornadoRing
   m_Data: {fileID: 8926484042661614864}
   m_InputFlowSlot:
   - link:
@@ -7545,8 +7553,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614810
@@ -7816,7 +7828,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":-1.0,"y":0.5}'
+      m_SerializableObject: '{"x":0.5,"y":0.5}'
     m_Space: 2147483647
   m_Property:
     name: _NoiseSpeed
@@ -7918,7 +7930,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.5,"y":-0.5}'
+      m_SerializableObject: '{"x":1.0,"y":0.0}'
     m_Space: 2147483647
   m_Property:
     name: _TwirlCenter
@@ -8054,7 +8066,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":-1.0,"y":-0.5}'
+      m_SerializableObject: '{"x":1.0,"y":0.5}'
     m_Space: 2147483647
   m_Property:
     name: _TwirlSpeed
@@ -10630,7 +10642,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614951}
   - {fileID: 8926484042661614952}
   m_OutputSlots: []
-  m_Label: TornadoCore
+  m_Label: TornadoRing
   m_Data: {fileID: 8926484042661614999}
   m_InputFlowSlot:
   - link:
@@ -10660,8 +10672,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661614933
@@ -13473,8 +13489,12 @@ MonoBehaviour:
   flipbookLayout: 0
   shaderGraph: {fileID: 4333940904281232215, guid: 893396fa9812cbb418c9a54603cbf956, type: 3}
   materialSettings:
-    m_PropertyNames: []
-    m_PropertyValues: []
+    m_PropertyNames:
+    - _QueueOffset
+    - _QueueControl
+    m_PropertyValues:
+    - 0
+    - 0
   MeshCount: 1
   lod: 0
 --- !u!114 &8926484042661615128
@@ -13744,7 +13764,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":-1.0,"y":0.5}'
+      m_SerializableObject: '{"x":0.0,"y":1.5}'
     m_Space: 2147483647
   m_Property:
     name: _NoiseSpeed
@@ -13846,7 +13866,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":0.5,"y":-0.5}'
+      m_SerializableObject: '{"x":1.0,"y":0.0}'
     m_Space: 2147483647
   m_Property:
     name: _TwirlCenter
@@ -13982,7 +14002,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Vector2, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"x":-1.0,"y":-0.5}'
+      m_SerializableObject: '{"x":0.0,"y":0.5}'
     m_Space: 2147483647
   m_Property:
     name: _TwirlSpeed

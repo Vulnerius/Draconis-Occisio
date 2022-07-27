@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DefaultNamespace;
 using Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using SceneManager = DefaultNamespace.SceneManager;
@@ -20,9 +21,10 @@ namespace CustomUtils {
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject dragonDefeated;
         [SerializeField] public GameObject playerDefeated;
+        [SerializeField] public TextMeshProUGUI console;
         public CineMachineSwitcher switcher;
 
-        public static GameState currentState;
+        private static GameState currentState;
         public int currentEnemyIdx;
 
         private void Awake() {
@@ -65,33 +67,57 @@ namespace CustomUtils {
                         pauseMenu.SetActive(false);
                     break;
                 case GameState.Start:
+                    PlayerAnimationState.isDead = false;
                     pauseMenu.SetActive(false);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     SceneManager.LoadScene("MainMenu");
-                    Time.timeScale = 0;
+                    currentEnemyIdx = 0;
                     break;
                 case GameState.CutScene:
                     SetState(GameState.Fight);
                     StartCoroutine(SpawnNewDragon());
                     break;
+                case GameState.Defeat:
+                    playerDefeated.SetActive(true);
+                    StartCoroutine(WaitForInput());
+                    ResetPlayerProperties();
+                    break;
             }
         }
 
+        private void ResetPlayerProperties() {
+            ReferenceTable.Player.GetComponent<Health.Health>().ResetHealth();
+        }
+
+        private IEnumerator WaitForInput() {
+            bool pressedButton = false;
+            while (!pressedButton) {
+                if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame)
+                    pressedButton = true;
+                yield return new WaitForFixedUpdate();
+            }
+            playerDefeated.SetActive(false);
+            SetState(GameState.Start);
+        }
+
         private void FixedUpdate() {
-            //TODO: WIN / DEFEAT-Screen goes here
             if(!ReferenceTable.CurrentEnemy) return;
             if(!ReferenceTable.CurrentEnemy.gameObject.activeSelf)
                 StartCoroutine(SpawnNewDragon());
         }
 
         private IEnumerator SpawnNewDragon() {
+            Destroy(ReferenceTable.CurrentEnemy);
             while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.currentScene) {
                 yield return new WaitForSeconds(.4f);
             }
-
-            Debug.LogWarning("Dragon instantiated");
+            
             ReferenceTable.DragonSpawner.SpawnDragon(++currentEnemyIdx);
             yield return new WaitForFixedUpdate();
+        }
+
+        public void setText(string log) {
+            console.text = log;
         }
     }
 }

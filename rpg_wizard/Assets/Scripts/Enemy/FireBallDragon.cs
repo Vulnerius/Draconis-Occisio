@@ -1,4 +1,5 @@
 using System.Collections;
+using CustomUtils;
 using DefaultNamespace;
 using Player;
 using UnityEngine;
@@ -9,7 +10,6 @@ namespace Enemy {
         [SerializeField] private float lifeTime;
         [SerializeField] private float moveSpeed;
         
-    
         private void Awake() {
             var gameObject1 = gameObject;
             gameObject1.tag = "Enemy";

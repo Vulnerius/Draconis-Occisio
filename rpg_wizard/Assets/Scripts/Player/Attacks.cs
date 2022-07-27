@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using CustomUtils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 namespace Player {
     public class Attacks : MonoBehaviour {
@@ -42,7 +44,6 @@ namespace Player {
             controls.Attacks.WaterShield.performed += _ => StartCoroutine(InstantiateWaterShield());
         }
 
-        //todo: general
         private IEnumerator InstantiateWaterShield() {
             if (hasDefenseCoolDown) yield break;
             m_States.ability = true;
@@ -53,8 +54,9 @@ namespace Player {
             PlayerAnimationState.isDefending = false;
             m_States.ability = false;
 
-            var fireB = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
-            Destroy(fireB, 3f);
+            var shield = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
+            ReferenceTable.GameManager.setText($"shield spawn {shield.name}");
+            Destroy(shield, 3f);
             watershieldUI.SetActive(true);
             StartCoroutine(CoolDownShield());
             StartCoroutine(RemainTimeShield());
@@ -99,9 +101,11 @@ namespace Player {
             PlayerAnimationState.isAttacking = false;
 
             var selfTransform = transform;
-            Destroy(
-                Instantiate(fireBall, selfTransform.position + selfTransform.forward + Vector3.up,
-                    Quaternion.identity), 3f);
+            var playerTornado = Instantiate(fireBall, selfTransform.position + selfTransform.forward + Vector3.up,
+                    Quaternion.identity);
+            playerTornado.GetComponent<VisualEffect>().Play();
+            ReferenceTable.GameManager.setText($"tornado spawn {playerTornado.name}");
+            Destroy(playerTornado,3f);
             fireBallUI.SetActive(true);
             StartCoroutine(CoolDownFireBall());
         }
