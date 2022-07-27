@@ -3717,7 +3717,7 @@ MonoBehaviour:
   fireBallUI: {fileID: 434292295345848942}
   fireballCDText: {fileID: 3157129942169489118}
   fireBallCoolDown: 2.3
-  watershield: {fileID: 3719594810589501519, guid: 2410fd1ada009bf3795dcb0a88aa122c, type: 3}
+  watershield: {fileID: 3719594810589501519, guid: 5cdd539851f21c169898dd0868b06382, type: 3}
   watershieldUI: {fileID: 672729940479705575}
   watershieldCDText: {fileID: 7106395695427289463}
   watershieldRemainingTime: {fileID: 17035976858131017}

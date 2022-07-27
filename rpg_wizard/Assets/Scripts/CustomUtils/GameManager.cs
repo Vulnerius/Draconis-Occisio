@@ -117,7 +117,7 @@ namespace CustomUtils {
         }
 
         public void setText(string log) {
-            console.text = log + "\n";
+            console.text = log;
         }
     }
 }

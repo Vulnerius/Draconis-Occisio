@@ -97,7 +97,6 @@ namespace Enemy {
             yield return new WaitForSeconds(.4f);
 
             Instantiate(fireBall, instantiatePoint, Quaternion.identity);
-            ReferenceTable.GameManager.setText("enemy attacked");
 
             yield return new WaitForSeconds(1.2f);
             state.isAttackingRanged = false;

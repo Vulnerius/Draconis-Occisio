@@ -46,7 +46,6 @@ namespace Player {
 
         private IEnumerator InstantiateWaterShield() {
             if (hasDefenseCoolDown) yield break;
-            ReferenceTable.GameManager.setText("shield spawn");
             m_States.ability = true;
             PlayerAnimationState.isDefending = true;
             hasDefenseCoolDown = true;
@@ -55,8 +54,9 @@ namespace Player {
             PlayerAnimationState.isDefending = false;
             m_States.ability = false;
 
-            var fireB = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
-            Destroy(fireB, 3f);
+            var shield = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
+            ReferenceTable.GameManager.setText($"shield spawn {shield.name}");
+            Destroy(shield, 3f);
             watershieldUI.SetActive(true);
             StartCoroutine(CoolDownShield());
             StartCoroutine(RemainTimeShield());
@@ -92,7 +92,6 @@ namespace Player {
 
         private IEnumerator InstantiateFireBall() {
             if (hasAttackCoolDown) yield break;
-            ReferenceTable.GameManager.setText("tornado spawn");
             PlayerAnimationState.isAttacking = true;
             m_States.ability = true;
             hasAttackCoolDown = true;
@@ -105,6 +104,7 @@ namespace Player {
             var playerTornado = Instantiate(fireBall, selfTransform.position + selfTransform.forward + Vector3.up,
                     Quaternion.identity);
             playerTornado.GetComponent<VisualEffect>().Play();
+            ReferenceTable.GameManager.setText($"tornado spawn {playerTornado.name}");
             Destroy(playerTornado,3f);
             fireBallUI.SetActive(true);
             StartCoroutine(CoolDownFireBall());
