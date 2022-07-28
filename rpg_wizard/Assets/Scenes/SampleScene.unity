@@ -318,6 +318,46 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 342678869317942216, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020370198587038972, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361328107118540105, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413804363919751061, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625446386089725226, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4670622247562130534, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5850508603903158489, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694701387151269195, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6702463472274435100, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446931585573488011, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8721138940683343117, guid: 4013528d4e9bed33ca5c6be22230a724, type: 3}
       propertyPath: m_Name
       value: Gladiator Low Poly Arena

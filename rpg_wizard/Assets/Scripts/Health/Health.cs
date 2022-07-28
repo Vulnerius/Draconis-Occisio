@@ -22,7 +22,7 @@ namespace Health {
             healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
             healthBar.maxValue = MAXHEALTH;
             healthBar.value = _currentHealth;
-            OnTakenDamage();
+            UpdateUI();
         }
 
         private void Update() {
@@ -35,7 +35,7 @@ namespace Health {
                 healthBarCanvas.enabled = false;
         }
 
-        private void OnTakenDamage() {
+        private void UpdateUI() {
             if(!healthBarCanvas.enabled)
                 healthBarCanvas.enabled = true;
             healthBar.value = _currentHealth;
@@ -48,11 +48,11 @@ namespace Health {
             _currentHealth -= value;
             ClampHealth();
             _isDead = CheckIfDead();
-            OnTakenDamage();
         }
 
         private void ClampHealth() {
             _currentHealth = Mathf.Clamp(_currentHealth, 0, MAXHEALTH);
+            UpdateUI();
         }
 
         public void GetDamagedOverTime(int value, float time) {

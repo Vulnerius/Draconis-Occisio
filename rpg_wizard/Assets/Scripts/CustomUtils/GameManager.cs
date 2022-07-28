@@ -21,7 +21,6 @@ namespace CustomUtils {
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject dragonDefeated;
         [SerializeField] public GameObject playerDefeated;
-        [SerializeField] public TextMeshProUGUI console;
         public CineMachineSwitcher switcher;
 
         private static GameState currentState;
@@ -111,10 +110,6 @@ namespace CustomUtils {
             
             ReferenceTable.DragonSpawner.SpawnDragon(++currentEnemyIdx);
             yield return new WaitForFixedUpdate();
-        }
-
-        public void setText(string log) {
-            console.text = log;
         }
     }
 }

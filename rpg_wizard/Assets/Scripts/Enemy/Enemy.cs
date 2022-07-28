@@ -43,13 +43,13 @@ namespace Enemy {
         private void OnTriggerEnter(Collider other) {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
-            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(75);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(65);
         }
         
         private void OnTriggerStay(Collider other) {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
-            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(25,2.3f);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(5,.33f);
         }
 
         private void OnDisable() {

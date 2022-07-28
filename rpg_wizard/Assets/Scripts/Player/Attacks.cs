@@ -55,7 +55,6 @@ namespace Player {
             m_States.ability = false;
 
             var shield = Instantiate(watershield, transform.position + Vector3.up, Quaternion.identity);
-            ReferenceTable.GameManager.setText($"shield spawn {shield.name}");
             Destroy(shield, 3f);
             watershieldUI.SetActive(true);
             StartCoroutine(CoolDownShield());
@@ -104,7 +103,6 @@ namespace Player {
             var playerTornado = Instantiate(fireBall, selfTransform.position + selfTransform.forward + Vector3.up,
                     Quaternion.identity);
             playerTornado.GetComponent<VisualEffect>().Play();
-            ReferenceTable.GameManager.setText($"tornado spawn {playerTornado.name}");
             Destroy(playerTornado,3f);
             fireBallUI.SetActive(true);
             StartCoroutine(CoolDownFireBall());
