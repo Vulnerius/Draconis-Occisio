@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using CustomUtils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,8 +37,10 @@ namespace Health {
         }
 
         private void UpdateUI() {
-            if(!healthBarCanvas.enabled)
+            if(!healthBarCanvas.enabled){
                 healthBarCanvas.enabled = true;
+                healthBarCanvas.transform.LookAt(ReferenceTable.Player.transform);
+            }
             healthBar.value = _currentHealth;
             if (healthValueText != null)
                 healthValueText.text = _currentHealth.ToString();

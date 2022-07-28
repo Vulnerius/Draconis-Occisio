@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using CustomUtils;
 using DefaultNamespace;
@@ -31,12 +32,14 @@ namespace Enemy {
 
         private void Update() {
             timer += Time.deltaTime;
-            
-            agent.isStopped = state.foundPlayer;
 
             if (DeathCheck()) return;
             CheckDestination();
             CheckForAttack();
+        }
+
+        private void FixedUpdate() {
+            agent.isStopped = state.foundPlayer;
         }
 
         private bool DeathCheck() {
