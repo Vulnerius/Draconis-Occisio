@@ -10,7 +10,7 @@ namespace UserInterface {
         }
 
         public void OnExitPause() {
-            manager.SetState(GameManager.GameState.Start);
+            manager.SetState(GameManager.GameState.Defeat);
         }
     }
 }

@@ -1,13 +1,12 @@
 using System.Collections;
 using Cinemachine;
 using CustomUtils;
-using DefaultNamespace;
 using UnityEngine;
 
 namespace Player {
     public class CineMachineSwitcher : MonoBehaviour {
         [SerializeField] private CinemachineFreeLook playerTarget;
-        [SerializeField] public CinemachineFreeLook enemyTarget;
+        [SerializeField] public CinemachineVirtualCamera enemyTarget;
 
         private void Awake() {
             ReferenceTable.GameManager.switcher = this;

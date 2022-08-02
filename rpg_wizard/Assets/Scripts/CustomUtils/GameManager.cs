@@ -18,27 +18,25 @@ namespace CustomUtils {
             Start,
             Pause,
             Fight,
-            Win,
             Defeat,
             CutScene
         }
 
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject gameModeChoose;
-        [SerializeField] public GameObject dragonDefeated;
-        [SerializeField] public GameObject TutorialWinScreen;
-        [SerializeField] public FightTimer FightTimer;
+        [SerializeField] public GameObject tutorialWinScreen;
+        [SerializeField] public FightTimer fightTimer;
         [SerializeField] public GameObject playerDefeated;
         [SerializeField] public TextMeshProUGUI scoreText;
 
         public CineMachineSwitcher switcher;
 
-        private static GameState currentState;
-        private static GameMode gameMode;
+        private static GameState _currentState;
+        private static GameMode _gameMode;
         public int currentEnemyIdx;
 
         private void Awake() {
-            currentState = GameState.Start;
+            _currentState = GameState.Start;
 
             if (ReferenceTable.GameManager == null)
                 ReferenceTable.GameManager = this;
@@ -55,18 +53,18 @@ namespace CustomUtils {
 
             if (Keyboard.current.escapeKey.wasPressedThisFrame && SceneManager.CurrentScene ==
                 UnityEngine.SceneManagement.SceneManager.GetSceneByName("PlayScene"))
-                SetState(currentState == GameState.Fight ? GameState.Pause : GameState.Fight);
+                SetState(_currentState == GameState.Fight ? GameState.Pause : GameState.Fight);
         }
 
         public void SetState(GameState newState) {
-            currentState = newState;
+            _currentState = newState;
             SwitchGameState();
         }
 
         private void SwitchGameState() {
-            switch (currentState) {
+            switch (_currentState) {
                 case GameState.Pause:
-                    FightTimer.OnPause();
+                    fightTimer.OnPause();
                     pauseMenu.SetActive(true);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     Time.timeScale = 0;
@@ -74,7 +72,7 @@ namespace CustomUtils {
                 case GameState.Fight:
                     CursorManager.SetCursor(CursorManager.CursorEvent.Invisible);
                     Time.timeScale = 1;
-                    FightTimer.OnFight();
+                    fightTimer.OnFight();
                     if (pauseMenu)
                         pauseMenu.SetActive(false);
                     break;
@@ -83,16 +81,17 @@ namespace CustomUtils {
                     pauseMenu.SetActive(false);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     SceneManager.LoadScene("MainMenu");
-                    FightTimer.Reset();
+                    fightTimer.Reset();
                     currentEnemyIdx = 0;
                     break;
                 case GameState.CutScene:
-                    FightTimer.maxTimer += FightTimer.fightTimer;
-                    FightTimer.fightTimer = FightTimer.fightTimerRef;
+                    fightTimer.maxTimer += fightTimer.fightTimer;
+                    fightTimer.fightTimer = fightTimer.fightTimerRef;
                     SetState(GameState.Fight);
                     SpawnDragonAccordingToGameMode();
                     break;
                 case GameState.Defeat:
+                    pauseMenu.SetActive(false);
                     playerDefeated.SetActive(true);
                     scoreText.text = ReferenceTable.Player.GetComponent<Controller>().GetScore();
                     StartCoroutine(WaitForInput());
@@ -102,7 +101,7 @@ namespace CustomUtils {
         }
 
         private void SpawnDragonAccordingToGameMode() {
-            switch (gameMode) {
+            switch (_gameMode) {
                 case GameMode.Solo:
                     StartCoroutine(SpawnSoloDragon(currentEnemyIdx));
                     break;
@@ -135,7 +134,7 @@ namespace CustomUtils {
                 Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame);
 
             playerDefeated.SetActive(false);
-            TutorialWinScreen.SetActive(false);
+            tutorialWinScreen.SetActive(false);
             SetState(GameState.Start);
         }
 
@@ -160,7 +159,7 @@ namespace CustomUtils {
         }
 
         public void SetGameMode(GameMode setGameMode) {
-            gameMode = setGameMode;
+            _gameMode = setGameMode;
             ReferenceTable.GameManager.SetState(GameState.CutScene);
         }
 
@@ -170,7 +169,8 @@ namespace CustomUtils {
         }
 
         public void SetTutorialDone() {
-            TutorialWinScreen.SetActive(true);
+            tutorialWinScreen.SetActive(true);
+            fightTimer.OnPause();
             StartCoroutine(WaitForInput());
         }
     }

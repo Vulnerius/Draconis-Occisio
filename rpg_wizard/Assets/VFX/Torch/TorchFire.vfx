@@ -69,9 +69,9 @@ MonoBehaviour:
   - title: Smoke
     position:
       serializedVersion: 2
-      x: 1489
+      x: 1488
       y: -241
-      width: 952
+      width: 953
       height: 1753
     contents:
     - model: {fileID: 8926484042661614678}
@@ -2513,7 +2513,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.4205932915210724,"value":5.0,"inTangent":-0.2514762580394745,"outTangent":-0.2514762580394745,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":15.0,"inTangent":17.259033203125,"outTangent":17.259033203125,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.4205932915210724,"value":3.5,"inTangent":-0.2514762580394745,"outTangent":-0.2514762580394745,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":false},{"time":1.0,"value":15.0,"inTangent":19.84788703918457,"outTangent":19.84788703918457,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: curve
@@ -3309,7 +3309,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614673}
       inputSlot: {fileID: 8926484042661614858}
-    position: {x: 1525, y: 1158}
+    position: {x: 1513, y: 1146}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614673

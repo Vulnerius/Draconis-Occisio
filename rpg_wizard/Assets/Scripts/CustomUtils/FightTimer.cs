@@ -20,7 +20,7 @@ namespace CustomUtils {
             fightTimer = fightTimerRef;
         }
         public void OnFight() {
-            maxTimerText.text = $"{maxTimer/60:0.00}";
+            maxTimerText.text = $"{maxTimer:0.00}s";
             StartCoroutine(CountDownFightTimer());
         }
 
@@ -28,10 +28,9 @@ namespace CustomUtils {
             StopCoroutine(CountDownFightTimer());
         }
         
-
         private IEnumerator CountDownFightTimer() {
             while (fightTimer > 0) {
-                fightTimerText.text = $"{fightTimer:0.00}";
+                fightTimerText.text = $"{fightTimer:0.00}s";
                 yield return new WaitForSeconds(1f);
                 fightTimer -= 1;
             }

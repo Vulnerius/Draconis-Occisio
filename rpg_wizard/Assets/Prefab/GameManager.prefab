@@ -52,9 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2597552640265209981}
   gameModeChoose: {fileID: 8588883947681243113}
-  dragonDefeated: {fileID: 0}
-  TutorialWinScreen: {fileID: 5281368093116733414}
-  FightTimer: {fileID: 6043292847186605407}
+  tutorialWinScreen: {fileID: 5281368093116733414}
+  fightTimer: {fileID: 6043292847186605407}
   playerDefeated: {fileID: 5588733700468811536}
   scoreText: {fileID: 7951976865352345874}
   switcher: {fileID: 8921582013668965279, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}

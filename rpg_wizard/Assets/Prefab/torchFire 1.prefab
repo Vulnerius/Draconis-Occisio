@@ -4870,7 +4870,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 26.779764, y: 1.901522, z: 0, w: 0}
+        m_Name: Color
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -4882,7 +4885,10 @@ VisualEffect:
     m_Gradient:
       m_Array: []
     m_NamedObject:
-      m_Array: []
+      m_Array:
+      - m_Value: {fileID: 2800000, guid: 4ccab7b14ff30b96ab51c90088c5943d, type: 3}
+        m_Name: FlameTexture
+        m_Overridden: 1
     m_Bool:
       m_Array: []
 --- !u!73398921 &382316811572076796
