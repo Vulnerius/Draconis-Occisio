@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using DefaultNamespace;
 using Player;
@@ -10,12 +9,12 @@ using Random = UnityEngine.Random;
 namespace CustomUtils {
     public class GameManager : MonoBehaviour {
         public enum GameMode {
+            Tutorial,
             Solo,
             Random
         }
-        
+
         public enum GameState {
-            Tutorial,
             Start,
             Pause,
             Fight,
@@ -23,13 +22,14 @@ namespace CustomUtils {
             Defeat,
             CutScene
         }
-        
+
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject gameModeChoose;
         [SerializeField] public GameObject dragonDefeated;
+        [SerializeField] public GameObject TutorialWinScreen;
         [SerializeField] public GameObject playerDefeated;
         [SerializeField] public TextMeshProUGUI scoreText;
-        
+
         public CineMachineSwitcher switcher;
 
         private static GameState currentState;
@@ -41,9 +41,9 @@ namespace CustomUtils {
 
             if (ReferenceTable.GameManager == null)
                 ReferenceTable.GameManager = this;
-            else if(ReferenceTable.GameManager != this)
+            else if (ReferenceTable.GameManager != this)
                 Destroy(gameObject);
-            
+
             DontDestroyOnLoad(gameObject);
         }
 
@@ -51,7 +51,7 @@ namespace CustomUtils {
             gameObject.SetActive(true);
             if (Keyboard.current.fKey.wasPressedThisFrame)
                 switcher.SwitchLock();
-            
+
             if (Keyboard.current.escapeKey.wasPressedThisFrame && SceneManager.CurrentScene ==
                 UnityEngine.SceneManagement.SceneManager.GetSceneByName("PlayScene"))
                 SetState(currentState == GameState.Fight ? GameState.Pause : GameState.Fight);
@@ -72,7 +72,7 @@ namespace CustomUtils {
                 case GameState.Fight:
                     CursorManager.SetCursor(CursorManager.CursorEvent.Invisible);
                     Time.timeScale = 1;
-                    if(pauseMenu)
+                    if (pauseMenu)
                         pauseMenu.SetActive(false);
                     break;
                 case GameState.Start:
@@ -85,10 +85,6 @@ namespace CustomUtils {
                 case GameState.CutScene:
                     SetState(GameState.Fight);
                     SpawnDragonAccordingToGameMode();
-                    break;
-                case GameState.Tutorial:
-                    SetState(GameState.Fight);
-                    StartCoroutine(SpawnNewDragon());
                     break;
                 case GameState.Defeat:
                     playerDefeated.SetActive(true);
@@ -107,6 +103,10 @@ namespace CustomUtils {
                 case GameMode.Random:
                     StartCoroutine(SpawnSoloDragon(Random.Range(1, 5)));
                     break;
+                case GameMode.Tutorial:
+                    SetState(GameState.Fight);
+                    StartCoroutine(SpawnNewDragon());
+                    break;
             }
         }
 
@@ -115,7 +115,7 @@ namespace CustomUtils {
             while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.CurrentScene) {
                 yield return new WaitForSeconds(.4f);
             }
-            
+
             ReferenceTable.DragonSpawner.SpawnDragon(range);
             yield return new WaitForFixedUpdate();
         }
@@ -128,15 +128,16 @@ namespace CustomUtils {
         private IEnumerator WaitForInput() {
             yield return new WaitUntil(() =>
                 Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame);
-            
+
             playerDefeated.SetActive(false);
+            TutorialWinScreen.SetActive(false);
             SetState(GameState.Start);
         }
 
         private void FixedUpdate() {
-            if(!ReferenceTable.CurrentEnemy) return;
-            if(!ReferenceTable.CurrentEnemy.gameObject.activeSelf)
-                StartCoroutine(SpawnNewDragon());
+            if (!ReferenceTable.CurrentEnemy) return;
+            if (!ReferenceTable.CurrentEnemy.gameObject.activeSelf)
+                SpawnDragonAccordingToGameMode();
         }
 
         private IEnumerator SpawnNewDragon() {
@@ -144,7 +145,7 @@ namespace CustomUtils {
             while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.CurrentScene) {
                 yield return new WaitForSeconds(.4f);
             }
-            
+
             ReferenceTable.DragonSpawner.SpawnDragon(++currentEnemyIdx);
             yield return new WaitForFixedUpdate();
         }
@@ -155,11 +156,18 @@ namespace CustomUtils {
 
         public void SetGameMode(GameMode setGameMode) {
             gameMode = setGameMode;
+            SpawnDragonAccordingToGameMode();
         }
 
         public void UpdateScore() {
-            if(ReferenceTable.Player)
+            if (ReferenceTable.Player)
                 ReferenceTable.Player.GetComponent<Controller>().UpdateScore(currentEnemyIdx);
+        }
+
+        public void SetTutorialDone() {
+            currentEnemyIdx = 0;
+            TutorialWinScreen.SetActive(true);
+            StartCoroutine(WaitForInput());
         }
     }
 }

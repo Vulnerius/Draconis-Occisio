@@ -7,7 +7,7 @@ namespace UserInterface {
     public class MainMenu : MonoBehaviour{
         public void OnTutorial() {
             SceneManager.LoadScene("PlayScene");
-            ReferenceTable.GameManager.SetState(GameManager.GameState.Tutorial);
+            ReferenceTable.GameManager.SetGameMode(GameManager.GameMode.Tutorial);
         }
         public void OnPlay() {
             ReferenceTable.GameManager.EnableGameModeUI();

@@ -1,6 +1,5 @@
 using System;
 using CustomUtils;
-using DefaultNamespace;
 using UnityEngine;
 
 namespace Enemy {
@@ -13,7 +12,7 @@ namespace Enemy {
         [SerializeField] private GameObject terrorBringer;
         
         public void SpawnDragon(int dragonNumber) {
-            if(dragonNumber > 4) dragonNumber = 1;
+            if (dragonNumber > 4) ReferenceTable.GameManager.SetTutorialDone();
             ReferenceTable.GameManager.currentEnemyIdx = dragonNumber;
             switch (dragonNumber) {
                 case 1:
