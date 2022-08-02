@@ -11,7 +11,7 @@ namespace Projectiles {
             transform.parent.Translate(moveDir);
         }
 
-        private void OnTriggerEnter(Collider other) {
+        private void OnCollisionEnter(Collision other) {
             if (other.gameObject.GetComponent<Health.Health>() == null) return;
 
             other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);

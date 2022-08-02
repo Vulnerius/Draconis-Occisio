@@ -21,7 +21,7 @@ namespace Enemy {
                 ? new Vector3(0, 2.2f, 0)
                 : new Vector3(0, agent.baseOffset + .2f, 0);
 
-            GetComponent<BoxCollider>().center = colliderOffset;
+            //GetComponent<BoxCollider>().center = colliderOffset;
             player = ReferenceTable.Player;
         }
 
