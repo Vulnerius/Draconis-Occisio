@@ -4,9 +4,15 @@ using DefaultNamespace;
 using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 namespace CustomUtils {
     public class GameManager : MonoBehaviour {
+        public enum GameMode {
+            Solo,
+            Random
+        }
+        
         public enum GameState {
             Tutorial,
             Start,
@@ -16,13 +22,15 @@ namespace CustomUtils {
             Defeat,
             CutScene
         }
-
+        
         [SerializeField] public GameObject pauseMenu;
+        [SerializeField] public GameObject gameModeChoose;
         [SerializeField] public GameObject dragonDefeated;
         [SerializeField] public GameObject playerDefeated;
         public CineMachineSwitcher switcher;
 
         private static GameState currentState;
+        private static GameMode gameMode;
         public int currentEnemyIdx;
 
         private void Awake() {
@@ -73,6 +81,10 @@ namespace CustomUtils {
                     break;
                 case GameState.CutScene:
                     SetState(GameState.Fight);
+                    SpawnDragonAccordingToGameMode();
+                    break;
+                case GameState.Tutorial:
+                    SetState(GameState.Fight);
                     StartCoroutine(SpawnNewDragon());
                     break;
                 case GameState.Defeat:
@@ -81,6 +93,28 @@ namespace CustomUtils {
                     ResetPlayerProperties();
                     break;
             }
+        }
+
+        private void SpawnDragonAccordingToGameMode() {
+            switch (gameMode) {
+                case GameMode.Solo:
+                    StartCoroutine(SpawnSoloDragon(currentEnemyIdx));
+                    break;
+                case GameMode.Random:
+                    StartCoroutine(SpawnSoloDragon(Random.Range(1, 5)));
+                    break;
+            }
+        }
+
+        private IEnumerator SpawnSoloDragon(int range) {
+            Destroy(ReferenceTable.CurrentEnemy);
+            while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.CurrentScene) {
+                yield return new WaitForSeconds(.4f);
+            }
+
+            Debug.LogWarning("spawning dragon " + range);
+            ReferenceTable.DragonSpawner.SpawnDragon(range);
+            yield return new WaitForFixedUpdate();
         }
 
         private void ResetPlayerProperties() {
@@ -109,6 +143,14 @@ namespace CustomUtils {
             
             ReferenceTable.DragonSpawner.SpawnDragon(++currentEnemyIdx);
             yield return new WaitForFixedUpdate();
+        }
+
+        public void EnableGameModeUI() {
+            gameModeChoose.SetActive(true);
+        }
+
+        public void SetGameMode(GameMode setGameMode) {
+            gameMode = setGameMode;
         }
     }
 }

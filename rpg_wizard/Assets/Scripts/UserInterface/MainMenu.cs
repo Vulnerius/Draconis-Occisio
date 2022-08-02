@@ -5,9 +5,12 @@ using SceneManager = CustomUtils.SceneManager;
 
 namespace UserInterface {
     public class MainMenu : MonoBehaviour{
-        public void OnPlay() {
+        public void OnTutorial() {
             SceneManager.LoadScene("PlayScene");
-            ReferenceTable.GameManager.SetState(GameManager.GameState.CutScene);
+            ReferenceTable.GameManager.SetState(GameManager.GameState.Tutorial);
+        }
+        public void OnPlay() {
+            ReferenceTable.GameManager.EnableGameModeUI();
         }
         
         public void OnExit() {
