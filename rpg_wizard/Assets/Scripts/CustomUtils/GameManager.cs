@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DefaultNamespace;
 using Player;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
@@ -27,6 +28,8 @@ namespace CustomUtils {
         [SerializeField] public GameObject gameModeChoose;
         [SerializeField] public GameObject dragonDefeated;
         [SerializeField] public GameObject playerDefeated;
+        [SerializeField] public TextMeshProUGUI scoreText;
+        
         public CineMachineSwitcher switcher;
 
         private static GameState currentState;
@@ -89,6 +92,7 @@ namespace CustomUtils {
                     break;
                 case GameState.Defeat:
                     playerDefeated.SetActive(true);
+                    scoreText.text = ReferenceTable.Player.GetComponent<Controller>().GetScore();
                     StartCoroutine(WaitForInput());
                     ResetPlayerProperties();
                     break;
@@ -111,14 +115,14 @@ namespace CustomUtils {
             while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.CurrentScene) {
                 yield return new WaitForSeconds(.4f);
             }
-
-            Debug.LogWarning("spawning dragon " + range);
+            
             ReferenceTable.DragonSpawner.SpawnDragon(range);
             yield return new WaitForFixedUpdate();
         }
 
         private void ResetPlayerProperties() {
             ReferenceTable.Player.GetComponent<Health.Health>().ResetHealth();
+            ReferenceTable.Player.GetComponent<Controller>().ResetScore();
         }
 
         private IEnumerator WaitForInput() {
@@ -151,6 +155,11 @@ namespace CustomUtils {
 
         public void SetGameMode(GameMode setGameMode) {
             gameMode = setGameMode;
+        }
+
+        public void UpdateScore() {
+            if(ReferenceTable.Player)
+                ReferenceTable.Player.GetComponent<Controller>().UpdateScore(currentEnemyIdx);
         }
     }
 }

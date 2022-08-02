@@ -16,7 +16,6 @@ namespace Health {
             if (other.gameObject.GetComponentInParent<Health>() == null) return;
             
             other.gameObject.GetComponentInParent<Health>().IncreaseHealth(healAmount);
-            Debug.Log(other.gameObject.GetComponentInParent<Health>().CurrentHealth);
 
             StartCoroutine(CoolDownSelf());
         }

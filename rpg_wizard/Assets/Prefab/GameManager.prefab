@@ -52,6 +52,7 @@ MonoBehaviour:
   gameModeChoose: {fileID: 8588883947681243113}
   dragonDefeated: {fileID: 0}
   playerDefeated: {fileID: 5588733700468811536}
+  scoreText: {fileID: 7951976865352345874}
   switcher: {fileID: 8921582013668965279, guid: 3e658f547470e32e882975c8f1f26ba0, type: 3}
   currentEnemyIdx: 0
 --- !u!114 &193681053965700607
@@ -262,6 +263,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6952684393949575696, guid: f3ee6c29614f66ffb81e5d93136f9377, type: 3}
   m_PrefabInstance: {fileID: 3311216848555908355}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7951976865352345874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4875382981982024721, guid: f3ee6c29614f66ffb81e5d93136f9377, type: 3}
+  m_PrefabInstance: {fileID: 3311216848555908355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3377155128075118045
 PrefabInstance:
   m_ObjectHideFlags: 0

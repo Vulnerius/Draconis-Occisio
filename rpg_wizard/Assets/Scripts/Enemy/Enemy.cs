@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CustomUtils;
 using UnityEngine;
 
 namespace Enemy {
@@ -53,6 +54,7 @@ namespace Enemy {
         }
 
         private void OnDisable() {
+            ReferenceTable.GameManager.UpdateScore();
             OnDestroy();
         }
 
