@@ -559,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 803677602}
     - target: {fileID: 193681053965700605, guid: 78422b53284ae355498f5a92e667b2fd, type: 3}
       propertyPath: currentEnemyIdx
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 193681053965700607, guid: 78422b53284ae355498f5a92e667b2fd, type: 3}
       propertyPath: dragonSpawner

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5628254cb144f0ab40fbe157b006d23, type: 3}
-  m_Name: DragonSpawner
+  m_Name: DragonSpawner_Tutorial
   m_EditorClassIdentifier: 
   usurper: {fileID: 5970480734819768793, guid: 73592a822e99cb7feb9168feeaa9c05f, type: 3}
   soulEater: {fileID: 5970480734819768793, guid: a2253a340be83faa7812a25d88510045, type: 3}

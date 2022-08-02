@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using CustomUtils;
-using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,7 +9,7 @@ namespace Enemy {
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private int shootFrequency;
 
-        private int currentIdx;
+        private int currentPathIdx;
         private GameObject player;
         private Enemy self;
         private EnemyStates state;
@@ -19,11 +17,16 @@ namespace Enemy {
         private float timer;
 
         void Start() {
+            var colliderOffset = GetComponent<EnemyMeleeAnimations>()
+                ? new Vector3(0, 2.2f, 0)
+                : new Vector3(0, agent.baseOffset + .2f, 0);
+
+            GetComponent<BoxCollider>().center = colliderOffset;
             player = ReferenceTable.Player;
-            timer = shootFrequency;
         }
-        
+
         private void Awake() {
+            timer = shootFrequency;
             self = GetComponent<Enemy>();
             state = self.State;
             state.isWalking = true;
@@ -73,18 +76,18 @@ namespace Enemy {
             var position = transform.position;
             var selfPosition = new Vector3(position.x, position.y - agent.baseOffset, position.z);
 
-            if (Vector3.Distance(selfPosition, self.path[currentIdx]) <= .5)
+            if (Vector3.Distance(selfPosition, self.path[currentPathIdx]) <= .5)
                 SetNextDestination();
         }
 
         private void SetNextDestination() {
             if (agent.isStopped) return;
-            if (currentIdx == self.path.Count - 1)
-                currentIdx = 0;
+            if (currentPathIdx == self.path.Count - 1)
+                currentPathIdx = 0;
             else
-                currentIdx++;
+                currentPathIdx++;
 
-            agent.SetDestination(self.path[currentIdx]);
+            agent.SetDestination(self.path[currentPathIdx]);
         }
 
         private IEnumerator ShootFireBall() {

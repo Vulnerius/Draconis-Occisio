@@ -2,14 +2,13 @@ using System;
 using System.Collections;
 using DefaultNamespace;
 using Player;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using SceneManager = DefaultNamespace.SceneManager;
 
 namespace CustomUtils {
     public class GameManager : MonoBehaviour {
         public enum GameState {
+            Tutorial,
             Start,
             Pause,
             Fight,
@@ -42,7 +41,7 @@ namespace CustomUtils {
             if (Keyboard.current.fKey.wasPressedThisFrame)
                 switcher.SwitchLock();
             
-            if (Keyboard.current.escapeKey.wasPressedThisFrame && SceneManager.currentScene ==
+            if (Keyboard.current.escapeKey.wasPressedThisFrame && SceneManager.CurrentScene ==
                 UnityEngine.SceneManagement.SceneManager.GetSceneByName("PlayScene"))
                 SetState(currentState == GameState.Fight ? GameState.Pause : GameState.Fight);
         }
@@ -104,7 +103,7 @@ namespace CustomUtils {
 
         private IEnumerator SpawnNewDragon() {
             Destroy(ReferenceTable.CurrentEnemy);
-            while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.currentScene) {
+            while (UnityEngine.SceneManagement.SceneManager.GetActiveScene() != SceneManager.CurrentScene) {
                 yield return new WaitForSeconds(.4f);
             }
             

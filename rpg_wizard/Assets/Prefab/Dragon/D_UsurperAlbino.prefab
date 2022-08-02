@@ -184,11 +184,11 @@ MonoBehaviour:
     <CanSeePlayer>k__BackingField: 0
     <SeenTimer>k__BackingField: 0
   path:
-  - {x: 20, y: 2.48, z: 20}
-  - {x: 20, y: 2.48, z: -20}
+  - {x: 16, y: 2.48, z: 16}
+  - {x: 16, y: 2.48, z: -16}
   - {x: 0, y: 2.48, z: 0}
-  - {x: -20, y: 2.48, z: -20}
-  - {x: -20, y: 2.48, z: 20}
+  - {x: -16, y: 2.48, z: -16}
+  - {x: -16, y: 2.48, z: 16}
   - {x: 0, y: 2.48, z: 0}
 --- !u!114 &4768860674349209808
 MonoBehaviour:
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de48e0e9e8682b9c9b83e72f072ee5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBall: {fileID: 873453749954407954, guid: dea4e90f03acde5e1a87af7bf827152a, type: 3}
+  fireBall: {fileID: 1561227166165623228, guid: dcd9d09c7ccd19c8ebc2050f9f2d6152, type: 3}
   agent: {fileID: 4882152549839176129}
   shootFrequency: 8
 --- !u!195 &4882152549839176129

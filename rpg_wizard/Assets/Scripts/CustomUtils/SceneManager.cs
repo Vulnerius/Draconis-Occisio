@@ -1,11 +1,11 @@
 using UnityEngine.SceneManagement;
 
-namespace DefaultNamespace {
+namespace CustomUtils {
     public static class SceneManager {
-        public static Scene currentScene;
+        public static Scene CurrentScene;
         public static void LoadScene(string sceneName) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
-            currentScene = UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName);
+            CurrentScene = UnityEngine.SceneManagement.SceneManager.GetSceneByName(sceneName);
         }
         
     }

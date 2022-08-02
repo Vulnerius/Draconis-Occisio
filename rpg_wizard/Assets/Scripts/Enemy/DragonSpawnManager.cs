@@ -22,10 +22,10 @@ namespace Enemy {
                 case 2:
                     SpawnNightmare();
                     break;
-                case 3:
+                case 4:
                     SpawnTerrorBringer();
                     break;
-                case 4:
+                case 3:
                     SpawnUsurper();
                     break;
             }

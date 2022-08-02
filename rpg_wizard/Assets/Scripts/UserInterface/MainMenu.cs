@@ -1,7 +1,7 @@
 using CustomUtils;
 using DefaultNamespace;
 using UnityEngine;
-using SceneManager = DefaultNamespace.SceneManager;
+using SceneManager = CustomUtils.SceneManager;
 
 namespace UserInterface {
     public class MainMenu : MonoBehaviour{
