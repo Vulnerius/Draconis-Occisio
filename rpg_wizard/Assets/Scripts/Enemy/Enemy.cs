@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using CustomUtils;
@@ -28,6 +27,7 @@ namespace Enemy {
         private IEnumerator SetThisDead() {
             state.isDead = true;
             yield return new WaitForSeconds(2f);
+            ReferenceTable.GameManager.UpdateScore();
             gameObject.SetActive(false);
         }
 
@@ -54,7 +54,6 @@ namespace Enemy {
         }
 
         private void OnDisable() {
-            ReferenceTable.GameManager.UpdateScore();
             OnDestroy();
         }
 

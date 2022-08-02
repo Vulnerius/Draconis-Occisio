@@ -1,5 +1,4 @@
 using CustomUtils;
-using DefaultNamespace;
 using UnityEngine;
 using SceneManager = CustomUtils.SceneManager;
 

@@ -26,15 +26,16 @@ namespace Player {
         }
 
         public void UpdateScore(int dragonNumber) {
+            Debug.LogWarning("increasing score");
             score.IncreaseScore(CalculateIncrease(dragonNumber));
         }
 
         private float CalculateIncrease(int dragonNumber) {
             return dragonNumber switch {
                 1 => 90 + 100 * Random.Range(0f, .3f),
-                2 => 90 + 100 * Random.Range(0f, .45f),
-                3 => 90 + 100 * Random.Range(0f, .75f),
-                4 => 90 + 100 * Random.Range(0f, .45f),
+                2 => 120 + 100 * Random.Range(0f, .45f),
+                3 => 240 + 100 * Random.Range(0f, .75f),
+                4 => 160 + 100 * Random.Range(0f, .45f),
                 _ => 0f
             };
         }

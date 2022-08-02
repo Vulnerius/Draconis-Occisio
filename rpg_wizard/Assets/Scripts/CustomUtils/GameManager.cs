@@ -27,6 +27,7 @@ namespace CustomUtils {
         [SerializeField] public GameObject gameModeChoose;
         [SerializeField] public GameObject dragonDefeated;
         [SerializeField] public GameObject TutorialWinScreen;
+        [SerializeField] public FightTimer FightTimer;
         [SerializeField] public GameObject playerDefeated;
         [SerializeField] public TextMeshProUGUI scoreText;
 
@@ -65,6 +66,7 @@ namespace CustomUtils {
         private void SwitchGameState() {
             switch (currentState) {
                 case GameState.Pause:
+                    FightTimer.OnPause();
                     pauseMenu.SetActive(true);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     Time.timeScale = 0;
@@ -72,6 +74,7 @@ namespace CustomUtils {
                 case GameState.Fight:
                     CursorManager.SetCursor(CursorManager.CursorEvent.Invisible);
                     Time.timeScale = 1;
+                    FightTimer.OnFight();
                     if (pauseMenu)
                         pauseMenu.SetActive(false);
                     break;
@@ -80,9 +83,12 @@ namespace CustomUtils {
                     pauseMenu.SetActive(false);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     SceneManager.LoadScene("MainMenu");
+                    FightTimer.Reset();
                     currentEnemyIdx = 0;
                     break;
                 case GameState.CutScene:
+                    FightTimer.maxTimer += FightTimer.fightTimer;
+                    FightTimer.fightTimer = FightTimer.fightTimerRef;
                     SetState(GameState.Fight);
                     SpawnDragonAccordingToGameMode();
                     break;
@@ -104,7 +110,6 @@ namespace CustomUtils {
                     StartCoroutine(SpawnSoloDragon(Random.Range(1, 5)));
                     break;
                 case GameMode.Tutorial:
-                    SetState(GameState.Fight);
                     StartCoroutine(SpawnNewDragon());
                     break;
             }
@@ -137,7 +142,7 @@ namespace CustomUtils {
         private void FixedUpdate() {
             if (!ReferenceTable.CurrentEnemy) return;
             if (!ReferenceTable.CurrentEnemy.gameObject.activeSelf)
-                SpawnDragonAccordingToGameMode();
+                SetState(GameState.CutScene);
         }
 
         private IEnumerator SpawnNewDragon() {
@@ -156,7 +161,7 @@ namespace CustomUtils {
 
         public void SetGameMode(GameMode setGameMode) {
             gameMode = setGameMode;
-            SpawnDragonAccordingToGameMode();
+            ReferenceTable.GameManager.SetState(GameState.CutScene);
         }
 
         public void UpdateScore() {
@@ -165,7 +170,6 @@ namespace CustomUtils {
         }
 
         public void SetTutorialDone() {
-            currentEnemyIdx = 0;
             TutorialWinScreen.SetActive(true);
             StartCoroutine(WaitForInput());
         }
