@@ -22,6 +22,7 @@ namespace CustomUtils {
             CutScene
         }
 
+        [SerializeField] public GameObject optionsMenu;
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject gameModeChoose;
         [SerializeField] public GameObject tutorialWinScreen;
@@ -172,6 +173,14 @@ namespace CustomUtils {
             tutorialWinScreen.SetActive(true);
             fightTimer.OnPause();
             StartCoroutine(WaitForInput());
+        }
+
+        public void EnableOptionsMenu() {
+            CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
+            optionsMenu.SetActive(true);
+        }
+        public void DisableOptionsMenu() {
+            optionsMenu.SetActive(false);
         }
     }
 }

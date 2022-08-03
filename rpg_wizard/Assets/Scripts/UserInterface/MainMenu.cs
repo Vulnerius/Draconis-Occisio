@@ -11,6 +11,9 @@ namespace UserInterface {
         public void OnPlay() {
             ReferenceTable.GameManager.EnableGameModeUI();
         }
+        public void OnOptions() {
+            ReferenceTable.GameManager.EnableOptionsMenu();
+        }
         
         public void OnExit() {
             Application.Quit();
