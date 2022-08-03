@@ -1,6 +1,7 @@
 using System.Collections;
 using DefaultNamespace;
 using Player;
+using Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,7 @@ namespace CustomUtils {
             CutScene
         }
 
+        [SerializeField] public SoundManager sounds;
         [SerializeField] public GameObject optionsMenu;
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject gameModeChoose;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Enemy {
     [Serializable]
-    [CreateAssetMenu(fileName = "DragonSpawner", menuName = "Assets/Prefab/ScriptableObjects/DragonSpawner")]
+    [CreateAssetMenu(fileName = "DragonSpawner", menuName = "ScriptableObjects/DragonSpawner")]
     public class DragonSpawnManager : ScriptableObject {
         [SerializeField] private GameObject usurper;
         [SerializeField] private GameObject soulEater;

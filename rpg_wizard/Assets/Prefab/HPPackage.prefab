@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c001effb184f4199af598ab2ce3baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 11400000, guid: 568750455121cf4dd90bc26bac6bb714, type: 2}
   healAmount: 50
   coolDown: 45
   boxCollider: {fileID: 6793094315395186568}

@@ -8,7 +8,7 @@ namespace Sound {
         [SerializeField] private SoundSource hitEffectRef;
 
         private AudioSource backgroundMusic;
-        private float effectVolume;
+        private float effectVolume = .5f;
         
         private void Awake() {
             backgroundMusic = backgroundMusicRef.Play(transform);

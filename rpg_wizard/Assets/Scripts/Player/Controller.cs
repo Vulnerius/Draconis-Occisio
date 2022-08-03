@@ -23,6 +23,7 @@ namespace Player {
         public void GotHit() {
             if (!PlayerAnimationState.isDead)
                 animator.Play("GetHit");
+            ReferenceTable.GameManager.sounds.OnPlayerHit(transform);
         }
 
         public void UpdateScore(int dragonNumber) {

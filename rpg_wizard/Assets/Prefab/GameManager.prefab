@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e05c04c76dfa4457a8508b6830f4d662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds: {fileID: 675183378842781788}
   optionsMenu: {fileID: 727490965545354069}
   pauseMenu: {fileID: 2597552640265209981}
   gameModeChoose: {fileID: 8588883947681243113}
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusicRef: {fileID: 11400000, guid: 7a5f8687fd3f1506fbc7707757e3ad94, type: 2}
-  hitEffectRef: {fileID: 0}
+  hitEffectRef: {fileID: 11400000, guid: a967e801b6841d542aff53ef9b08c89f, type: 2}
 --- !u!1001 &1749910280192703834
 PrefabInstance:
   m_ObjectHideFlags: 0

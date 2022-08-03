@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using Sound;
 using UnityEngine;
 using UnityEngine.VFX;
 
 namespace Health {
     public class HealthPackage : MonoBehaviour {
+        [SerializeField] private SoundSource sound;
         [SerializeField] private int healAmount;
         [SerializeField] private float coolDown;
         [SerializeField] private BoxCollider boxCollider;
@@ -16,7 +18,7 @@ namespace Health {
             if (other.gameObject.GetComponentInParent<Health>() == null) return;
             
             other.gameObject.GetComponentInParent<Health>().IncreaseHealth(healAmount);
-
+            sound.Play(transform);
             StartCoroutine(CoolDownSelf());
         }
 
