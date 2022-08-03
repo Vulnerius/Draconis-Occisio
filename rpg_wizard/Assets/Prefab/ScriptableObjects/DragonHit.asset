@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc51e5207fc470a9ed89678fc743c02, type: 3}
+  m_Name: DragonHit
+  m_EditorClassIdentifier: 
+  sound: {fileID: 2437817504288407266, guid: a75624d70271cc88d9ea7745f1b02acc, type: 3}
+  audioC: {fileID: 8300000, guid: 06b73d301fb24abfea4353f0fa5b43fe, type: 3}
+  layer: 0
+  volume: 0.3
+  mute: 0
+  loop: 0
+  _3d: 0
+  spread: 0
+  minDistance: 0
+  maxDistance: 0
+  logarithmicRolloff: 0

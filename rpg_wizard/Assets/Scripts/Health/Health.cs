@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using CustomUtils;
+using Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ using UnityEngine.UI;
 namespace Health {
     public class Health : MonoBehaviour {
         [Header("Options")] [SerializeField] private int MAXHEALTH;
+        [SerializeField] private SoundSource hitSound;
         private int _currentHealth;
         public bool isInvincible;
         private bool _isDead;
@@ -15,7 +17,6 @@ namespace Health {
         public int CurrentHealth => _currentHealth;
         [Header("UI")]
         [SerializeField] private Slider healthBar;
-        [SerializeField] private TextMeshProUGUI healthValueText;
         private Canvas healthBarCanvas;
         
         void Start() {
@@ -42,15 +43,18 @@ namespace Health {
                 healthBarCanvas.transform.LookAt(ReferenceTable.Player.transform);
             }
             healthBar.value = _currentHealth;
-            if (healthValueText != null)
-                healthValueText.text = _currentHealth.ToString();
         }
 
         public void GetDamagedInstantly(int value) {
             if (isInvincible || _isDead) return;
+            PlayHitSound();
             _currentHealth -= value;
             ClampHealth();
             _isDead = CheckIfDead();
+        }
+
+        private void PlayHitSound() {
+            hitSound.Play(transform);
         }
 
         private void ClampHealth() {

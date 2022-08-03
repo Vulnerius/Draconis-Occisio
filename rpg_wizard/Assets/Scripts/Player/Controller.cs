@@ -21,13 +21,11 @@ namespace Player {
         }
 
         public void GotHit() {
-            if (!PlayerAnimationState.isDead)
-                animator.Play("GetHit");
-            ReferenceTable.GameManager.sounds.OnPlayerHit(transform);
+            if (PlayerAnimationState.isDead) return;
+            animator.Play("GetHit");
         }
 
         public void UpdateScore(int dragonNumber) {
-            Debug.LogWarning("increasing score");
             score.IncreaseScore(CalculateIncrease(dragonNumber));
         }
 

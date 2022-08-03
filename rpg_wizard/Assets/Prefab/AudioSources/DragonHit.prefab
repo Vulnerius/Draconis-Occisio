@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6563241692101741092}
   - component: {fileID: 2437817504288407266}
   m_Layer: 0
-  m_Name: HitEffect
+  m_Name: DragonHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e818f2c7b7d7a171c845b1608c1e3adb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 06b73d301fb24abfea4353f0fa5b43fe, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1

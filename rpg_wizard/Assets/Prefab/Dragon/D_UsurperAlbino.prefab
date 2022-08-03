@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MAXHEALTH: 5000
+  hitSound: {fileID: 11400000, guid: a27b0c01ce2ecb27aa8d69624ce0ae43, type: 2}
   isInvincible: 0
   healthBar: {fileID: 5951053910622966299}
   healthValueText: {fileID: 0}

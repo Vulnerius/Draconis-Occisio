@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using CustomUtils;
+using Player;
 using UnityEngine;
 
 namespace Enemy {
@@ -50,7 +51,7 @@ namespace Enemy {
         private void OnTriggerStay(Collider other) {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
-            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(5,.33f);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(5,1f);
         }
 
         private void OnDisable() {
