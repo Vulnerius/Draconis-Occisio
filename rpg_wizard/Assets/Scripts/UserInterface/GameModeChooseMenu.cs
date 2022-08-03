@@ -2,10 +2,39 @@ using CustomUtils;
 using UnityEngine;
 
 namespace UserInterface {
-    public class GameModeChooseMenu : MonoBehaviour{
+    public class GameModeChooseMenu : MonoBehaviour {
+        [SerializeField] private GameObject souleaterImage;
+        [SerializeField] private GameObject nightmareImage;
+        [SerializeField] private GameObject usurperImage;
+        [SerializeField] private GameObject terrorBringerImage;
         private void StandardBehaviour() {
             ReferenceTable.GameManager.gameModeChoose.SetActive(false);
             SceneManager.LoadScene("PlayScene");
+        }
+
+        public void OnHoverDragon1Enter() {
+            souleaterImage.SetActive(true);
+        }
+        public void OnHoverDragon1Exit() {
+            souleaterImage.SetActive(false);
+        }
+        public void OnHoverDragon2Enter() {
+            nightmareImage.SetActive(true);
+        }
+        public void OnHoverDragon2Exit() {
+            nightmareImage.SetActive(false);
+        }
+        public void OnHoverDragon3Enter() {
+            usurperImage.SetActive(true);
+        }
+        public void OnHoverDragon3Exit() {
+            usurperImage.SetActive(false);
+        }
+        public void OnHoverDragon4Enter() {
+            terrorBringerImage.SetActive(true);
+        }
+        public void OnHoverDragon4Exit() {
+            terrorBringerImage.SetActive(false);
         }
         
         public void OnRandom() {
