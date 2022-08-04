@@ -14,7 +14,7 @@ namespace Projectiles {
         private void OnCollisionEnter(Collision other) {
             if (other.gameObject.GetComponent<Health.Health>() == null) return;
 
-            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(damage);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(damage,1);
 
             var enemy = other.gameObject.GetComponent<Enemy.Enemy>();
             if (!enemy) return;

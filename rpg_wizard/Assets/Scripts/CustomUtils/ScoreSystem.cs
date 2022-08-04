@@ -1,18 +1,22 @@
 using System;
 
 namespace CustomUtils {
-    [Serializable]
-    public class ScoreSystem {
-        private float currentScore;
+    public class ScoreSystem : IComparable<ScoreSystem> {
+        public int currentScore;
 
         public ScoreSystem() {
-            currentScore = .0f;
+            currentScore = 0;
         }
         
-        public void IncreaseScore(float amount) {
+        public void IncreaseScore(int amount) {
             currentScore += amount;
         }
 
-        public float GetScore() => currentScore;
+        public int GetScore() => currentScore;
+        
+        public int CompareTo(ScoreSystem other) {
+            if (ReferenceEquals(this, other)) return 0;
+            return ReferenceEquals(null, other) ? 1 : other.currentScore.CompareTo(currentScore);
+        }
     }
 }

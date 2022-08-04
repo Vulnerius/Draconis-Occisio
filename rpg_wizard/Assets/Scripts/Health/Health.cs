@@ -45,9 +45,8 @@ namespace Health {
             healthBar.value = _currentHealth;
         }
 
-        public void GetDamagedInstantly(int value) {
+        private void GetDamagedInstantly(int value) {
             if (isInvincible || _isDead) return;
-            PlayHitSound();
             _currentHealth -= value;
             ClampHealth();
             _isDead = CheckIfDead();
@@ -64,6 +63,7 @@ namespace Health {
 
         public void GetDamagedOverTime(int value, float time) {
             StartCoroutine(GetDamaged(value, time, 3));
+            PlayHitSound();
         }
 
         private IEnumerator GetDamaged(int value, float time, int tickRate) {

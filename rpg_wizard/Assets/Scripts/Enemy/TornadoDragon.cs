@@ -28,7 +28,7 @@ namespace Enemy {
             if (other.gameObject.GetComponentInParent<Health.Health>() == null) return;
             if (other.gameObject.CompareTag(gameObject.tag)) return;
 
-            other.gameObject.GetComponentInParent<Health.Health>().GetDamagedInstantly(damage);
+            other.gameObject.GetComponentInParent<Health.Health>().GetDamagedOverTime(damage,1);
 
             var playerController = other.gameObject.GetComponentInParent<Controller>();
             if(!playerController) return;

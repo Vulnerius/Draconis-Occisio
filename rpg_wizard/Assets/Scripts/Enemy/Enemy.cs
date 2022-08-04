@@ -45,7 +45,7 @@ namespace Enemy {
         private void OnTriggerEnter(Collider other) {
             if(other.gameObject.GetComponent<Health.Health>() == null) return;
             
-            other.gameObject.GetComponent<Health.Health>().GetDamagedInstantly(65);
+            other.gameObject.GetComponent<Health.Health>().GetDamagedOverTime(65,1);
         }
         
         private void OnTriggerStay(Collider other) {

@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
+using System.Globalization;
 using DefaultNamespace;
 using Player;
-using Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UserInterface;
 using Random = UnityEngine.Random;
 
 namespace CustomUtils {
@@ -22,8 +24,8 @@ namespace CustomUtils {
             Defeat,
             CutScene
         }
-
-        [SerializeField] public SoundManager sounds;
+        
+        [SerializeField] private ScoresTexts scoreTexts;
         [SerializeField] public GameObject optionsMenu;
         [SerializeField] public GameObject pauseMenu;
         [SerializeField] public GameObject gameModeChoose;
@@ -34,13 +36,16 @@ namespace CustomUtils {
 
         public CineMachineSwitcher switcher;
 
+        private SaveAndRestoreScoreList scores;
+        
         private static GameState _currentState;
         private static GameMode _gameMode;
         public int currentEnemyIdx;
 
         private void Awake() {
+            scores = new();
+            UpdateMainMenuTexts();
             _currentState = GameState.Start;
-
             if (ReferenceTable.GameManager == null)
                 ReferenceTable.GameManager = this;
             else if (ReferenceTable.GameManager != this)
@@ -80,6 +85,7 @@ namespace CustomUtils {
                         pauseMenu.SetActive(false);
                     break;
                 case GameState.Start:
+                    scoreTexts.gameObject.SetActive(true);
                     PlayerAnimationState.isDead = false;
                     pauseMenu.SetActive(false);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
@@ -88,6 +94,7 @@ namespace CustomUtils {
                     currentEnemyIdx = 0;
                     break;
                 case GameState.CutScene:
+                    scoreTexts.gameObject.SetActive(false);
                     fightTimer.maxTimer += fightTimer.fightTimer;
                     fightTimer.fightTimer = fightTimer.fightTimerRef;
                     SetState(GameState.Fight);
@@ -97,10 +104,18 @@ namespace CustomUtils {
                     pauseMenu.SetActive(false);
                     playerDefeated.SetActive(true);
                     scoreText.text = ReferenceTable.Player.GetComponent<Controller>().GetScore();
+                    scores.SaveScore(ReferenceTable.Player.GetComponent<Controller>().GetScoreSystem());
+                    UpdateMainMenuTexts();
                     StartCoroutine(WaitForInput());
                     ResetPlayerProperties();
                     break;
             }
+        }
+
+        private void UpdateMainMenuTexts() {
+            scoreTexts.bestRun.text = scores.scoreList[0].GetScore().ToString();
+            scoreTexts.secondbestRun.text = scores.scoreList[1].GetScore().ToString();
+            scoreTexts.thirdbestRun.text = scores.scoreList[2].GetScore().ToString();
         }
 
         private void SpawnDragonAccordingToGameMode() {
