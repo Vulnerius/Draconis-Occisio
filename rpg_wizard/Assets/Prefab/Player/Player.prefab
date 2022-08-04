@@ -2010,7 +2010,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4888028416577836320}
-  m_LocalRotation: {x: 0.063654095, y: 0.2881928, z: -0.019203799, w: 0.9552614}
+  m_LocalRotation: {x: 0.06315489, y: 0.34940827, z: -0.023612479, w: 0.9345415}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3160,7 +3160,6 @@ MonoBehaviour:
   hitSound: {fileID: 11400000, guid: a967e801b6841d542aff53ef9b08c89f, type: 2}
   isInvincible: 0
   healthBar: {fileID: 3965965133157681105}
-  healthValueText: {fileID: 5433534203748148663}
 --- !u!114 &5893595190756861225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4354,8 +4353,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4889555036749970352}
-  m_LocalRotation: {x: 0.06365411, y: 0.28819284, z: -0.019203795, w: 0.9552614}
-  m_LocalPosition: {x: -1.9831715, y: 2.5, z: -2.637618}
+  m_LocalRotation: {x: -0.0034913544, y: 0.996483, z: -0.062671095, w: -0.055513244}
+  m_LocalPosition: {x: 0, y: 1.8000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4385,9 +4384,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 90
+  near clip plane: 0.2
+  far clip plane: 1000
+  field of view: 65
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -4848,7 +4847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4889555037075670927
 Transform:
   m_ObjectHideFlags: 0
@@ -4857,7 +4856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4889555037075670926}
   m_LocalRotation: {x: -0.0034913544, y: 0.996483, z: -0.062671095, w: -0.055513244}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8000002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4888,8 +4887,8 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 65
     OrthographicSize: 10
-    NearClipPlane: 0.1
-    FarClipPlane: 5000
+    NearClipPlane: 0.01
+    FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -5163,7 +5162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1625616393540153581
 Transform:
   m_ObjectHideFlags: 0
@@ -5172,7 +5171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4963369807131607625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9831715, y: 2.5, z: -2.637618}
+  m_LocalPosition: {x: -2.3330326, y: 2.5, z: -2.3338718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5355,7 +5354,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5549042684273047377}
-  m_LocalRotation: {x: 0.016919306, y: 0.28878686, z: -0.0051043853, w: 0.9572303}
+  m_LocalRotation: {x: 0.017432742, y: 0.35014454, z: -0.006517789, w: 0.9365108}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5433,7 +5432,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5870897561349208177}
-  m_LocalRotation: {x: 0.11116019, y: 0.2868784, z: -0.03353591, w: 0.9509046}
+  m_LocalRotation: {x: 0.109629475, y: 0.3477983, z: -0.040988497, w: 0.9302353}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

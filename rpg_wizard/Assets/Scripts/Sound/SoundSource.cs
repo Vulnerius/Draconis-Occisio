@@ -7,7 +7,6 @@ namespace Sound {
         
         [SerializeField] public AudioSource sound;
         [SerializeField] public AudioClip audioC;
-        [SerializeField] private int layer;
 
         [Tooltip("Volume percentage")] [SerializeField] [Range(0, 1)]
         private float volume;
@@ -25,8 +24,6 @@ namespace Sound {
         [Tooltip("Sets the roll-off if the player is further away than MaxDistance")] [SerializeField]
         private bool logarithmicRolloff;
 
-        public int Layer => layer;
-
         private void Awake() {
             sound.dopplerLevel = 0; //set this to 1 in Engine and you'll have a little crippling ear depression
             sound.spatialBlend = _3d ? 1f : .0f;
@@ -41,14 +38,14 @@ namespace Sound {
         }
 
         public AudioSource Play(Transform parent) {
-            Instantiate(this);
+            //Instantiate(this);
             sound.clip = audioC;
             AudioSource soundSource = Instantiate(sound, parent);
             sound.Play();
             return soundSource;
         }
         public void Play(Transform parent, float effectVolume) {
-            Instantiate(this);
+            //Instantiate(this);
             sound.clip = audioC;
             AudioSource soundSource = Instantiate(sound, parent);
             soundSource.volume = effectVolume;

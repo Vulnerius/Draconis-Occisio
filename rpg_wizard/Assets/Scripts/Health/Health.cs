@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using CustomUtils;
 using Sound;
 using TMPro;
@@ -13,6 +14,7 @@ namespace Health {
         private int _currentHealth;
         public bool isInvincible;
         private bool _isDead;
+        private bool hitSoundPlaying;
 
         public int CurrentHealth => _currentHealth;
         [Header("UI")]
@@ -53,7 +55,14 @@ namespace Health {
         }
 
         private void PlayHitSound() {
-            hitSound.Play(transform);
+            if(!hitSoundPlaying)
+                hitSound.Play(transform);
+            StartCoroutine(HitSoundCoolDown());
+        }
+
+        private IEnumerator HitSoundCoolDown() {
+            yield return new WaitForSeconds(hitSound.sound.time);
+            hitSoundPlaying = false;
         }
 
         private void ClampHealth() {
