@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Globalization;
 using DefaultNamespace;
 using Player;
 using TMPro;
@@ -24,7 +22,7 @@ namespace CustomUtils {
             Defeat,
             CutScene
         }
-        
+
         [SerializeField] private ScoresTexts scoreTexts;
         [SerializeField] public GameObject optionsMenu;
         [SerializeField] public GameObject pauseMenu;
@@ -37,7 +35,7 @@ namespace CustomUtils {
         public CineMachineSwitcher switcher;
 
         private SaveAndRestoreScoreList scores;
-        
+
         private static GameState _currentState;
         private static GameMode _gameMode;
         public int currentEnemyIdx;
@@ -55,14 +53,13 @@ namespace CustomUtils {
         }
 
         void Update() {
-            gameObject.SetActive(true);
             if (Keyboard.current.fKey.wasPressedThisFrame)
                 switcher.SwitchLock();
 
-            if (Keyboard.current.escapeKey.wasPressedThisFrame && SceneManager.CurrentScene ==
-                UnityEngine.SceneManagement.SceneManager.GetSceneByName("PlayScene"))
+            if (Keyboard.current.escapeKey.wasPressedThisFrame && _currentState != GameState.Start)
                 SetState(_currentState == GameState.Fight ? GameState.Pause : GameState.Fight);
         }
+
 
         public void SetState(GameState newState) {
             _currentState = newState;
@@ -77,22 +74,26 @@ namespace CustomUtils {
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     Time.timeScale = 0;
                     break;
+
                 case GameState.Fight:
                     CursorManager.SetCursor(CursorManager.CursorEvent.Invisible);
                     Time.timeScale = 1;
                     fightTimer.OnFight();
-                    if (pauseMenu)
-                        pauseMenu.SetActive(false);
+                    pauseMenu.SetActive(false);
+                    optionsMenu.SetActive(false);
                     break;
+
                 case GameState.Start:
                     scoreTexts.gameObject.SetActive(true);
                     PlayerAnimationState.isDead = false;
                     pauseMenu.SetActive(false);
+                    optionsMenu.SetActive(false);
                     CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
                     SceneManager.LoadScene("MainMenu");
                     fightTimer.Reset();
                     currentEnemyIdx = 0;
                     break;
+
                 case GameState.CutScene:
                     scoreTexts.gameObject.SetActive(false);
                     fightTimer.maxTimer += fightTimer.fightTimer;
@@ -100,11 +101,18 @@ namespace CustomUtils {
                     SetState(GameState.Fight);
                     SpawnDragonAccordingToGameMode();
                     break;
+
                 case GameState.Defeat:
+                    if(_gameMode == GameMode.Tutorial){
+                        SetState(GameState.Start);
+                        break;
+                    }
                     pauseMenu.SetActive(false);
+                    optionsMenu.SetActive(false);
                     playerDefeated.SetActive(true);
                     scoreText.text = ReferenceTable.Player.GetComponent<Controller>().GetScore();
-                    scores.SaveScore(ReferenceTable.Player.GetComponent<Controller>().GetScoreSystem());
+                    if(_gameMode != GameMode.Tutorial)
+                        scores.SaveScore(ReferenceTable.Player.GetComponent<Controller>().GetScoreSystem());
                     UpdateMainMenuTexts();
                     StartCoroutine(WaitForInput());
                     ResetPlayerProperties();
@@ -196,8 +204,13 @@ namespace CustomUtils {
             CursorManager.SetCursor(CursorManager.CursorEvent.Visible);
             optionsMenu.SetActive(true);
         }
+
         public void DisableOptionsMenu() {
             optionsMenu.SetActive(false);
+        }
+
+        public void DisableGameModeChoose() {
+            gameModeChoose.SetActive(false);
         }
     }
 }

@@ -268,7 +268,6 @@ MonoBehaviour:
   hitSound: {fileID: 11400000, guid: a27b0c01ce2ecb27aa8d69624ce0ae43, type: 2}
   isInvincible: 0
   healthBar: {fileID: 8254191471810957319}
-  healthValueText: {fileID: 0}
 --- !u!114 &2203743701892940412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 1561227166165623228, guid: dcd9d09c7ccd19c8ebc2050f9f2d6152, type: 3}
   agent: {fileID: 4882152549839176129}
-  shootFrequency: 5
+  shootFrequency: 3
 --- !u!114 &6814771998519158618
 MonoBehaviour:
   m_ObjectHideFlags: 0

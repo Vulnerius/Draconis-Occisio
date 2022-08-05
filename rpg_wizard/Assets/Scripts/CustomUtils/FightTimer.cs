@@ -31,7 +31,7 @@ namespace CustomUtils {
         private IEnumerator CountDownFightTimer() {
             while (fightTimer > 0) {
                 fightTimerText.text = $"{fightTimer:0.00}s";
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1.1f);
                 fightTimer -= 1;
             }
 

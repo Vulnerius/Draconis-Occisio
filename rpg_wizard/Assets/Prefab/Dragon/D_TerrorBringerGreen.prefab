@@ -435,7 +435,6 @@ MonoBehaviour:
   hitSound: {fileID: 11400000, guid: a27b0c01ce2ecb27aa8d69624ce0ae43, type: 2}
   isInvincible: 0
   healthBar: {fileID: 4134003840471957431}
-  healthValueText: {fileID: 0}
 --- !u!114 &2203743701892940412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 3588775471401678377}
   fov:
-    <SeeRadius>k__BackingField: 30
+    <SeeRadius>k__BackingField: 27
     <Angle>k__BackingField: 85
     <BumpRadius>k__BackingField: 8
     _enemyRef: {fileID: 5970480734819768793}
@@ -480,7 +479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireBall: {fileID: 873453749954407954, guid: dea4e90f03acde5e1a87af7bf827152a, type: 3}
   agent: {fileID: 4882152549839176129}
-  shootFrequency: 8
+  shootFrequency: 5
 --- !u!195 &4882152549839176129
 NavMeshAgent:
   m_ObjectHideFlags: 0

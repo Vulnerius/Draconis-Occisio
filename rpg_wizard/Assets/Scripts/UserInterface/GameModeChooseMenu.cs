@@ -1,3 +1,4 @@
+using System.Collections;
 using CustomUtils;
 using UnityEngine;
 
@@ -36,7 +37,29 @@ namespace UserInterface {
         public void OnHoverDragon4Exit() {
             terrorBringerImage.SetActive(false);
         }
-        
+
+        public void OnHoverRandom() {
+            StartCoroutine(ImageRandom());
+        }
+        public void OnHoverRandomExit() {
+            StopCoroutine(ImageRandom());
+        }
+
+        private IEnumerator ImageRandom() {
+            souleaterImage.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            souleaterImage.SetActive(false);
+            usurperImage.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            usurperImage.SetActive(false);
+            nightmareImage.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            nightmareImage.SetActive(false);
+            terrorBringerImage.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            terrorBringerImage.SetActive(false);
+        }
+
         public void OnRandom() {
             StandardBehaviour();
             ReferenceTable.GameManager.SetGameMode(GameManager.GameMode.Random);

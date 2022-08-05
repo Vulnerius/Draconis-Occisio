@@ -30,8 +30,6 @@ namespace CustomUtils {
 
             writer.Flush();
             writer.Close();
-
-            logJson();
         }
 
 
@@ -47,13 +45,9 @@ namespace CustomUtils {
             reader.Close();
         }
 
-        private void logJson() {
-            Debug.LogWarning(JsonConvert.DeserializeObject<ScoreSystem[]>(new StreamReader(persistentPath).ReadToEnd()));
-        }
-
         private static void CheckFileExists() {
-            if (!File.Exists(persistentPath))
-                File.Create(persistentPath).Close();
+            if (File.Exists(persistentPath)) return;
+            File.Create(persistentPath).Close();
         }
     }
 }
