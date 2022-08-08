@@ -42,7 +42,7 @@ namespace Enemy {
         private void PlayHitVFX(Vector3 contactPoint) {
             var impact = Instantiate(impactEffect, contactPoint, Quaternion.identity);
             impact.Play();
-            Destroy(impact, 1);
+            Destroy(impact.gameObject, 1);
         }
 
         private IEnumerator GetHit() {
