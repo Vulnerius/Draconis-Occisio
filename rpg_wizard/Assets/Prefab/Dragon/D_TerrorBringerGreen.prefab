@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 3588775471401678377}
+  impactEffect: {fileID: 3253333002222126161, guid: f3f3ee352a93263d483313b2a97d1f88, type: 3}
   fov:
     <SeeRadius>k__BackingField: 27
     <Angle>k__BackingField: 85
