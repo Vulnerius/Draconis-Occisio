@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using CustomUtils;
-using Player;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Enemy {
     public class Enemy : MonoBehaviour {
         [SerializeField] private Health.Health health;
+        [SerializeField] private VisualEffect impactEffect;
         [SerializeField] public FieldOfView fov;
         [SerializeField] public List<Vector3> path;
 
@@ -32,8 +34,15 @@ namespace Enemy {
             gameObject.SetActive(false);
         }
 
-        public void GettingHit() {
+        public void GettingHit(Vector3 contactPoint) {
+            PlayHitVFX(contactPoint);
             StartCoroutine(GetHit());
+        }
+
+        private void PlayHitVFX(Vector3 contactPoint) {
+            var impact = Instantiate(impactEffect, contactPoint, Quaternion.identity);
+            impact.Play();
+            Destroy(impact, 1);
         }
 
         private IEnumerator GetHit() {

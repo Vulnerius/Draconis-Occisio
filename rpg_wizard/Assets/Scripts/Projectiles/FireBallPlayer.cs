@@ -18,7 +18,7 @@ namespace Projectiles {
 
             var enemy = other.gameObject.GetComponent<Enemy.Enemy>();
             if (!enemy) return;
-            enemy.GettingHit();
+            enemy.GettingHit(other.GetContact(0).point);
         }
     }
 }
