@@ -1,10 +1,12 @@
 # Fdb version 3
-["pdflatex"] 1659966553 "main.tex" "main.pdf" "main" 1659966553
+["pdflatex"] 1659967176 "main.tex" "main.pdf" "main" 1659967176
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1650183167 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1650183167 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1650183167 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1650183167 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1650183167 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1650183167 1124 6c73e740cf17375f03eec0ee63599741 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1650183167 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1650183167 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1650183167 32362 179c33bbf43f19adbb3825bb4e36e57a ""
   "/usr/share/texmf-dist/tex/generic/iftex/iftex.sty" 1650183167 7237 bdd120a32c8fdb4b433cf9ca2e7cd98a ""
@@ -15,11 +17,12 @@
   "/usr/share/texmf-dist/tex/latex/geometry/geometry.sty" 1650183167 41601 9cf6c5257b1bc7af01a58859749dd37a ""
   "/usr/share/texmf-dist/tex/latex/graphics/keyval.sty" 1650183167 2671 4de6781a30211fe0ea4c672e4a2a8166 ""
   "/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1650183167 31644 9b75b7ffdb38fbd7bb4502cd6b086a3c ""
+  "/usr/share/texmf-dist/tex/latex/setspace/setspace.sty" 1650183167 22913 a27d7908fc6f0385466454a966a316eb ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1650183167 39911 2da6c67557ec033436fe5418a70a8a61 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1659965359 334215 ad2feb41952e3720830b65f83a01c5b0 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1659965351 2927660 1bd4b0a6b88efc9abc76d8a9ae7205ee ""
-  "main.aux" 1659966553 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
-  "main.tex" 1659966550 279 5192cb000b0ac752d8d4621082079fb6 ""
+  "main.aux" 1659967176 135 58eb3c6cf3dac12d26ea76d4afb3e7af "pdflatex"
+  "main.tex" 1659967173 370 7afd032b8f3da41bb7f21e4ecf06b30a ""
   (generated)
   "main.aux"
   "main.log"
