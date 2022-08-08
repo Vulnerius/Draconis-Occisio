@@ -78,7 +78,8 @@ namespace CustomUtils {
                 case GameState.Fight:
                     CursorManager.SetCursor(CursorManager.CursorEvent.Invisible);
                     Time.timeScale = 1;
-                    fightTimer.OnFight();
+                    if(_gameMode != GameMode.Tutorial)
+                        fightTimer.OnFight();
                     pauseMenu.SetActive(false);
                     optionsMenu.SetActive(false);
                     break;
@@ -154,7 +155,7 @@ namespace CustomUtils {
             ReferenceTable.Player.GetComponent<Health.Health>().ResetHealth();
             ReferenceTable.Player.GetComponent<Controller>().ResetScore();
         }
-
+        
         private IEnumerator WaitForInput() {
             yield return new WaitUntil(() =>
                 Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.spaceKey.wasPressedThisFrame);

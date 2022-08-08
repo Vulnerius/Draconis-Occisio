@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sound: {fileID: 9081078809353858740, guid: 1da6d777e1b038fc8983f38bebc9c67a, type: 3}
   audioC: {fileID: 8300000, guid: fbd6886f1a86498a7ae336e7e9a2b40f, type: 3}
-  layer: 0
   volume: 0.3
   mute: 0
   loop: 1
-  _3d: 1
+  _3d: 0
   spread: 180
   minDistance: 5
   maxDistance: 90000
