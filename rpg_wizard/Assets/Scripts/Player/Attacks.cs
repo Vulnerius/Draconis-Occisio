@@ -66,7 +66,7 @@ namespace Player {
             watershieldRemainingTime.gameObject.SetActive(true);
             watershieldRemainingTime.maxValue = shieldMaxValue;
             while (shieldMaxValue > 0) {
-                watershieldRemainingTime.value = 3 - shieldMaxValue;
+                watershieldRemainingTime.value = shieldMaxValue;
                 shieldMaxValue -= .1f;
                 yield return new WaitForSeconds(.1f);
             }
