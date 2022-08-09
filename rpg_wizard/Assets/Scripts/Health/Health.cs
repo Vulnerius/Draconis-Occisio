@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
 using CustomUtils;
 using Sound;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +18,10 @@ namespace Health {
         [SerializeField] private Slider healthBar;
         private Canvas healthBarCanvas;
         
-        void Start() {
+        /// <summary>
+        /// setting the Properties
+        /// </summary>
+        private void Start() {
             _currentHealth = MAXHEALTH;
             healthBarCanvas = healthBar.GetComponentInParent<Canvas>();
             healthBar.maxValue = MAXHEALTH;
@@ -33,6 +33,11 @@ namespace Health {
             StartCoroutine(CheckHealthChanged(_currentHealth));
         }
 
+        /// <summary>
+        /// enabling or disabling the healthBar
+        /// </summary>
+        /// <param name="currentHealth"></param>
+        /// <returns>Waiting</returns>
         private IEnumerator CheckHealthChanged(int currentHealth) {
             yield return new WaitForSeconds(2f);
             if (_currentHealth == currentHealth && !gameObject.CompareTag("Player"))
@@ -47,6 +52,10 @@ namespace Health {
             healthBar.value = _currentHealth;
         }
 
+        /// <summary>
+        /// reducing the currentHealth by value
+        /// </summary>
+        /// <param name="value"></param>
         private void GetDamagedInstantly(int value) {
             if (isInvincible || _isDead) return;
             _currentHealth -= value;
@@ -54,17 +63,28 @@ namespace Health {
             _isDead = CheckIfDead();
         }
 
+        /// <summary>
+        /// Playing the attached hitSound
+        /// </summary>
         private void PlayHitSound() {
-            if(!hitSoundPlaying)
-                hitSound.Play(transform);
+            if (hitSoundPlaying) return;
+            hitSound.Play(transform);
             StartCoroutine(HitSoundCoolDown());
         }
 
+        /// <summary>
+        /// starting a coolDown so there is only 1 hitSound playing at a time
+        /// </summary>
+        /// <returns>Waiting for hitSound to complete</returns>
         private IEnumerator HitSoundCoolDown() {
+            hitSoundPlaying = true;
             yield return new WaitForSeconds(hitSound.sound.time);
             hitSoundPlaying = false;
         }
 
+        /// <summary>
+        /// making sure health is not below 0
+        /// </summary>
         private void ClampHealth() {
             _currentHealth = Mathf.Clamp(_currentHealth, 0, MAXHEALTH);
             UpdateUI();
@@ -75,6 +95,14 @@ namespace Health {
             PlayHitSound();
         }
 
+        /// <summary>
+        /// reducing the currentHealth by value over time
+        /// further explained in documentation
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="time"></param>
+        /// <param name="tickRate"></param>
+        /// <returns></returns>
         private IEnumerator GetDamaged(int value, float time, int tickRate) {
             var tickTime = time / tickRate;
             var actualTickRate = tickRate;
@@ -88,27 +116,14 @@ namespace Health {
             GetDamagedInstantly(value % actualTickRate);
         }
 
+        /// <summary>
+        /// increasing the currentHealth by value
+        /// </summary>
+        /// <param name="value"></param>
         public void IncreaseHealth(int value) {
             if (!_isDead)
                 _currentHealth += value;
             ClampHealth();
-        }
-
-        public void GetHealthOverTime(int value, float time) {
-            StartCoroutine(GetHealing(value, time, 3));
-        }
-
-        private IEnumerator GetHealing(int value, float time, int tickRate) {
-            var tickTime = time / tickRate;
-            var actualTickRate = tickRate;
-
-            while (tickRate > 0) {
-                yield return new WaitForSeconds(tickTime);
-                IncreaseHealth(value / actualTickRate);
-                tickRate--;
-            }
-
-            IncreaseHealth(value % actualTickRate);
         }
 
         public void ResetHealth() {
