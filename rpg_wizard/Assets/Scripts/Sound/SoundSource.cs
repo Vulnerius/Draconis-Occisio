@@ -22,8 +22,11 @@ namespace Sound {
         [SerializeField] private int maxDistance;
 
         [Tooltip("Sets the roll-off if the player is further away than MaxDistance")] [SerializeField]
-        private bool logarithmicRolloff;
+        private bool logarithmicRollOff;
 
+        /// <summary>
+        /// sets the Properties of AudioSource
+        /// </summary>
         private void Awake() {
             sound.dopplerLevel = 0; //set this to 1 in Engine and you'll have a little crippling ear depression
             sound.spatialBlend = _3d ? 1f : .0f;
@@ -34,24 +37,40 @@ namespace Sound {
             sound.minDistance = minDistance;
             sound.maxDistance = maxDistance;
             sound.volume = volume;
-            sound.rolloffMode = logarithmicRolloff ? AudioRolloffMode.Logarithmic : AudioRolloffMode.Linear;
+            sound.rolloffMode = logarithmicRollOff ? AudioRolloffMode.Logarithmic : AudioRolloffMode.Linear;
         }
 
+        /// <summary>
+        /// sets the audioClip
+        /// instantiates a GameObjects
+        /// Plays the Sound
+        /// </summary>
+        /// <param name="parent">position of the GameObject</param>
+        /// <returns>playing AudioSource</returns>
         public AudioSource Play(Transform parent) {
-            //Instantiate(this);
             sound.clip = audioC;
             AudioSource soundSource = Instantiate(sound, parent);
             sound.Play();
             return soundSource;
         }
+        
+        /// <summary>
+        /// sets the audioClip
+        /// instantiates a GameObjects
+        /// Plays the Sound with the effectVolume
+        /// </summary>
+        /// <param name="parent">position of the GameObject</param>
+        /// <param name="effectVolume">volume of the soundEffect</param>
         public void Play(Transform parent, float effectVolume) {
-            //Instantiate(this);
             sound.clip = audioC;
             AudioSource soundSource = Instantiate(sound, parent);
             soundSource.volume = effectVolume;
             soundSource.Play();
         }
 
+        /// <summary>
+        /// stops the sound
+        /// </summary>
         public void Reset() {
             sound.Stop();
         }

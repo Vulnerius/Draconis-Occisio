@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Sound {
+    /// <summary>
+    /// Sound Manager class
+    /// </summary>
     public class SoundManager : MonoBehaviour {
         [SerializeField] private SoundSource backgroundMusicRef;
-        [SerializeField] private SoundSource hitEffectRef;
 
         private AudioSource backgroundMusic;
         private float effectVolume = .5f;
@@ -13,8 +15,8 @@ namespace Sound {
             backgroundMusic = backgroundMusicRef.Play(transform);
         }
 
-        public void OnPlayerHit(Transform player) {
-            hitEffectRef.Play(player, effectVolume);
+        public void OnSoundEffect(Transform position, SoundSource hitEffectRef) {
+            hitEffectRef.Play(position, effectVolume);
         }
 
         public void VolumeChangeMusic(Slider musicSlider) {
