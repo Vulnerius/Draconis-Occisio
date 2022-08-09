@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace Enemy {
+    /// <summary>
+    /// flying enemy animations
+    /// </summary>
     public class EnemyRangedAnimations : MonoBehaviour{
         private static readonly int Idle = Animator.StringToHash("Idle");
         private static readonly int Walk = Animator.StringToHash("Take Off");
@@ -35,6 +38,10 @@ namespace Enemy {
             _currentState = state;
         }
 
+        /// <summary>
+        /// look at EnemyMeleeAnimations
+        /// </summary>
+        /// <returns></returns>
         private int GetState() {
             if (Time.time < _lockedTill) return _currentState;
 

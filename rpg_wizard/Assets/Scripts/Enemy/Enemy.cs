@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using CustomUtils;
 using UnityEngine;
 using UnityEngine.VFX;
 
 namespace Enemy {
+    /// <summary>
+    /// basic enemy behaviour
+    /// </summary>
     public class Enemy : MonoBehaviour {
         [SerializeField] private Health.Health health;
         [SerializeField] private VisualEffect impactEffect;

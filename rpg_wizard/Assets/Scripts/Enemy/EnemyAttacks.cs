@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemy {
+    /// <summary>
+    /// class for Enemy Attacks
+    /// </summary>
     public class EnemyAttacks : MonoBehaviour {
         [SerializeField] private GameObject fireBall;
         [SerializeField] private NavMeshAgent agent;
@@ -16,12 +19,7 @@ namespace Enemy {
 
         private float timer;
 
-        void Start() {
-            var colliderOffset = GetComponent<EnemyMeleeAnimations>()
-                ? new Vector3(0, 2.2f, 0)
-                : new Vector3(0, agent.baseOffset + .2f, 0);
-
-            //GetComponent<BoxCollider>().center = colliderOffset;
+        private void Start() {
             player = ReferenceTable.Player;
         }
 
@@ -45,6 +43,10 @@ namespace Enemy {
             agent.isStopped = state.foundPlayer;
         }
 
+        /// <summary>
+        /// setting agent.isStopped to state.isDead
+        /// </summary>
+        /// <returns>state.isDead</returns>
         private bool DeathCheck() {
             return agent.isStopped = state.isDead;
         }
@@ -54,6 +56,13 @@ namespace Enemy {
             CheckForMelee();
         }
 
+        /// <summary>
+        /// on world coordinates:
+        ///     if the distance between the player and this is less than the bumpRadius
+        ///         perform a melee attack
+        ///     else
+        ///         do NavMesh movement
+        /// </summary>
         private void CheckForMelee() {
             if (Vector3.Distance(transform.position, player.transform.position) < self.fov.BumpRadius) {
                 agent.isStopped = true;
@@ -67,11 +76,19 @@ namespace Enemy {
             }
         }
 
+        /// <summary>
+        /// shooting a fireBall if:
+        ///     player in fovRadius, timer is greater or Equal to shootFrequency and SeenTimer passed half a second-ish mark
+        /// </summary>
         private void CheckForShoot() {
-            if (state.foundPlayer && timer > shootFrequency && self.fov.SeenTimer >= 45f)
+            if (state.foundPlayer && timer >= shootFrequency && self.fov.SeenTimer >= 45f)
                 StartCoroutine(ShootFireBall());
         }
 
+        /// <summary>
+        /// calculates the distance between the destination and the current position
+        /// sets NextDestination is the distance is below .5 threshold
+        /// </summary>
         private void CheckDestination() {
             var position = transform.position;
             var selfPosition = new Vector3(position.x, position.y - agent.baseOffset, position.z);
@@ -80,6 +97,9 @@ namespace Enemy {
                 SetNextDestination();
         }
 
+        /// <summary>
+        /// sets the agents next destination
+        /// </summary>
         private void SetNextDestination() {
             if (agent.isStopped) return;
             if (currentPathIdx == self.path.Count - 1)
@@ -90,6 +110,15 @@ namespace Enemy {
             agent.SetDestination(self.path[currentPathIdx]);
         }
 
+        /// <summary>
+        /// resetting the timer
+        /// stopping NavMeshAgent movement
+        /// performing ranged-attack-animation
+        /// Instantiating the fireBall/tornado
+        /// resuming NavMeshAgent movement
+        /// resuming Walking/Flying Animation
+        /// </summary>
+        /// <returns>Waiting for completed action</returns>
         private IEnumerator ShootFireBall() {
             if (state.isAttackingMelee) yield break;
             timer = 0;
@@ -110,6 +139,12 @@ namespace Enemy {
             agent.isStopped = false;
         }
 
+        /// <summary>
+        /// rotating this towards the player
+        /// performing melee attack
+        /// returning to movement
+        /// </summary>
+        /// <returns>Waiting .8 seconds</returns>
         private IEnumerator AttackMelee() {
             gameObject.transform.LookAt(player.transform.position);
             yield return new WaitForSeconds(.8f);

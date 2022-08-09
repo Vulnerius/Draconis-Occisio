@@ -6,6 +6,10 @@ using UnityEngine;
 namespace Editor {
     [CustomEditor(typeof(Enemy.Enemy))]
     public class FOVEditor : UnityEditor.Editor {
+        
+        /// <summary>
+        /// creates a circle around the dragon with a triangle-cone as "field of view"
+        /// </summary>
         private void OnSceneGUI() {
             Enemy.Enemy enemy = target as Enemy.Enemy;
             FieldOfView fov = enemy.fov;

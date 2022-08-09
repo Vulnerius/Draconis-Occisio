@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 
 namespace Enemy {
+    /// <summary>
+    /// FieldOfView implementation for enemy
+    /// </summary>
     [Serializable]
     public class FieldOfView {
         [field: Header("Visibility"), SerializeField]
@@ -22,11 +25,18 @@ namespace Enemy {
                 SerializeField]
         public bool CanSeePlayer { get; set; }
 
-        private EnemyStates enemyState;
-        
+
         [field: SerializeField] public float SeenTimer { get; private set; } = 0;
-        
-        
+
+        private EnemyStates enemyState;
+        private Collider[] collArray;
+        private int count;
+
+        /// <summary>
+        /// updating the state
+        /// while gameObject is Alive perform FOVCheck
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator FOVRoutine() {
             enemyState = _enemyRef.GetComponent<Enemy>().State;
             WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -37,9 +47,14 @@ namespace Enemy {
             }
         }
 
-        private Collider[] collArray;
-        private int count;
-
+        /// <summary>
+        /// calculating detection Time
+        /// instantiating Collider[]
+        /// performing OverlappingColliderCount -> exiting function if 0
+        /// calculating the distance between the player and self
+        /// checking if the angle the player is inside the fov
+        /// checking if the player is inside the bumpRadius
+        /// </summary>
         private void FOVCheck() {
             CalcDetectTime();
             collArray = new Collider[5];
@@ -67,7 +82,10 @@ namespace Enemy {
         private bool CheckForBumpDistance(float distance) {
             return distance <= BumpRadius;
         }
-
+        
+        /// <param name="selfPositionForward">self position world space</param>
+        /// <param name="directionToTarget">target position world space</param>
+        /// <returns>if the player is inside the fov-cone</returns>
         private bool CheckAngle(Vector3 selfPositionForward, Vector3 directionToTarget) {
             return Vector3.Angle(selfPositionForward, directionToTarget) <= Angle / 2;
         }

@@ -15,12 +15,22 @@ namespace Enemy {
             Destroy(gameObject1, lifeTime);
         }
 
+        /// <summary>
+        /// updating moveDirection and moving towards it
+        /// </summary>
         private void Update() {
             var moveDir = ReferenceTable.Player.transform.position - transform.position; 
             var moveDirection = moveSpeed * moveDir.normalized * Time.deltaTime;
             transform.Translate(moveDirection, Space.Self);
         }
 
+        /// <summary>
+        /// destroying if the hit object is the Shield
+        /// getting the health of hit object -> reducing it by damage
+        /// signaling Player to be hit
+        /// Destroying this gameObject
+        /// </summary>
+        /// <param name="other">Collider that was hit</param>
         private void OnTriggerEnter(Collider other) {
             if (other.gameObject.layer == LayerMask.NameToLayer("Shield")) StartCoroutine(DestroyThis());
 

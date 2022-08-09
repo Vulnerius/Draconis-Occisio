@@ -1,6 +1,9 @@
 using UnityEngine;
 
 namespace Enemy {
+    /// <summary>
+    /// grounded enemy animations
+    /// </summary>
     public class EnemyMeleeAnimations : MonoBehaviour {
         private static readonly int Idle = Animator.StringToHash("Idle");
         private static readonly int Walk = Animator.StringToHash("Walk");
@@ -35,6 +38,11 @@ namespace Enemy {
             _currentState = state;
         }
 
+        /// <summary>
+        /// concept by https://www.youtube.com/watch?v=ZwLekxsSY3Y&ab_channel=Tarodev
+        /// checking states playing Animations accordingly
+        /// </summary>
+        /// <returns>duration of current Animation</returns>
         private int GetState() {
             if (Time.time < _lockedTill) return _currentState;
 

@@ -3,6 +3,9 @@ using CustomUtils;
 using UnityEngine;
 
 namespace Enemy {
+    /// <summary>
+    /// ScriptableObject for modifying dragons that will be spawned
+    /// </summary>
     [Serializable]
     [CreateAssetMenu(fileName = "DragonSpawner", menuName = "ScriptableObjects/DragonSpawner")]
     public class DragonSpawnManager : ScriptableObject {
@@ -11,6 +14,11 @@ namespace Enemy {
         [SerializeField] private GameObject nightmare;
         [SerializeField] private GameObject terrorBringer;
         
+        /// <summary>
+        /// setting currentEnemyIdx reference in GameManager
+        /// spawning GameObject prefab according to the number
+        /// </summary>
+        /// <param name="dragonNumber"></param>
         public void SpawnDragon(int dragonNumber) {
             if (dragonNumber > 4) ReferenceTable.GameManager.SetTutorialDone();
             ReferenceTable.GameManager.currentEnemyIdx = dragonNumber;

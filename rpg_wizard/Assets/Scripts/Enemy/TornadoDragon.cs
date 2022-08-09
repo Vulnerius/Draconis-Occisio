@@ -4,6 +4,9 @@ using Player;
 using UnityEngine;
 
 namespace Enemy {
+    /// <summary>
+    /// same as FireBallDragon class
+    /// </summary>
     public class TornadoDragon : MonoBehaviour{
         [SerializeField] private int damage;
         [SerializeField] private float lifeTime;
