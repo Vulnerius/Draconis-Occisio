@@ -3,6 +3,12 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Player {
+    /// <summary>
+    /// basic controls for Player like
+    /// Health
+    /// GetHit-Animation
+    /// Score
+    /// </summary>
     public class Controller : MonoBehaviour {
         private Animator animator;
         private Health.Health helf;

@@ -1,8 +1,10 @@
 using UnityEngine;
 
 namespace Player {
+    /// <summary>
+    /// Handling Movement for the Player
+    /// </summary>
     public class MovementController : MonoBehaviour {
-        [SerializeField] private GameObject wizardPrefab;
         [SerializeField] private Transform cameraPosition;
         [SerializeField] private CharacterController characterController;
 
@@ -16,6 +18,11 @@ namespace Player {
         private PlayerStates m_States;
         public PlayerStates States => m_States;
 
+        /// <summary>
+        /// Instantiating PlayerStates and Controls
+        /// Initializing MovementActions
+        /// enabling InputAction
+        /// </summary>
         private void Awake() {
             m_States = new PlayerStates();
             m_Controls = new PlayerControls();
@@ -23,6 +30,10 @@ namespace Player {
             m_Controls.Enable();
         }
 
+        /// <summary>
+        /// checking is Player is Flying
+        /// checking if Player casted an ability
+        /// </summary>
         private void Update() {
             if (PlayerAnimationState.isLevitating)
                 Fly(walkSpeed);
@@ -31,11 +42,19 @@ namespace Player {
             
         }
 
+        /// <summary>
+        /// moving the wizard up and in pressed movement direction
+        /// </summary>
+        /// <param name="f">movement Speed in air</param>
         private void Fly(float f) {
             var flyDirection = Time.deltaTime * Walk(f);
             characterController.Move(new Vector3(flyDirection.x, .1f, flyDirection.z));
         }
 
+        /// <summary>
+        /// assigning functionality to InputActions
+        /// </summary>
+        /// <param name="controls">InputAction</param>
         private void InitMovementActions(PlayerControls controls) {
             controls.Movement.Move.started += ctx => {
                 m_States.moveEnabled = true; 
@@ -62,6 +81,13 @@ namespace Player {
             controls.Movement.Levitate.canceled += _ => PlayerAnimationState.isLevitating = false;
         }
         
+        /// <summary>
+        /// calculating the targetAngle to move towards
+        /// transferring the angle to a Vector3
+        /// moving the gameObject towards the direction
+        /// </summary>
+        /// <param name="speed">MovementSpeed</param>
+        /// <returns>moveDirection as Vector3</returns>
         private Vector3 Walk(float speed) {
             if (m_States.move.magnitude <= .1f) return Vector3.zero;
             

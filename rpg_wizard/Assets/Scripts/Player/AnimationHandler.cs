@@ -1,7 +1,9 @@
-using System;
 using UnityEngine;
 
 namespace Player {
+    /// <summary>
+    /// Animation handling for the wizard
+    /// </summary>
     public class AnimationHandler : MonoBehaviour {
         
         private static readonly int Idle = Animator.StringToHash("Idle03"); 
@@ -32,6 +34,11 @@ namespace Player {
             _currentState = state;
         }
 
+        /// <summary>
+        /// concept by https://www.youtube.com/watch?v=ZwLekxsSY3Y&ab_channel=Tarodev
+        /// checking states playing Animations accordingly
+        /// </summary>
+        /// <returns>duration of current Animation</returns>
         private int GetState() {
             if (Time.time < _lockedTill) return _currentState;
             
@@ -72,7 +79,6 @@ namespace Player {
         public Vector2 move;
         public float TurnVelocity;
         public bool moveEnabled;
-        public bool jumped;
         public bool ability;
     }
 }
