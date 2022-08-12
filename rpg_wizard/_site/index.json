@@ -1,0 +1,222 @@
+{
+  "api/CustomUtils.CursorManager.CursorEvent.html": {
+    "href": "api/CustomUtils.CursorManager.CursorEvent.html",
+    "title": "Enum CursorManager.CursorEvent | Draconis occisio documentation",
+    "keywords": "Enum CursorManager.CursorEvent Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public enum CursorEvent Fields Name Description Invisible Visible"
+  },
+  "api/CustomUtils.CursorManager.html": {
+    "href": "api/CustomUtils.CursorManager.html",
+    "title": "Class CursorManager | Draconis occisio documentation",
+    "keywords": "Class CursorManager static class for visible and moving or invisible and locked Cursor Inheritance System.Object CursorManager Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public static class CursorManager Methods SetCursor(CursorManager.CursorEvent) sets the Cursor either visible and movable or invisible and locked defaulting to visible and movable Cursor Declaration public static void SetCursor(CursorManager.CursorEvent cursorVisibility) Parameters Type Name Description CursorManager.CursorEvent cursorVisibility"
+  },
+  "api/CustomUtils.FightTimer.html": {
+    "href": "api/CustomUtils.FightTimer.html",
+    "title": "Class FightTimer | Draconis occisio documentation",
+    "keywords": "Class FightTimer timer functionality for GameLoop Inheritance System.Object FightTimer Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public class FightTimer : MonoBehaviour Fields fightTimer Declaration public double fightTimer Field Value Type Description System.Double fightTimerRef Declaration public double fightTimerRef Field Value Type Description System.Double fightTimerText Declaration public TextMeshProUGUI fightTimerText Field Value Type Description TextMeshProUGUI maxTimer Declaration public double maxTimer Field Value Type Description System.Double maxTimerRef Declaration public double maxTimerRef Field Value Type Description System.Double maxTimerText Declaration public TextMeshProUGUI maxTimerText Field Value Type Description TextMeshProUGUI Methods OnFight() setting the maxTimerText in the UI and Starting the Fighting Countdown Declaration public void OnFight() OnPause() Stopping the Fighting Countdown Declaration public void OnPause() Reset() resets maxTimer and fightTimer back to their referenced values Declaration public void Reset()"
+  },
+  "api/CustomUtils.GameManager.GameMode.html": {
+    "href": "api/CustomUtils.GameManager.GameMode.html",
+    "title": "Enum GameManager.GameMode | Draconis occisio documentation",
+    "keywords": "Enum GameManager.GameMode Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public enum GameMode Fields Name Description Random Solo Tutorial"
+  },
+  "api/CustomUtils.GameManager.GameState.html": {
+    "href": "api/CustomUtils.GameManager.GameState.html",
+    "title": "Enum GameManager.GameState | Draconis occisio documentation",
+    "keywords": "Enum GameManager.GameState Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public enum GameState Fields Name Description CutScene Defeat Fight Pause Start"
+  },
+  "api/CustomUtils.GameManager.html": {
+    "href": "api/CustomUtils.GameManager.html",
+    "title": "Class GameManager | Draconis occisio documentation",
+    "keywords": "Class GameManager base class for GameLoop behaviours Inheritance System.Object GameManager Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public class GameManager : MonoBehaviour Fields currentEnemyIdx Declaration public int currentEnemyIdx Field Value Type Description System.Int32 fightTimer Declaration public FightTimer fightTimer Field Value Type Description FightTimer gameModeChoose Declaration public GameObject gameModeChoose Field Value Type Description GameObject optionsMenu Declaration public GameObject optionsMenu Field Value Type Description GameObject pauseMenu Declaration public GameObject pauseMenu Field Value Type Description GameObject playerDefeated Declaration public GameObject playerDefeated Field Value Type Description GameObject scoreText Declaration public TextMeshProUGUI scoreText Field Value Type Description TextMeshProUGUI switcher Declaration public CineMachineSwitcher switcher Field Value Type Description CineMachineSwitcher tutorialWinScreen Declaration public GameObject tutorialWinScreen Field Value Type Description GameObject Methods DisableGameModeChoose() Declaration public void DisableGameModeChoose() DisableOptionsMenu() Declaration public void DisableOptionsMenu() EnableGameModeUI() Declaration public void EnableGameModeUI() EnableOptionsMenu() setting the cursor visible enabling the OptionsMenu Declaration public void EnableOptionsMenu() SetGameMode(GameManager.GameMode) setting the _gameMode reference switching the State to CutScene Declaration public void SetGameMode(GameManager.GameMode setGameMode) Parameters Type Name Description GameManager.GameMode setGameMode the chosen GameMode SetState(GameManager.GameState) setting the _currentState to newState switching States accordingly Declaration public void SetState(GameManager.GameState newState) Parameters Type Name Description GameManager.GameState newState new State to be set SetTutorialDone() enabling the tutorialDone Canvas pausing the fightTimer Declaration public void SetTutorialDone() UpdateScore() Declaration public void UpdateScore()"
+  },
+  "api/CustomUtils.html": {
+    "href": "api/CustomUtils.html",
+    "title": "Namespace CustomUtils | Draconis occisio documentation",
+    "keywords": "Namespace CustomUtils Classes CursorManager static class for visible and moving or invisible and locked Cursor FightTimer timer functionality for GameLoop GameManager base class for GameLoop behaviours ReferenceTable static class holding references for Player, CurrentEnemy, GameManager and DragonSpawnManager SaveAndRestoreScoreList Serializing and Deserializing ScoreSystem to JSON SceneManager Scene Loading Manager ScoreSystem Enums CursorManager.CursorEvent GameManager.GameMode GameManager.GameState"
+  },
+  "api/CustomUtils.ReferenceTable.html": {
+    "href": "api/CustomUtils.ReferenceTable.html",
+    "title": "Class ReferenceTable | Draconis occisio documentation",
+    "keywords": "Class ReferenceTable static class holding references for Player, CurrentEnemy, GameManager and DragonSpawnManager Inheritance System.Object ReferenceTable Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public class ReferenceTable : MonoBehaviour Fields CurrentEnemy Declaration public static GameObject CurrentEnemy Field Value Type Description GameObject DragonSpawner Declaration public static DragonSpawnManager DragonSpawner Field Value Type Description DragonSpawnManager GameManager Declaration public static GameManager GameManager Field Value Type Description GameManager LookAtEnemy Declaration public static Transform LookAtEnemy Field Value Type Description Transform Player Declaration public static GameObject Player Field Value Type Description GameObject Methods SetCurrentEnemy(GameObject) given a GameObject updating the references CurrentEnemy and LookAtEnemy Declaration public static void SetCurrentEnemy(GameObject enemy) Parameters Type Name Description GameObject enemy"
+  },
+  "api/CustomUtils.SaveAndRestoreScoreList.html": {
+    "href": "api/CustomUtils.SaveAndRestoreScoreList.html",
+    "title": "Class SaveAndRestoreScoreList | Draconis occisio documentation",
+    "keywords": "Class SaveAndRestoreScoreList Serializing and Deserializing ScoreSystem to JSON Inheritance System.Object SaveAndRestoreScoreList Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public class SaveAndRestoreScoreList Constructors SaveAndRestoreScoreList() Constructor -> instantiating the scoreList Declaration public SaveAndRestoreScoreList() Fields ScoreList Declaration public ScoreSystem[] ScoreList Field Value Type Description ScoreSystem [] Methods SaveScore(ScoreSystem) loading the Score Updating the score if the input parameter is higher than an old value Writing the new ScoreSystem[] to the file Declaration public void SaveScore(ScoreSystem newScore) Parameters Type Name Description ScoreSystem newScore score the player accomplished"
+  },
+  "api/CustomUtils.SceneManager.html": {
+    "href": "api/CustomUtils.SceneManager.html",
+    "title": "Class SceneManager | Draconis occisio documentation",
+    "keywords": "Class SceneManager Scene Loading Manager Inheritance System.Object SceneManager Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public static class SceneManager Fields CurrentScene Declaration public static Scene CurrentScene Field Value Type Description Scene Methods LoadScene(String) Loading the scene by string setting Reference Declaration public static void LoadScene(string sceneName) Parameters Type Name Description System.String sceneName the scene to be loaded"
+  },
+  "api/CustomUtils.ScoreSystem.html": {
+    "href": "api/CustomUtils.ScoreSystem.html",
+    "title": "Class ScoreSystem | Draconis occisio documentation",
+    "keywords": "Class ScoreSystem Inheritance System.Object ScoreSystem Namespace : CustomUtils Assembly : cs.temp.dll.dll Syntax public class ScoreSystem : IComparable<ScoreSystem> Constructors ScoreSystem() Declaration public ScoreSystem() Fields CurrentScore Declaration public int CurrentScore Field Value Type Description System.Int32 Methods CompareTo(ScoreSystem) implementation of IComparable CompareTo() comparing this to other if other is greater than this, the spot in array will be replaced by other Declaration public int CompareTo(ScoreSystem other) Parameters Type Name Description ScoreSystem other the ScoreSystem to be compared to Returns Type Description System.Int32 0: the CurrentScores are the same 1: the CurrentScore of other is less than this or null - resulting in higher index -1: the CurrentScore of other is higher than this - resulting in lower index GetScore() Declaration public int GetScore() Returns Type Description System.Int32 IncreaseScore(Int32) Declaration public void IncreaseScore(int amount) Parameters Type Name Description System.Int32 amount"
+  },
+  "api/Enemy.DestroyMultipleTornado.html": {
+    "href": "api/Enemy.DestroyMultipleTornado.html",
+    "title": "Class DestroyMultipleTornado | Draconis occisio documentation",
+    "keywords": "Class DestroyMultipleTornado Inheritance System.Object DestroyMultipleTornado Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class DestroyMultipleTornado : MonoBehaviour"
+  },
+  "api/Enemy.DragonSpawnManager.html": {
+    "href": "api/Enemy.DragonSpawnManager.html",
+    "title": "Class DragonSpawnManager | Draconis occisio documentation",
+    "keywords": "Class DragonSpawnManager ScriptableObject for modifying dragons that will be spawned Inheritance System.Object DragonSpawnManager Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class DragonSpawnManager : ScriptableObject Methods SpawnDragon(Int32) setting currentEnemyIdx reference in GameManager spawning GameObject prefab according to the number Declaration public void SpawnDragon(int dragonNumber) Parameters Type Name Description System.Int32 dragonNumber"
+  },
+  "api/Enemy.Enemy.html": {
+    "href": "api/Enemy.Enemy.html",
+    "title": "Class Enemy | Draconis occisio documentation",
+    "keywords": "Class Enemy basic enemy behaviour Inheritance System.Object Enemy Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class Enemy : MonoBehaviour Fields fov Declaration public FieldOfView fov Field Value Type Description FieldOfView path Declaration public List<Vector3> path Field Value Type Description List < Vector3 > Properties State Declaration public EnemyStates State { get; } Property Value Type Description EnemyStates Methods GettingHit(Vector3) Declaration public void GettingHit(Vector3 contactPoint) Parameters Type Name Description Vector3 contactPoint"
+  },
+  "api/Enemy.EnemyAttacks.html": {
+    "href": "api/Enemy.EnemyAttacks.html",
+    "title": "Class EnemyAttacks | Draconis occisio documentation",
+    "keywords": "Class EnemyAttacks class for Enemy Attacks Inheritance System.Object EnemyAttacks Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class EnemyAttacks : MonoBehaviour"
+  },
+  "api/Enemy.EnemyMeleeAnimations.html": {
+    "href": "api/Enemy.EnemyMeleeAnimations.html",
+    "title": "Class EnemyMeleeAnimations | Draconis occisio documentation",
+    "keywords": "Class EnemyMeleeAnimations grounded enemy animations Inheritance System.Object EnemyMeleeAnimations Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class EnemyMeleeAnimations : MonoBehaviour"
+  },
+  "api/Enemy.EnemyRangedAnimations.html": {
+    "href": "api/Enemy.EnemyRangedAnimations.html",
+    "title": "Class EnemyRangedAnimations | Draconis occisio documentation",
+    "keywords": "Class EnemyRangedAnimations flying enemy animations Inheritance System.Object EnemyRangedAnimations Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class EnemyRangedAnimations : MonoBehaviour"
+  },
+  "api/Enemy.EnemyStates.html": {
+    "href": "api/Enemy.EnemyStates.html",
+    "title": "Class EnemyStates | Draconis occisio documentation",
+    "keywords": "Class EnemyStates Inheritance System.Object EnemyStates Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class EnemyStates Fields foundPlayer Declaration public bool foundPlayer Field Value Type Description System.Boolean isAttackingMelee Declaration public bool isAttackingMelee Field Value Type Description System.Boolean isAttackingRanged Declaration public bool isAttackingRanged Field Value Type Description System.Boolean isDead Declaration public bool isDead Field Value Type Description System.Boolean isHit Declaration public bool isHit Field Value Type Description System.Boolean isWalking Declaration public bool isWalking Field Value Type Description System.Boolean"
+  },
+  "api/Enemy.FieldOfView.html": {
+    "href": "api/Enemy.FieldOfView.html",
+    "title": "Class FieldOfView | Draconis occisio documentation",
+    "keywords": "Class FieldOfView FieldOfView implementation for enemy Inheritance System.Object FieldOfView Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class FieldOfView Properties Angle Declaration public float Angle { get; } Property Value Type Description System.Single BumpRadius Declaration public float BumpRadius { get; } Property Value Type Description System.Single CanSeePlayer Declaration public bool CanSeePlayer { get; set; } Property Value Type Description System.Boolean SeenTimer Declaration public float SeenTimer { get; } Property Value Type Description System.Single SeeRadius Declaration public float SeeRadius { get; } Property Value Type Description System.Single Methods CalcDetectTime() Declaration public void CalcDetectTime() FOVRoutine() updating the state while gameObject is Alive perform FOVCheck Declaration public IEnumerator FOVRoutine() Returns Type Description IEnumerator"
+  },
+  "api/Enemy.FireBallDragon.html": {
+    "href": "api/Enemy.FireBallDragon.html",
+    "title": "Class FireBallDragon | Draconis occisio documentation",
+    "keywords": "Class FireBallDragon Inheritance System.Object FireBallDragon Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class FireBallDragon : MonoBehaviour"
+  },
+  "api/Enemy.html": {
+    "href": "api/Enemy.html",
+    "title": "Namespace Enemy | Draconis occisio documentation",
+    "keywords": "Namespace Enemy Classes DestroyMultipleTornado DragonSpawnManager ScriptableObject for modifying dragons that will be spawned Enemy basic enemy behaviour EnemyAttacks class for Enemy Attacks EnemyMeleeAnimations grounded enemy animations EnemyRangedAnimations flying enemy animations EnemyStates FieldOfView FieldOfView implementation for enemy FireBallDragon TornadoDragon same as FireBallDragon class"
+  },
+  "api/Enemy.TornadoDragon.html": {
+    "href": "api/Enemy.TornadoDragon.html",
+    "title": "Class TornadoDragon | Draconis occisio documentation",
+    "keywords": "Class TornadoDragon same as FireBallDragon class Inheritance System.Object TornadoDragon Namespace : Enemy Assembly : cs.temp.dll.dll Syntax public class TornadoDragon : MonoBehaviour"
+  },
+  "api/Health.Health.html": {
+    "href": "api/Health.Health.html",
+    "title": "Class Health | Draconis occisio documentation",
+    "keywords": "Class Health Inheritance System.Object Health Namespace : Health Assembly : cs.temp.dll.dll Syntax public class Health : MonoBehaviour Fields isInvincible Declaration public bool isInvincible Field Value Type Description System.Boolean Properties CurrentHealth Declaration public int CurrentHealth { get; } Property Value Type Description System.Int32 Methods GetDamagedOverTime(Int32, Single) Declaration public void GetDamagedOverTime(int value, float time) Parameters Type Name Description System.Int32 value System.Single time IncreaseHealth(Int32) increasing the currentHealth by value Declaration public void IncreaseHealth(int value) Parameters Type Name Description System.Int32 value ResetHealth() Declaration public void ResetHealth()"
+  },
+  "api/Health.HealthPackage.html": {
+    "href": "api/Health.HealthPackage.html",
+    "title": "Class HealthPackage | Draconis occisio documentation",
+    "keywords": "Class HealthPackage HealthPackage behaviour Inheritance System.Object HealthPackage Namespace : Health Assembly : cs.temp.dll.dll Syntax public class HealthPackage : MonoBehaviour"
+  },
+  "api/Health.html": {
+    "href": "api/Health.html",
+    "title": "Namespace Health | Draconis occisio documentation",
+    "keywords": "Namespace Health Classes Health HealthPackage HealthPackage behaviour"
+  },
+  "api/Player.AnimationHandler.html": {
+    "href": "api/Player.AnimationHandler.html",
+    "title": "Class AnimationHandler | Draconis occisio documentation",
+    "keywords": "Class AnimationHandler Animation handling for the wizard Inheritance System.Object AnimationHandler Namespace : Player Assembly : cs.temp.dll.dll Syntax public class AnimationHandler : MonoBehaviour"
+  },
+  "api/Player.Attacks.html": {
+    "href": "api/Player.Attacks.html",
+    "title": "Class Attacks | Draconis occisio documentation",
+    "keywords": "Class Attacks Handling Abilities Tornado and Shield Inheritance System.Object Attacks Namespace : Player Assembly : cs.temp.dll.dll Syntax public class Attacks : MonoBehaviour Fields hasAttackCoolDown Declaration public bool hasAttackCoolDown Field Value Type Description System.Boolean hasDefenseCoolDown Declaration public bool hasDefenseCoolDown Field Value Type Description System.Boolean"
+  },
+  "api/Player.CineMachineSwitcher.html": {
+    "href": "api/Player.CineMachineSwitcher.html",
+    "title": "Class CineMachineSwitcher | Draconis occisio documentation",
+    "keywords": "Class CineMachineSwitcher behaviour for switching 3rd person to 1st person with camera locked to dragon Inheritance System.Object CineMachineSwitcher Namespace : Player Assembly : cs.temp.dll.dll Syntax public class CineMachineSwitcher : MonoBehaviour Fields enemyTarget Declaration public CinemachineVirtualCamera enemyTarget Field Value Type Description CinemachineVirtualCamera Methods SwitchLock() enabling 1st Person disabling 3rd Person or enabling 3rd Person disabling 1st Person Declaration public void SwitchLock()"
+  },
+  "api/Player.Controller.html": {
+    "href": "api/Player.Controller.html",
+    "title": "Class Controller | Draconis occisio documentation",
+    "keywords": "Class Controller basic controls for Player like Health GetHit-Animation Score Inheritance System.Object Controller Namespace : Player Assembly : cs.temp.dll.dll Syntax public class Controller : MonoBehaviour Methods GetScore() Declaration public string GetScore() Returns Type Description System.String GetScoreSystem() Declaration public ScoreSystem GetScoreSystem() Returns Type Description ScoreSystem GotHit() Declaration public void GotHit() ResetScore() Declaration public void ResetScore() UpdateScore(Int32) Declaration public void UpdateScore(int dragonNumber) Parameters Type Name Description System.Int32 dragonNumber"
+  },
+  "api/Player.FireBallPlayer.html": {
+    "href": "api/Player.FireBallPlayer.html",
+    "title": "Class FireBallPlayer | Draconis occisio documentation",
+    "keywords": "Class FireBallPlayer tornado behaviour after instantiation Inheritance System.Object FireBallPlayer Namespace : Player Assembly : cs.temp.dll.dll Syntax public class FireBallPlayer : MonoBehaviour"
+  },
+  "api/Player.html": {
+    "href": "api/Player.html",
+    "title": "Namespace Player | Draconis occisio documentation",
+    "keywords": "Namespace Player Classes AnimationHandler Animation handling for the wizard Attacks Handling Abilities Tornado and Shield CineMachineSwitcher behaviour for switching 3rd person to 1st person with camera locked to dragon Controller basic controls for Player like Health GetHit-Animation Score FireBallPlayer tornado behaviour after instantiation MovementController Handling Movement for the Player PlayerAnimationState PlayerStates"
+  },
+  "api/Player.MovementController.html": {
+    "href": "api/Player.MovementController.html",
+    "title": "Class MovementController | Draconis occisio documentation",
+    "keywords": "Class MovementController Handling Movement for the Player Inheritance System.Object MovementController Namespace : Player Assembly : cs.temp.dll.dll Syntax public class MovementController : MonoBehaviour Fields turnTime Declaration public float turnTime Field Value Type Description System.Single walkSpeed Declaration public float walkSpeed Field Value Type Description System.Single Properties States Declaration public PlayerStates States { get; } Property Value Type Description PlayerStates"
+  },
+  "api/Player.PlayerAnimationState.html": {
+    "href": "api/Player.PlayerAnimationState.html",
+    "title": "Class PlayerAnimationState | Draconis occisio documentation",
+    "keywords": "Class PlayerAnimationState Inheritance System.Object PlayerAnimationState Namespace : Player Assembly : cs.temp.dll.dll Syntax public static class PlayerAnimationState Fields isAttacking Declaration public static bool isAttacking Field Value Type Description System.Boolean isDead Declaration public static bool isDead Field Value Type Description System.Boolean isDefending Declaration public static bool isDefending Field Value Type Description System.Boolean isJumping Declaration public static bool isJumping Field Value Type Description System.Boolean isLevitating Declaration public static bool isLevitating Field Value Type Description System.Boolean isRunning Declaration public static bool isRunning Field Value Type Description System.Boolean isWalking Declaration public static bool isWalking Field Value Type Description System.Boolean"
+  },
+  "api/Player.PlayerStates.html": {
+    "href": "api/Player.PlayerStates.html",
+    "title": "Class PlayerStates | Draconis occisio documentation",
+    "keywords": "Class PlayerStates Inheritance System.Object PlayerStates Namespace : Player Assembly : cs.temp.dll.dll Syntax public class PlayerStates Fields ability Declaration public bool ability Field Value Type Description System.Boolean move Declaration public Vector2 move Field Value Type Description Vector2 moveEnabled Declaration public bool moveEnabled Field Value Type Description System.Boolean TurnVelocity Declaration public float TurnVelocity Field Value Type Description System.Single"
+  },
+  "api/Sound.html": {
+    "href": "api/Sound.html",
+    "title": "Namespace Sound | Draconis occisio documentation",
+    "keywords": "Namespace Sound Classes SoundManager Sound Manager class SoundSource"
+  },
+  "api/Sound.SoundManager.html": {
+    "href": "api/Sound.SoundManager.html",
+    "title": "Class SoundManager | Draconis occisio documentation",
+    "keywords": "Class SoundManager Sound Manager class Inheritance System.Object SoundManager Namespace : Sound Assembly : cs.temp.dll.dll Syntax public class SoundManager : MonoBehaviour Methods OnSoundEffect(Transform, SoundSource) Declaration public void OnSoundEffect(Transform position, SoundSource hitEffectRef) Parameters Type Name Description Transform position SoundSource hitEffectRef VolumeChangeEffects(Slider) Declaration public void VolumeChangeEffects(Slider effectSlider) Parameters Type Name Description Slider effectSlider VolumeChangeMusic(Slider) Declaration public void VolumeChangeMusic(Slider musicSlider) Parameters Type Name Description Slider musicSlider"
+  },
+  "api/Sound.SoundSource.html": {
+    "href": "api/Sound.SoundSource.html",
+    "title": "Class SoundSource | Draconis occisio documentation",
+    "keywords": "Class SoundSource Inheritance System.Object SoundSource Namespace : Sound Assembly : cs.temp.dll.dll Syntax public class SoundSource : ScriptableObject Fields audioC Declaration public AudioClip audioC Field Value Type Description AudioClip sound Declaration public AudioSource sound Field Value Type Description AudioSource Methods Play(Transform) sets the audioClip instantiates a GameObjects Plays the Sound Declaration public AudioSource Play(Transform parent) Parameters Type Name Description Transform parent position of the GameObject Returns Type Description AudioSource playing AudioSource Play(Transform, Single) sets the audioClip instantiates a GameObjects Plays the Sound with the effectVolume Declaration public void Play(Transform parent, float effectVolume) Parameters Type Name Description Transform parent position of the GameObject System.Single effectVolume volume of the soundEffect Reset() stops the sound Declaration public void Reset()"
+  },
+  "api/UserInterface.GameModeChooseMenu.html": {
+    "href": "api/UserInterface.GameModeChooseMenu.html",
+    "title": "Class GameModeChooseMenu | Draconis occisio documentation",
+    "keywords": "Class GameModeChooseMenu Behaviour for GameModeChooseMenu Inheritance System.Object GameModeChooseMenu Namespace : UserInterface Assembly : cs.temp.dll.dll Syntax public class GameModeChooseMenu : MonoBehaviour Methods OnHoverDragon1Enter() Hover-Enter Event for SoulEater Button Enabling dragonImage Declaration public void OnHoverDragon1Enter() OnHoverDragon1Exit() Hover-Exit Event for SoulEater Button Disabling dragonImage Declaration public void OnHoverDragon1Exit() OnHoverDragon2Enter() Hover-Enter Event for SoulEater Button Enabling dragonImage Declaration public void OnHoverDragon2Enter() OnHoverDragon2Exit() Hover-Exit Event for SoulEater Button Disabling dragonImage Declaration public void OnHoverDragon2Exit() OnHoverDragon3Enter() Hover-Exit Event for SoulEater Button Disabling dragonImage Declaration public void OnHoverDragon3Enter() OnHoverDragon3Exit() Hover-Exit Event for SoulEater Button Disabling dragonImage Declaration public void OnHoverDragon3Exit() OnHoverDragon4Enter() Hover-Exit Event for SoulEater Button Disabling dragonImage Declaration public void OnHoverDragon4Enter() OnHoverDragon4Exit() Hover-Exit Event for SoulEater Button Disabling dragonImage Declaration public void OnHoverDragon4Exit() OnHoverRandom() Enabling Cycling Dragon Images Declaration public void OnHoverRandom() OnHoverRandomExit() Disabling Cycling Dragon Images Declaration public void OnHoverRandomExit() OnRandom() Button functionality for Random Setting GameMode to Random Declaration public void OnRandom() OnSoloDragon1() Button functionality for SoulEater setting currentEnemyIdx to 1 Setting GameMode to Solo Declaration public void OnSoloDragon1() OnSoloDragon2() Button functionality for Nightmare setting currentEnemyIdx to 2 Setting GameMode to Solo Declaration public void OnSoloDragon2() OnSoloDragon3() Button functionality for Usurper setting currentEnemyIdx to 3 Setting GameMode to Solo Declaration public void OnSoloDragon3() OnSoloDragon4() Button functionality for TerrorBringer setting currentEnemyIdx to 4 Setting GameMode to Solo Declaration public void OnSoloDragon4()"
+  },
+  "api/UserInterface.html": {
+    "href": "api/UserInterface.html",
+    "title": "Namespace UserInterface | Draconis occisio documentation",
+    "keywords": "Namespace UserInterface Classes GameModeChooseMenu Behaviour for GameModeChooseMenu MainMenu behaviour for MainMenu PauseMenu ScoresTexts"
+  },
+  "api/UserInterface.MainMenu.html": {
+    "href": "api/UserInterface.MainMenu.html",
+    "title": "Class MainMenu | Draconis occisio documentation",
+    "keywords": "Class MainMenu behaviour for MainMenu Inheritance System.Object MainMenu Namespace : UserInterface Assembly : cs.temp.dll.dll Syntax public class MainMenu : MonoBehaviour Methods OnExit() Quitting the Game Declaration public void OnExit() OnOptions() Enabling OptionsMenu Declaration public void OnOptions() OnPlay() Enabling GameModeChooseMenu Declaration public void OnPlay() OnTutorial() Loading PlayScene Setting GameMode to Tutorial Declaration public void OnTutorial()"
+  },
+  "api/UserInterface.PauseMenu.html": {
+    "href": "api/UserInterface.PauseMenu.html",
+    "title": "Class PauseMenu | Draconis occisio documentation",
+    "keywords": "Class PauseMenu Inheritance System.Object PauseMenu Namespace : UserInterface Assembly : cs.temp.dll.dll Syntax public class PauseMenu : MonoBehaviour Methods OnExitPause() Setting GameState to Defeat Declaration public void OnExitPause() OnResume() Setting GameState to Fight Declaration public void OnResume()"
+  },
+  "api/UserInterface.ScoresTexts.html": {
+    "href": "api/UserInterface.ScoresTexts.html",
+    "title": "Class ScoresTexts | Draconis occisio documentation",
+    "keywords": "Class ScoresTexts Inheritance System.Object ScoresTexts Namespace : UserInterface Assembly : cs.temp.dll.dll Syntax public class ScoresTexts : MonoBehaviour Fields bestRun Declaration public TextMeshProUGUI bestRun Field Value Type Description TextMeshProUGUI secondbestRun Declaration public TextMeshProUGUI secondbestRun Field Value Type Description TextMeshProUGUI thirdbestRun Declaration public TextMeshProUGUI thirdbestRun Field Value Type Description TextMeshProUGUI"
+  },
+  "manual/coniunctis.html": {
+    "href": "manual/coniunctis.html",
+    "title": "Coniunctis nec qui et lanient monticolae vitae | Draconis occisio documentation",
+    "keywords": "Coniunctis nec qui et lanient monticolae vitae Opem ille Lorem markdownum cavis exululat inutile. Illi quem caeli, vola patruo difficili Iuppiter Patraeque, est ardebant ingeniis Troica intus Amore tibi mirantem superfusis, multum. Ut Achilles Et sitim Tibi modo ait temptant crinita daret Pariter in removi offensasque Lenaeo damno terra Phoebes ut damnosa classis ignes templo; tua ulla capillos ultima. Videre percusso plectro templa fuit diva minimum debere, quid nomen Philomela animis. Verbis istis flagrat vulnera inpediique ignes. Gravi filo obvius arte Amphionis Panes emisitque iubet. Latona te timens Latentia ante, eundem meritorum sunto ! Elige in timuit templa ferrea, qui arma ligati stagnum turbant. Fraternaque aeternus, dedisse, naufragus corripiens ranas Amathunta et quod laetior culpa nec semper scorpius fuit vicem corpora ardere. Fallit in artus primordia, fratres per aliis , ipsi manu Asiae quod marmorea . mountain(googleVga, pngIphone); var radcabBitrate = dnsCronRecursion; gui(2); ipImageAix += vle(drm_cisc, horizontal + computer_key); jre(vaporware_adc_multi); Lumina ut tamen praesentia vidistis nymphae auroque Bromumque in portant furorem. Visa init resurgere praevitiat canibus et, dedignata turea, ilia. Pisenore mensura insula aere nec per o gladium causa: Alcidae. Veris sentes pallet, alta melius nostra amborum probant, deam. Iuventae dedimus nitidaque hunc traxisse sermonibus pectine flecti an pateres, hac ore gelidis foret semper. Sithon pelle. Bracchia Hippason videntur fateri hosti: palpitat animo est reliquit anne nam confusaque. Interea rex altis munera quem quae quoque rorant, rauco albescere scopulo moriensque parvo, pectus illa, quadrupedes. Notavit haec. Vertit pars quem Euryte casu usta iterum! Ablatum pectus corripiunt neu humus tamquam; ducens stellarum amore. Pulsisque latet, ad tamen victor fulva Tirynthius posco; qui inque in poena quidem enses !"
+  },
+  "manual/etiam.html": {
+    "href": "manual/etiam.html",
+    "title": "Etiam nantemque exul | Draconis occisio documentation",
+    "keywords": "Etiam nantemque exul Cum tulit Lorem markdownum quos stimulosque altos . Putat nubes molle Troiae vero dea; nostraque plurima . Vos de mihi, credidit: salibus et iacuit, volvitur sunt unda fronti deriguisse refert . Sumpsisse viso Nubila nomine. Purpura se o et causa parva ripas, adsonat saevaque; quid modo ambo et venere voveo. Sine et esse, illa tempore, sive tibi roseo, ministerio altos. Trepident medicamine, primasque cum et peregit dapibusque quoslibet hominis quoque insula. Tepentibus ut Cecropios ab turba, est auro ferventi aliter duratos feres differtis Ausoniis potes, non noctis Laertaque iuvenes. Caelumque vestigia Et promissa fila sentiet leges; Phrygiae et levatus ferire? Salutifer coniugis fierent ante fecissent post vultumque ultima, per radios currere; tandem. Fuerat qua, ne foedera reformatus nunc diu dea audet nonne. Ut utinam mitia tenuerunt movent spectans Mavortis nulla ite, somnos exsiccata dixit Aeetias. Binas Trinacriam album ex ipse. Quoque una utraque tardius placetque gerere; mariti sed dare ludunt memorante Delphice corpora. Caret quantum intellegat venis gaudent eurus. Et suos crista; has et ferarum quid audit omine; mea cum praemia quae duris, suspicor. Adflati qui Spiro conata supprimit diemque; ora oblitus ensem alti non quo lacrimis ferunt, ageret Cebrenida rutilis delendaque? Terras lata modus: nec fas, misi utque adpositis Iunonis. Fide vidit, ferox Schoeneia mundi, voce, tellus pariterque pedum, sic Celadon securior corpora partesque posito. Potest faxo unda pendulaque ille rostro, haesit pars: formidine captat, viseret simulaverat! Sequi est peragit flumineae pallent simulatas formae avulsa, imagine undis; formam. Et nec sed adeunt, huic aequa et ignes nec, medere terram. Move ipsum abnuat retemptat retinebat duabus diu Iovi est pluma. Tecum non deducit Pelops Inachus: arcet aliquemque, regia telo. Tollens altore nec semel qui voce Palatinae Apertis et dei duo inquit ; luna secundo, fervida terret. In haec dextra septima Tydides tibi: congelat hospes nativum radice tegumenque membris Hesperio ne Libys, est vocabula siqua. Dumque stet mulces , ut fontem dea atricolor, est pronos, clarissimus poterat cum intrare sidere templi. cut_metadata(whitelistSequenceUnit.thick.of_bezel_cdma( address_suffix_troubleshooting), sram_trojan(4, hdmi_network - 1)); flash.apache -= web_gps_plug; if (offline.dac_bridge(scrollEbookRom, parameter.internal_target_superscalar(2)) < qwerty + 2 - ipvCgiContextual) { certificateIdeAsp = overclocking + app; supplyCard = siteRaster; } Sagitta curvum quoque petisti opibusque proximitas in, illa vestrum, mihi domum nescia flexit sacra in. Magni vive sim crescente causam saxo voluit, mens, quod. Tela ter ulterius similis illos nato refugit ait verbaque nec fatigatum penates iaculatricemque cecidit pinnas, cum. Misso contigit caelo dedissent lumina; nympha ad vobis occidat, malo sacra utrumque cunctos Diomedeos addita. Virgineus autumnos, ait mitissima curru: fuit sed fessi se habebat hactenus Ultor; meus."
+  }
+}
