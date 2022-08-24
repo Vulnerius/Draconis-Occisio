@@ -10,14 +10,21 @@
 <br><br><br><br><br><br><br><br><br><br>
 
 ### Paul Fuchs
+
+### 54584
+
+### MI20w2-B
+
 <br>
 
-### 24.08.2022
+### Dozenten/Prüfer: Prof. Dr. Marc Ritter, Manuel Heinzig
 
-<br><br><br><br><br><br>
+<br><br><br>
+
+<h2 style="float: right;"> 24.08.2022 </h2>
 
 
-## Dozenten: Prof. Marc Ritter, Manuel Heinzig
+
 
 <div id="pagebreak" \>
 
@@ -42,7 +49,7 @@
 - [Spielanleitung](#spielanleitung)
     - [Bewegung](#bewegung)
     - [Fähigkeiten](#fähigkeiten)
-    - [Cam-Lock](#cam-lock)2
+    - [Cam-Lock](#cam-lock)
     - [Menü](#menü)
 
 - [Installationsanleitung](#installationsanleitung)
@@ -241,6 +248,8 @@ eine Herz-Anzeige geworden.
 ![Lebensherz](images/Health.png)
 </div>
 
+<div id="pagebreak" \>
+
 ## Flammentextur
 
 <div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
@@ -332,7 +341,7 @@ Die <b>Esc</b> Taste pausiert das Spiel und du hast die Möglichkeit die Lautst�
 <div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
 Dies ist das erstes Spiel, welches ich alleine erstellt habe. Natürlich gibt es einige Verbesserungsmöglichkeiten. Das Userinterface kann beispielsweise durch ansprechendes Feedback für den Spieler intuitiver gestaltet werden und im Play-Menü sollte die Coroutine, die beim Hovern auf dem Random - Button läuft, gestoppt werden, sobald das Hovern endet. Eine weitere Verbesserung kann im Aufbau der Software-Architektur gemacht werden, sodass ein modularer Aufbau erreicht wird. Vor allem hinsichtlich abstrakter Klassen und einer Klassenstruktur und -ordnung nach Funktionalität. Eine erste Idee hierfür ist, eine abstrakte Projektil-Klasse zu erstellen, mit der die Bewegung und der Schaden der Tornados eingestellt werden kann und in der Ausimplementierung in Enemy und Player wird dann die "OnTriggerEnter" bzw. "OnCollisionEnter" - Methode überschrieben. <br>
 Die nächste Verbesserung sehe ich in den Drachen-Prefabs. Auf jedem Drachen liegen doppelte Collider, zur Kollisionsdetektion mit dem Spieler und zur Triggerdetektion eines Tornados. Ein Collider sollte für die Implementierung der Schadensevaluierung ausreichen. (Ja, doppelte Hits mit dem Spielertornado sind möglich, aber selten). <br>
-Die Umsetzung für dieses Spiel ist aus einer stark eingekürzten Version meiner Game-Design Idee aus dem letzten Semester entstanden. Ich habe die Idee insofern abgeändert, dass das Ziel des Spiels das Erreichen eines Highscores ist und der Spieler mit zwei Fähigkeiten startet. Doch Setting und Grundgefühl sollten dasselbe bleiben. <br>
+Die Umsetzung für dieses Spiel ist aus einer stark eingekürzten Version meiner <a href="references/GDD_InveniLibera.pdf">Game-Design Idee</a> aus dem letzten Semester entstanden. Ich habe die Idee insofern abgeändert, dass das Ziel des Spiels das Erreichen eines Highscores ist und der Spieler mit zwei Fähigkeiten startet. Doch Setting und Grundgefühl sollten dasselbe bleiben. <br>
 Abschließend ist zu sagen, dass ich mit dem Ergebnis zufrieden bin.
 </div>
 
