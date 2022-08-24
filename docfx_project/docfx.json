@@ -5,7 +5,7 @@
         {
           "src": "../rpg_wizard/",
           "files": [
-            "Assets/Scripts/**.cs"
+            "Assets/Scripts/**/**.cs"
           ]
         }
       ],

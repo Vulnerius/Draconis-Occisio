@@ -1,2 +1,5 @@
+- name: Table of Content
+  href: docs.md
+
 - name: Scripting API
   href: ../api/toc.yml
