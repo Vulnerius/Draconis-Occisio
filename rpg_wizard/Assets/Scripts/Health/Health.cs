@@ -78,7 +78,7 @@ namespace Health {
         /// <returns>Waiting for hitSound to complete</returns>
         private IEnumerator HitSoundCoolDown() {
             hitSoundPlaying = true;
-            yield return new WaitForSeconds(hitSound.sound.time);
+            yield return new WaitForSeconds(2f);
             hitSoundPlaying = false;
         }
 
