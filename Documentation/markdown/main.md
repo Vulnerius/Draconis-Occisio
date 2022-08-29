@@ -365,6 +365,9 @@ Abschließend ist zu sagen, dass ich mit dem Ergebnis zufrieden bin.
 - Shader:
     - [Hologram](https://www.youtube.com/watch?v=wtZ5WcrV-9A&ab_channel=DanielIlett)
 
+- Sound:
+    - [Warriyo - Mortals (feat. Laura Brehm) [NCS Release]](http://youtu.be/yJg-Y5byMMw)
+
 - Tools:
     - [Jetbrains-Rider](https://www.jetbrains.com/de-de/rider/)
     - [DocFX](https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html) zur Erstellung einer Dokumentation anhand der Kommentare
