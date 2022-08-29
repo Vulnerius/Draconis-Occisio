@@ -54,7 +54,7 @@
 
 - [Installationsanleitung](#installationsanleitung)
 
-- [Ausblick/Fazit](#ausblick--fazit)
+- [Ausblick/Fazit](#fazit)
 
 - [Quellen](#quellen)
 
@@ -85,7 +85,7 @@ Dabei hat jeder Drache unterschiedliche Mechaniken.
 | Eigenschaften 	| Bewegung am Boden<br><br>Schießt einen kleinen Feuerball mit geringem Schaden 	| Bewegung am Boden<br><br>Schießt einen Tornado mit mittlerem Schaden 	| Bewegung in der Luft<br><br>Schießt einen Tornado mit mittlerem Schaden 	| Bewegung in der Luft<br><br>Schießt drei Tornados mit jeweils mittlerem Schaden 	|
 | Punkteberechnung 	| 90 + 100 * (0 - 0.3) 	| 120 + 100 * (0 - 0.45) 	| 240 + 100 * (0 - 0.75) 	| 160 + 100 * (0 - 0.45) 	|
 
-Wenn dich ein Drache mit einer Fernkampf-Attacke trifft, werden dir Lebenspunkte abgezogen. Genauso verlierst du Lebenspunkte, wenn du einem Drachen zu nahe kommst.
+Wenn dich ein Drache mit einer Fernkampf-Attacke trifft, werden dir Lebenspunkte abgezogen. Genauso verlierst du Lebenspunkte, wenn du einen Drachen berührst.
 
 ## Bewältigung 
 
@@ -122,8 +122,11 @@ wäre.
 
 <div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
 Das Grundprinzip der Animationhandler für Spieler und Drachen habe ich aus dem folgenden Video übernommen:
-
-[Animate-like-a-programmer](https://www.youtube.com/watch?v=ZwLekxsSY3Y&ab_channel=Tarodev)<br>
+<a href="https://www.youtube.com/watch?v=ZwLekxsSY3Y&ab_channel=Tarodev">Animate-like-a-programmer</a>.
+</div>
+<br>
+<div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
+An dieser Stelle möchte ich noch einen kurzen Hinweis auf die <a href="../../rpg_wizard/Assets/Scripts/CustomUtils/ReferenceTable.cs">ReferenceTable</a> geben. Diese hält die statischen Referenzen auf den <a href="../../rpg_wizard/Assets/Scripts/CustomUtils/GameManager.cs">GameManager</a>, den Spieler und den momentan lebenden Drachen und ist somit verantwortlich für die Target-locked Camera. Das Behaviour ist aufgrund der Suche nach den Gameobjects mittels Tag, das wohl teuerste im gesamten Spiel.
 </div>
 
 ## VFX
@@ -162,7 +165,7 @@ public IEnumerator DestroyThis(){
 ## Damage over Time Effekt 
 
 <div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
-Der Tornado hat einen Damage over Time Effekt, da Feuer brennt.
+Da Feuer brennt, hat der Tornado einen Damage over Time Effekt.
 Der Algorithmus dazu liegt im Health beschrieben:
 </div>
 
@@ -184,7 +187,7 @@ Beweis:
 (x // 3) * 3 + x mod 3 = x
     --> // - Floor Division
 
-- 50 / 3 = 16
+- 50 // 3 = 16
 
 - 16 * 3 = 48
 - 50 mod 3 = 2
@@ -219,12 +222,12 @@ Lighting:
 <br>
 
 <div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
-Um dem Spieler intuitiv zu zeigen, dass es sich um ein Objekt handelt, das eingesammelt werden kann und ein kleines Highlighting zu geben, da die Heilungspakete vom Boden der Arena nicht zu sehen sind, habe ich das Partikel-System aus dem Feuer-Tutorial, welches das Lighting verursacht, auf die Farben des Heilungspakets abgestimmt und wiederverwendet.
+Um dem Spieler intuitiv zu zeigen, dass es sich um ein Objekt handelt, das eingesammelt werden kann und ein kleines Highlighting zu geben, da die Heilungspakete von der Ausgangsposition des Spielers nicht zu sehen sind, habe ich das Partikel-System aus dem Feuer-Tutorial, welches das Lighting verursacht, auf die Farben des Heilungspakets abgestimmt und wiederverwendet.
 </div>
 
 ## Sound
 <div style="text-align: justify; font-family: Arial, font-size: 12px, line-height: 1.15px;">
-Die Sound-Effekte beim Treffen eines Gegners, selbst getroffen werden und einsammeln eines Healthpackages habe ich mit AudaCity erstellt.
+Die Sound-Effekte beim Treffen eines Gegners, selbst getroffen werden und Einsammeln eines Healthpackages habe ich mit AudaCity erstellt.
 </div>
 
 # 2D Art
